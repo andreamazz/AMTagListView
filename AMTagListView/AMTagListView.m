@@ -21,6 +21,19 @@
 		// Default margins
 		_marginX = 4;
 		_marginY = 4;
+		self.clipsToBounds = YES;
+	}
+	return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+	self = [super initWithCoder:aDecoder];
+	if (self) {
+		// Default margins
+		_marginX = 4;
+		_marginY = 4;
+		self.clipsToBounds = YES;
 	}
 	return self;
 }
@@ -39,12 +52,16 @@
 	__block float maxY = 0;
 	__block float maxX = 0;
 	[self.subviews enumerateObjectsUsingBlock:^(UIView* obj, NSUInteger idx, BOOL *stop) {
-		maxY = MAX(maxY, obj.frame.origin.y);
+		if ([obj isKindOfClass:[AMTagView class]]) {
+			maxY = MAX(maxY, obj.frame.origin.y);
+		}
 	}];
 	
 	[self.subviews enumerateObjectsUsingBlock:^(UIView* obj, NSUInteger idx, BOOL *stop) {
-		if (obj.frame.origin.y == maxY) {
-			maxX = MAX(maxX, obj.frame.origin.x + obj.frame.size.width);
+		if ([obj isKindOfClass:[AMTagView class]]) {
+			if (obj.frame.origin.y == maxY) {
+				maxX = MAX(maxX, obj.frame.origin.x + obj.frame.size.width);
+			}
 		}
 	}];
 	
