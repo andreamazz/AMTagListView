@@ -31,6 +31,7 @@
 		_textFont = kDefaultFont;
 		_textColor = kDefaultTextColor;
 		_tagColor = kDefaultTagColor;
+		_innerTagColor = kDefaultInnerTagColor;
 		[self addSubview:self.labelText];
     }
     return self;
@@ -110,7 +111,7 @@
 	[background addArcWithCenter:(CGPoint){tagLength + left + radius, padding + radius} radius:radius startAngle:DEGREES_TO_RADIANS(180) endAngle:DEGREES_TO_RADIANS(270) clockwise:YES];
 	[background closePath];
 	
-	[[UIColor colorWithWhite:1 alpha:0.3] setFill];
+	[self.innerTagColor setFill];
     [background fill];
 }
 

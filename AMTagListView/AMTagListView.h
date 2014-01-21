@@ -10,6 +10,10 @@
 
 @interface AMTagListView : UIScrollView
 
+@property (nonatomic, assign) float marginX;
+@property (nonatomic, assign) float marginY;
+
 - (void)addTag:(NSString*)text;
+- (void)addTags:(NSArray*)array;
 
 @end

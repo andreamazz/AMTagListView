@@ -16,6 +16,7 @@
 #define kDefaultTextColor		[UIColor whiteColor]
 #define kDefaultFont			[UIFont systemFontOfSize:14]
 #define kDefaultTagColor		[UIColor redColor]
+#define kDefaultInnerTagColor	[UIColor colorWithWhite:1 alpha:0.3]
 
 @interface AMTagView : UIView
 
@@ -27,6 +28,7 @@
 @property (nonatomic, strong) UIFont	*textFont UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor	*textColor UI_APPEARANCE_SELECTOR;
 @property (nonatomic, strong) UIColor	*tagColor UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) UIColor	*innerTagColor UI_APPEARANCE_SELECTOR;
 
 - (void)setupWithText:(NSString*)text;
 

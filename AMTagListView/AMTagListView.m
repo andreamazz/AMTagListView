@@ -8,7 +8,22 @@
 
 #import "AMTagListView.h"
 
+@interface AMTagListView ()
+
+@end
+
 @implementation AMTagListView
+
+- (id)initWithFrame:(CGRect)frame
+{
+	self = [super initWithFrame:frame];
+	if (self) {
+		// Default margins
+		_marginX = 4;
+		_marginY = 4;
+	}
+	return self;
+}
 
 - (void)addTag:(NSString*)text
 {
@@ -34,16 +49,23 @@
 	}];
 	
 	// Go to a new line if the tag won't fit
-	if (size.width + maxX > self.frame.size.width) {
-		maxY += size.height + 4;
+	if (size.width + maxX > (self.frame.size.width - self.marginX)) {
+		maxY += size.height + self.marginY;
 		maxX = 0;
 	}
 	
-	AMTagView* tagView = [[AMTagView alloc] initWithFrame:(CGRect){maxX, maxY, size.width, size.height}];
+	AMTagView* tagView = [[AMTagView alloc] initWithFrame:(CGRect){maxX + self.marginX, maxY, size.width, size.height}];
 	[tagView setupWithText:text];
 	[self addSubview:tagView];
 	
-	[self setContentSize:(CGSize){320, 300}];
+	[self setContentSize:(CGSize){self.frame.size.width, maxY + size.height +self.marginY}];
+}
+
+- (void)addTags:(NSArray*)array
+{
+	for (NSString* text in array) {
+		[self addTag:text];
+	}
 }
 
 @end
