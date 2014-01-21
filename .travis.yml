@@ -1,0 +1,4 @@
+language: objective-c
+install:
+- cd TagListViewDemo
+script: xctool -project TagListViewDemo.xcodeproj -scheme 'TagListViewDemo' -configuration Release -sdk iphonesimulator7.0 -arch i386 build
