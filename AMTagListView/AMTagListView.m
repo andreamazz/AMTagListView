@@ -54,6 +54,8 @@
 		maxX = 0;
 	}
 	
+	size.width = MIN(size.width, self.frame.size.width - self.marginX * 2);
+	
 	AMTagView* tagView = [[AMTagView alloc] initWithFrame:(CGRect){maxX + self.marginX, maxY, size.width, size.height}];
 	[tagView setupWithText:text];
 	[self addSubview:tagView];
