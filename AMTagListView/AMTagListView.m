@@ -46,7 +46,9 @@
 						object:nil
 						 queue:nil
 					usingBlock:^(NSNotification *notification) {
-						self.tapHandler(notification.object);
+						if (_tapHandler) {
+							self.tapHandler(notification.object);	
+						}
 	}];
 }
 
