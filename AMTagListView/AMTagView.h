@@ -18,6 +18,8 @@
 #define kDefaultTagColor		[UIColor redColor]
 #define kDefaultInnerTagColor	[UIColor colorWithWhite:1 alpha:0.3]
 
+extern NSString * const AMTagViewNotification;
+
 @interface AMTagView : UIView
 
 @property (nonatomic, assign) float		radius UI_APPEARANCE_SELECTOR;
@@ -31,5 +33,6 @@
 @property (nonatomic, strong) UIColor	*innerTagColor UI_APPEARANCE_SELECTOR;
 
 - (void)setupWithText:(NSString*)text;
+- (NSString*)tagText;
 
 @end

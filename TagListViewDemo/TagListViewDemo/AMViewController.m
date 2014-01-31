@@ -40,6 +40,11 @@
 	[self.tagListView addTag:@"hi there"];
 	
 	[self.view addSubview:self.tagListView];
+	
+	__weak AMViewController* weakSelf = self;
+	[self.tagListView setTapHandler:^(AMTagView *view) {
+		[weakSelf.tagListView removeTag:view];
+	}];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

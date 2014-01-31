@@ -8,9 +8,12 @@
 
 #import "AMTagView.h"
 
+NSString * const AMTagViewNotification = @"AMTagViewNotification";
+
 @interface AMTagView ()
 
 @property (nonatomic, strong) UILabel	*labelText;
+@property (nonatomic, strong) UIButton	*button;
 
 @end
 
@@ -23,6 +26,7 @@
 		self.opaque = NO;
 		self.backgroundColor = [UIColor clearColor];
 		self.labelText = [[UILabel alloc] init];
+		self.button = [[UIButton alloc] init];
 		_radius = kDefaultRadius;
 		_tagLength = kDefaultTagLength;
 		_holeRadius = kDefaultHoleRadius;
@@ -33,13 +37,19 @@
 		_tagColor = kDefaultTagColor;
 		_innerTagColor = kDefaultInnerTagColor;
 		[self addSubview:self.labelText];
+		[self addSubview:self.button];
+		[self.button addTarget:self action:@selector(actionButton:) forControlEvents:UIControlEventTouchUpInside];
     }
     return self;
 }
 
+- (void)actionButton:(id)sender
+{
+	[[NSNotificationCenter defaultCenter] postNotification:[[NSNotification alloc] initWithName:AMTagViewNotification object:self userInfo:nil]];
+}
+
 - (void)setupWithText:(NSString*)text
 {
-
 	[self.labelText setText:text];
 }
 
@@ -53,6 +63,7 @@
 		self.frame.size.width - self.radius * 2 - self.radius / 2,
 		self.frame.size.height - self.radius
 	}];
+	[self.button setFrame:self.labelText.frame];
 	[self.labelText setTextColor:self.textColor];
 	[self.labelText setFont:self.textFont];
 }
@@ -113,6 +124,11 @@
 	
 	[self.innerTagColor setFill];
     [background fill];
+}
+
+- (NSString*)tagText
+{
+	return self.labelText.text;
 }
 
 @end

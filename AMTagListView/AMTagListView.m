@@ -10,6 +10,8 @@
 
 @interface AMTagListView ()
 
+@property (nonatomic, copy) AMTagListViewTapHandler tapHandler;
+
 @end
 
 @implementation AMTagListView
@@ -18,10 +20,7 @@
 {
 	self = [super initWithFrame:frame];
 	if (self) {
-		// Default margins
-		_marginX = 4;
-		_marginY = 4;
-		self.clipsToBounds = YES;
+		[self setup];
 	}
 	return self;
 }
@@ -30,52 +29,82 @@
 {
 	self = [super initWithCoder:aDecoder];
 	if (self) {
-		// Default margins
-		_marginX = 4;
-		_marginY = 4;
-		self.clipsToBounds = YES;
+		[self setup];
 	}
 	return self;
+}
+
+- (void)setup
+{
+	// Default margins
+	_marginX = 4;
+	_marginY = 4;
+	self.clipsToBounds = YES;
+	_tags = [@[] mutableCopy];
+	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+	[center addObserverForName:AMTagViewNotification
+						object:nil
+						 queue:nil
+					usingBlock:^(NSNotification *notification) {
+						self.tapHandler(notification.object);
+	}];
+}
+
+- (void)setTapHandler:(AMTagListViewTapHandler)tapHandler
+{
+	_tapHandler = tapHandler;
 }
 
 - (void)addTag:(NSString*)text
 {
 	UIFont* font = [[AMTagView appearance] textFont] ? [[AMTagView appearance] textFont] : kDefaultFont;
 	CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: font}];
-	
 	float padding = [[AMTagView appearance] textPadding] ? [[AMTagView appearance] textPadding] : kDefaultTextPadding;
 	float tagLength = [[AMTagView appearance] tagLength] ? [[AMTagView appearance] tagLength] : kDefaultTagLength;
 	
-	size.width = (int)size.width + padding*2 + tagLength;
+	size.width = (int)size.width + padding * 2 + tagLength;
 	size.height = (int)size.height + padding;
+	size.width = MIN(size.width, self.frame.size.width - self.marginX * 2);
+
+	AMTagView* tagView = [[AMTagView alloc] initWithFrame:(CGRect){0, 0, size.width, size.height}];
+	[tagView setupWithText:text];
+	[self.tags addObject:tagView];
 	
+	[self rearrangeTags];
+}
+
+- (void)rearrangeTags
+{
+	[self.subviews enumerateObjectsUsingBlock:^(UIView* obj, NSUInteger idx, BOOL *stop) {
+		[obj removeFromSuperview];
+	}];
 	__block float maxY = 0;
 	__block float maxX = 0;
-	[self.subviews enumerateObjectsUsingBlock:^(UIView* obj, NSUInteger idx, BOOL *stop) {
-		if ([obj isKindOfClass:[AMTagView class]]) {
-			maxY = MAX(maxY, obj.frame.origin.y);
-		}
-	}];
-	
-	[self.subviews enumerateObjectsUsingBlock:^(UIView* obj, NSUInteger idx, BOOL *stop) {
-		if ([obj isKindOfClass:[AMTagView class]]) {
-			if (obj.frame.origin.y == maxY) {
-				maxX = MAX(maxX, obj.frame.origin.x + obj.frame.size.width);
+	__block CGSize size;
+	[self.tags enumerateObjectsUsingBlock:^(AMTagView* obj, NSUInteger idx, BOOL *stop) {
+		size = obj.frame.size;
+		[self.subviews enumerateObjectsUsingBlock:^(UIView* obj, NSUInteger idx, BOOL *stop) {
+			if ([obj isKindOfClass:[AMTagView class]]) {
+				maxY = MAX(maxY, obj.frame.origin.y);
 			}
+		}];
+		
+		[self.subviews enumerateObjectsUsingBlock:^(UIView* obj, NSUInteger idx, BOOL *stop) {
+			if ([obj isKindOfClass:[AMTagView class]]) {
+				if (obj.frame.origin.y == maxY) {
+					maxX = MAX(maxX, obj.frame.origin.x + obj.frame.size.width);
+				}
+			}
+		}];
+		
+		// Go to a new line if the tag won't fit
+		if (size.width + maxX > (self.frame.size.width - self.marginX)) {
+			maxY += size.height + self.marginY;
+			maxX = 0;
 		}
+		obj.frame = (CGRect){maxX + self.marginX, maxY, size.width, size.height};
+		[self addSubview:obj];
 	}];
-	
-	// Go to a new line if the tag won't fit
-	if (size.width + maxX > (self.frame.size.width - self.marginX)) {
-		maxY += size.height + self.marginY;
-		maxX = 0;
-	}
-	
-	size.width = MIN(size.width, self.frame.size.width - self.marginX * 2);
-	
-	AMTagView* tagView = [[AMTagView alloc] initWithFrame:(CGRect){maxX + self.marginX, maxY, size.width, size.height}];
-	[tagView setupWithText:text];
-	[self addSubview:tagView];
 	
 	[self setContentSize:(CGSize){self.frame.size.width, maxY + size.height +self.marginY}];
 }
@@ -85,6 +114,13 @@
 	for (NSString* text in array) {
 		[self addTag:text];
 	}
+}
+
+- (void)removeTag:(AMTagView*)view
+{
+	[view removeFromSuperview];
+	[self.tags removeObject:view];
+	[self rearrangeTags];
 }
 
 @end
