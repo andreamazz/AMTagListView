@@ -104,7 +104,11 @@
 			maxY += size.height + self.marginY;
 			maxX = 0;
 		}
-		obj.frame = (CGRect){maxX + self.marginX, maxY + self.marginY, size.width, size.height};
+		if (maxY == 0) {
+			maxY = self.marginY;
+		}
+		
+		obj.frame = (CGRect){maxX + self.marginX, maxY, size.width, size.height};
 		[self addSubview:obj];
 	}];
 	
