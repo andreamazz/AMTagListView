@@ -47,7 +47,7 @@
 						 queue:nil
 					usingBlock:^(NSNotification *notification) {
 						if (_tapHandler) {
-							self.tapHandler(notification.object);	
+							self.tapHandler(notification.object);
 						}
 	}];
 }
@@ -104,7 +104,7 @@
 			maxY += size.height + self.marginY;
 			maxX = 0;
 		}
-		obj.frame = (CGRect){maxX + self.marginX, maxY, size.width, size.height};
+		obj.frame = (CGRect){maxX + self.marginX, maxY + self.marginY, size.width, size.height};
 		[self addSubview:obj];
 	}];
 	
