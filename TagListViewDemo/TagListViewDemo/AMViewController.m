@@ -11,10 +11,11 @@
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@interface AMViewController () <UITextFieldDelegate>
+@interface AMViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField	*textField;
 @property (nonatomic, strong) AMTagListView			*tagListView;
+@property (nonatomic, strong) AMTagView				*selection;
 
 @end
 
@@ -24,14 +25,16 @@
 {
     [super viewDidLoad];
 	
-	[self.textField.layer setBorderColor:UIColorFromRGB(0xe06431).CGColor];
+	[self setTitle:@"Demo"];
+	
+	[self.textField.layer setBorderColor:UIColorFromRGB(0x1f8dd6).CGColor];
 	[self.textField.layer setBorderWidth:2];
 	[self.textField setDelegate:self];
 
 	[[AMTagView appearance] setTagLength:10];
 	[[AMTagView appearance] setTextPadding:14];
 	[[AMTagView appearance] setTextFont:[UIFont fontWithName:@"Futura" size:14]];
-	[[AMTagView appearance] setTagColor:UIColorFromRGB(0xe06431)];
+	[[AMTagView appearance] setTagColor:UIColorFromRGB(0x1f8dd6)];
 	
 	_tagListView = [[AMTagListView alloc] initWithFrame:(CGRect){0, 100, 320, 300}];
 	[self.tagListView addTag:@"my tag"];
@@ -43,8 +46,21 @@
 	
 	__weak AMViewController* weakSelf = self;
 	[self.tagListView setTapHandler:^(AMTagView *view) {
-		[weakSelf.tagListView removeTag:view];
+		weakSelf.selection = view;
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete"
+														message:[NSString stringWithFormat:@"Delete %@?", [view tagText]]
+													   delegate:weakSelf
+											  cancelButtonTitle:@"Nope"
+											  otherButtonTitles:@"Sure!", nil];
+		[alert show];
 	}];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+	if (buttonIndex > 0) {
+		[self.tagListView removeTag:self.selection];
+	}
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField

@@ -8,7 +8,7 @@ UIScrollView subclass that allows to add a list of highly customizable tags. You
 
 Screenshot
 --------------------
-![AMTagListView](http://www.eflatgames.com/github/AMTagListView.png)
+![AMTagListView](http://www.eflatgames.com/github/AMTagListView.gif)
 
 Setup with Cocoapods
 --------------------
