@@ -60,7 +60,9 @@
 - (void)addTag:(NSString*)text
 {
 	UIFont* font = [[AMTagView appearance] textFont] ? [[AMTagView appearance] textFont] : kDefaultFont;
-	CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: font}];
+	
+	CGSize size = [text sizeWithFont:font];
+
 	float padding = [[AMTagView appearance] textPadding] ? [[AMTagView appearance] textPadding] : kDefaultTextPadding;
 	float tagLength = [[AMTagView appearance] tagLength] ? [[AMTagView appearance] tagLength] : kDefaultTagLength;
 	

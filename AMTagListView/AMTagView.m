@@ -27,6 +27,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 		self.backgroundColor = [UIColor clearColor];
 		self.labelText = [[UILabel alloc] init];
 		self.button = [[UIButton alloc] init];
+		[self.labelText setBackgroundColor:[UIColor clearColor]];
 		_radius = kDefaultRadius;
 		_tagLength = kDefaultTagLength;
 		_holeRadius = kDefaultHoleRadius;

@@ -6,7 +6,7 @@ Pod::Spec.new do |s|
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Andrea Mazzini" => "andrea.mazzini@gmail.com" }
   s.source       = { :git => "https://github.com/andreamazz/AMTagListView.git", :tag => '0.2.1' }
-  s.platform     = :ios, '5.0'
+  s.platform     = :ios, '6.0'
   s.source_files = 'AMTagListView', '*.{h,m}'
   s.requires_arc = true
 end
