@@ -75,6 +75,23 @@
 	[self rearrangeTags];
 }
 
+- (void)addTagView:(AMTagView *)tagView
+{
+    UIFont* font = [[[tagView class] appearance] textFont] ? [[[tagView class] appearance] textFont] : kDefaultFont;
+	CGSize size = [tagView.tagText sizeWithAttributes:@{NSFontAttributeName: font}];
+	float padding = [[[tagView class] appearance] textPadding] ? [[[tagView class] appearance] textPadding] : kDefaultTextPadding;
+	float tagLength = [[[tagView class] appearance] tagLength] ? [[[tagView class] appearance] tagLength] : kDefaultTagLength;
+	
+	size.width = (int)size.width + padding * 2 + tagLength;
+	size.height = (int)size.height + padding;
+	size.width = MIN(size.width, self.frame.size.width - self.marginX * 2);
+    
+    tagView.frame = (CGRect){0, 0, size.width, size.height};
+	[self.tags addObject:tagView];
+	
+	[self rearrangeTags];
+}
+
 - (void)rearrangeTags
 {
 	[self.subviews enumerateObjectsUsingBlock:^(UIView* obj, NSUInteger idx, BOOL *stop) {

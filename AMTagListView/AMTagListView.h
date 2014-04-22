@@ -35,6 +35,13 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  */
 - (void)addTags:(NSArray*)array;
 
+/** Add a specific tag to the tag scroll view
+ *
+ * @param tagView An AMTagView instance
+ *
+ */
+- (void)addTagView:(AMTagView *)tagView;
+
 /** Remove a tag
  *
  * Removes a given tag.
