@@ -47,7 +47,7 @@
 						 queue:nil
 					usingBlock:^(NSNotification *notification) {
 						if (_tapHandler) {
-							self.tapHandler(notification.object);
+							self.tapHandler(notification.object);	
 						}
 	}];
 }
@@ -104,10 +104,6 @@
 			maxY += size.height + self.marginY;
 			maxX = 0;
 		}
-		if (maxY == 0) {
-			maxY = self.marginY;
-		}
-		
 		obj.frame = (CGRect){maxX + self.marginX, maxY, size.width, size.height};
 		[self addSubview:obj];
 	}];
@@ -127,6 +123,15 @@
 	[view removeFromSuperview];
 	[self.tags removeObject:view];
 	[self rearrangeTags];
+}
+
+- (void)removeAllTags
+{
+    for (AMTagView *tag in self.tags) {
+        [tag removeFromSuperview];
+    }
+    [self.tags removeAllObjects];
+    [self rearrangeTags];
 }
 
 @end
