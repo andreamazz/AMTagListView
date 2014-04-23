@@ -43,6 +43,13 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  */
 - (void)removeTag:(AMTagView*)view;
 
+/** Remove all tags
+ *
+ * Removes all the tags
+ *
+ */
+- (void)removeAllTags;
+
 /** Set a tap handler for the tags
  *
  * Sets a tap block that will be fired on each tap on a tag
