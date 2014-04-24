@@ -146,4 +146,12 @@
 	[self rearrangeTags];
 }
 
+- (void)removeAllTags
+{
+    for (AMTagView *tag in self.tags) {
+        [tag removeFromSuperview];
+    }
+    [self.tags removeAllObjects];
+}
+
 @end

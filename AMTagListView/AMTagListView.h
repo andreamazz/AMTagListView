@@ -50,6 +50,12 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  */
 - (void)removeTag:(AMTagView*)view;
 
+/** Remove all tags
+ *
+ * Removes all tags from the tag view.
+ */
+- (void)removeAllTags;
+
 /** Set a tap handler for the tags
  *
  * Sets a tap block that will be fired on each tap on a tag
@@ -77,7 +83,7 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
 
 /** Tags list
  *
- * An array holding the current tags objects
+ * An array holding the current tag view objects
  */
 @property (nonatomic, strong, readonly) NSMutableArray* tags;
 
