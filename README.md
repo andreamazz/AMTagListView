@@ -64,10 +64,6 @@ Use the AMTagView's UIAppearance selectors to customize its appearance:
 [[AMTagView appearance] setInnerTagColor:UIColor]
 ```
 
-TODO
-=============
-- Add a selector fired upon a touch event on a tag
-
 Using this library?
 ==================
 Please let me know! I'll be glad to link your project here.
