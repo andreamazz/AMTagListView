@@ -47,9 +47,9 @@
 						 queue:nil
 					usingBlock:^(NSNotification *notification) {
 						if (_tapHandler) {
-							self.tapHandler(notification.object);
+							self.tapHandler(notification.object);	
 						}
-                    }];
+	}];
 }
 
 - (void)setTapHandler:(AMTagListViewTapHandler)tapHandler
@@ -67,7 +67,7 @@
 	size.width = (int)size.width + padding * 2 + tagLength;
 	size.height = (int)size.height + padding;
 	size.width = MIN(size.width, self.frame.size.width - self.marginX * 2);
-    
+
 	AMTagView* tagView = [[AMTagView alloc] initWithFrame:(CGRect){0, 0, size.width, size.height}];
 	[tagView setupWithText:text];
 	[self.tags addObject:tagView];
@@ -148,7 +148,10 @@
         [tag removeFromSuperview];
     }
     [self.tags removeAllObjects];
+<<<<<<< HEAD
     [self rearrangeTags];
+=======
+>>>>>>> e2082b36d26e3ec103df0566ddbade0bf9c4bc5b
 }
 
 @end

@@ -20,11 +20,11 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  */
 
 /** Add a new tag
- *
- * Adds a new tag to the scroll view.
- *
- * @param text The text that the tag will display
- */
+*
+* Adds a new tag to the scroll view.
+*
+* @param text The text that the tag will display
+*/
 - (void)addTag:(NSString*)text;
 
 /** Add a multiple tags
@@ -52,7 +52,12 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
 
 /** Remove all tags
  *
+<<<<<<< HEAD
+ * Removes all the tags
+ *
+=======
  * Removes all tags from the tag view.
+>>>>>>> e2082b36d26e3ec103df0566ddbade0bf9c4bc5b
  */
 - (void)removeAllTags;
 
@@ -65,14 +70,14 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
 - (void)setTapHandler:(AMTagListViewTapHandler)tapHandler;
 
 /**-----------------------------------------------------------------------------
- * @name AMScrollingNavbarViewController Properties
- * -----------------------------------------------------------------------------
- */
+* @name AMScrollingNavbarViewController Properties
+* -----------------------------------------------------------------------------
+*/
 
 /** Horizontal margin
- *
- * Holds the horizontal inner margin of the view.
- */
+*
+* Holds the horizontal inner margin of the view.
+*/
 @property (nonatomic, assign) float marginX;
 
 /** Vertical margin
