@@ -13,9 +13,9 @@
 
 @interface AMViewController () <UITextFieldDelegate, UIAlertViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField	*textField;
-@property (nonatomic, strong) AMTagListView			*tagListView;
-@property (nonatomic, strong) AMTagView				*selection;
+@property (weak, nonatomic) IBOutlet UITextField    *textField;
+@property (weak, nonatomic) IBOutlet AMTagListView	*tagListView;
+@property (nonatomic, strong) AMTagView             *selection;
 
 @end
 
@@ -30,13 +30,12 @@
 	[self.textField.layer setBorderColor:UIColorFromRGB(0x1f8dd6).CGColor];
 	[self.textField.layer setBorderWidth:2];
 	[self.textField setDelegate:self];
-
+    
 	[[AMTagView appearance] setTagLength:10];
 	[[AMTagView appearance] setTextPadding:14];
 	[[AMTagView appearance] setTextFont:[UIFont fontWithName:@"Futura" size:14]];
 	[[AMTagView appearance] setTagColor:UIColorFromRGB(0x1f8dd6)];
 	
-	_tagListView = [[AMTagListView alloc] initWithFrame:(CGRect){0, 100, 320, 300}];
 	[self.tagListView addTag:@"my tag"];
 	[self.tagListView addTag:@"something"];
 	[self.tagListView addTag:@"long tag is long"];

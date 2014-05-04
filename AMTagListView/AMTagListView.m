@@ -11,6 +11,8 @@
 @interface AMTagListView ()
 
 @property (nonatomic, copy) AMTagListViewTapHandler tapHandler;
+@property (nonatomic, strong) id orientationNotification;
+@property (nonatomic, strong) id tagNotification;
 
 @end
 
@@ -42,14 +44,14 @@
 	self.clipsToBounds = YES;
 	_tags = [@[] mutableCopy];
 	NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-	[center addObserverForName:AMTagViewNotification
-						object:nil
-						 queue:nil
-					usingBlock:^(NSNotification *notification) {
-						if (_tapHandler) {
-							self.tapHandler(notification.object);
-						}
-                    }];
+    self.orientationNotification = [center addObserverForName:UIDeviceOrientationDidChangeNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+        [self rearrangeTags];
+    }];
+	self.tagNotification = [center addObserverForName:AMTagViewNotification object:nil queue:nil usingBlock:^(NSNotification *notification) {
+        if (_tapHandler) {
+            self.tapHandler(notification.object);
+        }
+    }];
 }
 
 - (void)setTapHandler:(AMTagListViewTapHandler)tapHandler
@@ -149,6 +151,12 @@
     }
     [self.tags removeAllObjects];
     [self rearrangeTags];
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:_tagNotification];
+    [[NSNotificationCenter defaultCenter] removeObserver:_orientationNotification];
 }
 
 @end
