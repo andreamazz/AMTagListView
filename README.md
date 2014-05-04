@@ -64,6 +64,10 @@ Use the AMTagView's UIAppearance selectors to customize its appearance:
 [[AMTagView appearance] setInnerTagColor:UIColor]
 ```
 
+Test
+==================
+To run the test suite, launch `pod install` inside the `Tests` folder, and run the rake task in the root.
+
 Using this library?
 ==================
 Please let me know! I'll be glad to link your project here.
