@@ -16,24 +16,9 @@
 		65225F5E188DC70E006DE0AB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65225F5C188DC70E006DE0AB /* Main.storyboard */; };
 		65225F61188DC70E006DE0AB /* AMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65225F60188DC70E006DE0AB /* AMViewController.m */; };
 		65225F63188DC70E006DE0AB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65225F62188DC70E006DE0AB /* Images.xcassets */; };
-		65225F6A188DC70E006DE0AB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65225F69188DC70E006DE0AB /* XCTest.framework */; };
-		65225F6B188DC70E006DE0AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65225F4A188DC70E006DE0AB /* Foundation.framework */; };
-		65225F6C188DC70E006DE0AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65225F4E188DC70E006DE0AB /* UIKit.framework */; };
-		65225F74188DC70E006DE0AB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65225F72188DC70E006DE0AB /* InfoPlist.strings */; };
-		65225F76188DC70E006DE0AB /* TagListViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 65225F75188DC70E006DE0AB /* TagListViewDemoTests.m */; };
 		65225F82188DC770006DE0AB /* AMTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65225F81188DC770006DE0AB /* AMTagView.m */; };
 		65225F85188DC7E2006DE0AB /* AMTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65225F84188DC7E2006DE0AB /* AMTagListView.m */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		65225F6D188DC70E006DE0AB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 65225F3F188DC70E006DE0AB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 65225F46188DC70E006DE0AB;
-			remoteInfo = TagListViewDemo;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		65225F47188DC70E006DE0AB /* TagListViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TagListViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -50,11 +35,7 @@
 		65225F5F188DC70E006DE0AB /* AMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMViewController.h; sourceTree = "<group>"; };
 		65225F60188DC70E006DE0AB /* AMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMViewController.m; sourceTree = "<group>"; };
 		65225F62188DC70E006DE0AB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		65225F68188DC70E006DE0AB /* TagListViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TagListViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		65225F69188DC70E006DE0AB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		65225F71188DC70E006DE0AB /* TagListViewDemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TagListViewDemoTests-Info.plist"; sourceTree = "<group>"; };
-		65225F73188DC70E006DE0AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		65225F75188DC70E006DE0AB /* TagListViewDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagListViewDemoTests.m; sourceTree = "<group>"; };
 		65225F80188DC770006DE0AB /* AMTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMTagView.h; sourceTree = "<group>"; };
 		65225F81188DC770006DE0AB /* AMTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMTagView.m; sourceTree = "<group>"; };
 		65225F83188DC7E2006DE0AB /* AMTagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMTagListView.h; sourceTree = "<group>"; };
@@ -72,16 +53,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		65225F65188DC70E006DE0AB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65225F6A188DC70E006DE0AB /* XCTest.framework in Frameworks */,
-				65225F6C188DC70E006DE0AB /* UIKit.framework in Frameworks */,
-				65225F6B188DC70E006DE0AB /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -89,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				65225F50188DC70E006DE0AB /* TagListViewDemo */,
-				65225F6F188DC70E006DE0AB /* TagListViewDemoTests */,
 				65225F49188DC70E006DE0AB /* Frameworks */,
 				65225F48188DC70E006DE0AB /* Products */,
 			);
@@ -99,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				65225F47188DC70E006DE0AB /* TagListViewDemo.app */,
-				65225F68188DC70E006DE0AB /* TagListViewDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,24 +110,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		65225F6F188DC70E006DE0AB /* TagListViewDemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				65225F75188DC70E006DE0AB /* TagListViewDemoTests.m */,
-				65225F70188DC70E006DE0AB /* Supporting Files */,
-			);
-			path = TagListViewDemoTests;
-			sourceTree = "<group>";
-		};
-		65225F70188DC70E006DE0AB /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				65225F71188DC70E006DE0AB /* TagListViewDemoTests-Info.plist */,
-				65225F72188DC70E006DE0AB /* InfoPlist.strings */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		65225F7F188DC751006DE0AB /* AMTagListView */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,24 +142,6 @@
 			productReference = 65225F47188DC70E006DE0AB /* TagListViewDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
-		65225F67188DC70E006DE0AB /* TagListViewDemoTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 65225F7C188DC70E006DE0AB /* Build configuration list for PBXNativeTarget "TagListViewDemoTests" */;
-			buildPhases = (
-				65225F64188DC70E006DE0AB /* Sources */,
-				65225F65188DC70E006DE0AB /* Frameworks */,
-				65225F66188DC70E006DE0AB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				65225F6E188DC70E006DE0AB /* PBXTargetDependency */,
-			);
-			name = TagListViewDemoTests;
-			productName = TagListViewDemoTests;
-			productReference = 65225F68188DC70E006DE0AB /* TagListViewDemoTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -218,11 +151,6 @@
 				CLASSPREFIX = AM;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Fancy Pixel";
-				TargetAttributes = {
-					65225F67188DC70E006DE0AB = {
-						TestTargetID = 65225F46188DC70E006DE0AB;
-					};
-				};
 			};
 			buildConfigurationList = 65225F42188DC70E006DE0AB /* Build configuration list for PBXProject "TagListViewDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -238,7 +166,6 @@
 			projectRoot = "";
 			targets = (
 				65225F46188DC70E006DE0AB /* TagListViewDemo */,
-				65225F67188DC70E006DE0AB /* TagListViewDemoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -251,14 +178,6 @@
 				65225F63188DC70E006DE0AB /* Images.xcassets in Resources */,
 				65225F55188DC70E006DE0AB /* InfoPlist.strings in Resources */,
 				65225F5E188DC70E006DE0AB /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		65225F66188DC70E006DE0AB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65225F74188DC70E006DE0AB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,23 +196,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		65225F64188DC70E006DE0AB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				65225F76188DC70E006DE0AB /* TagListViewDemoTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		65225F6E188DC70E006DE0AB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 65225F46188DC70E006DE0AB /* TagListViewDemo */;
-			targetProxy = 65225F6D188DC70E006DE0AB /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		65225F53188DC70E006DE0AB /* InfoPlist.strings */ = {
@@ -310,14 +213,6 @@
 				65225F5D188DC70E006DE0AB /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		65225F72188DC70E006DE0AB /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				65225F73188DC70E006DE0AB /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -419,46 +314,6 @@
 			};
 			name = Release;
 		};
-		65225F7D188DC70E006DE0AB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TagListViewDemo.app/TagListViewDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TagListViewDemo/TagListViewDemo-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "TagListViewDemoTests/TagListViewDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		65225F7E188DC70E006DE0AB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/TagListViewDemo.app/TagListViewDemo";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TagListViewDemo/TagListViewDemo-Prefix.pch";
-				INFOPLIST_FILE = "TagListViewDemoTests/TagListViewDemoTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -476,15 +331,6 @@
 			buildConfigurations = (
 				65225F7A188DC70E006DE0AB /* Debug */,
 				65225F7B188DC70E006DE0AB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		65225F7C188DC70E006DE0AB /* Build configuration list for PBXNativeTarget "TagListViewDemoTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				65225F7D188DC70E006DE0AB /* Debug */,
-				65225F7E188DC70E006DE0AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

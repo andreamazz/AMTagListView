@@ -1,0 +1,20 @@
+PODS:
+  - AMTagListView (0.3)
+  - Expecta (0.3.0)
+  - Specta (0.2.1)
+
+DEPENDENCIES:
+  - AMTagListView (from `..`)
+  - Expecta
+  - Specta
+
+EXTERNAL SOURCES:
+  AMTagListView:
+    :path: ..
+
+SPEC CHECKSUMS:
+  AMTagListView: f48e9928c4050742b95de8c7775abf7a777ab58b
+  Expecta: 322f1dc42610106a5ba9871b4924cf1635d80833
+  Specta: 2d06220591110c6d9757d8be8ecf8e63aa40dc2a
+
+COCOAPODS: 0.32.1

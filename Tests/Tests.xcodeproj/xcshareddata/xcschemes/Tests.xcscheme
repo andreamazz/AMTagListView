@@ -14,10 +14,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "65225F46188DC70E006DE0AB"
-               BuildableName = "TagListViewDemo.app"
-               BlueprintName = "TagListViewDemo"
-               ReferencedContainer = "container:TagListViewDemo.xcodeproj">
+               BlueprintIdentifier = "657FC7341916840500878049"
+               BuildableName = "Tests.app"
+               BlueprintName = "Tests"
+               ReferencedContainer = "container:Tests.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,14 +28,24 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "657FC74F1916840500878049"
+               BuildableName = "TestsTests.xctest"
+               BlueprintName = "TestsTests"
+               ReferencedContainer = "container:Tests.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65225F46188DC70E006DE0AB"
-            BuildableName = "TagListViewDemo.app"
-            BlueprintName = "TagListViewDemo"
-            ReferencedContainer = "container:TagListViewDemo.xcodeproj">
+            BlueprintIdentifier = "657FC7341916840500878049"
+            BuildableName = "Tests.app"
+            BlueprintName = "Tests"
+            ReferencedContainer = "container:Tests.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -48,15 +58,15 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65225F46188DC70E006DE0AB"
-            BuildableName = "TagListViewDemo.app"
-            BlueprintName = "TagListViewDemo"
-            ReferencedContainer = "container:TagListViewDemo.xcodeproj">
+            BlueprintIdentifier = "657FC7341916840500878049"
+            BuildableName = "Tests.app"
+            BlueprintName = "Tests"
+            ReferencedContainer = "container:Tests.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -69,10 +79,10 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65225F46188DC70E006DE0AB"
-            BuildableName = "TagListViewDemo.app"
-            BlueprintName = "TagListViewDemo"
-            ReferencedContainer = "container:TagListViewDemo.xcodeproj">
+            BlueprintIdentifier = "657FC7341916840500878049"
+            BuildableName = "Tests.app"
+            BlueprintName = "Tests"
+            ReferencedContainer = "container:Tests.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
