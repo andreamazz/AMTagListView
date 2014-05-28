@@ -1,25 +1,24 @@
-AMTagListView
-=============
+#AMTagListView
+* * *
 
 [![Build Status](https://travis-ci.org/andreamazz/AMTagListView.png)](https://travis-ci.org/andreamazz/AMTagListView)
 [![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMTagListView/badge.png)](http://beta.cocoapods.org/?q=amtaglistview)
 
 UIScrollView subclass that allows to add a list of highly customizable tags. You can customize colors, border radius, and the tail of the tag. Tags can be added in bulk or dinamically one by one. The newly inserted tag will automatically arrange itself inside the scrollview.
 
-Screenshot
---------------------
+##Screenshot
+
 ![AMTagListView](https://raw.githubusercontent.com/andreamazz/AMTagListView/master/screenshot.gif)
 
-Setup with Cocoapods
---------------------
+##Setup with Cocoapods
+
 * Add ```pod 'AMTagListView'``` to your Podfile
 * Run ```pod install```
 * Run ```open App.xcworkspace```
 * Import ```AMTagListView.h``` in your AppDelegate
 * Create a new AMTagListView with Storyboards or via code.
 
-Usage
---------------------
+##Usage
 ```objc
 // Init 
 AMTagListView *tagListView = [[AMTagListView alloc] initWithFrame:frame];
@@ -32,8 +31,7 @@ AMTagListView *tagListView = [[AMTagListView alloc] initWithFrame:frame];
 [self.tagListView addTags:@[@"my tag", @"some tag"]];
 ```
 
-Appearance
---------------------
+##Appearance
 Use the AMTagView's UIAppearance selectors to customize its appearance:
 ```objc
 // Tag's corner radius
@@ -64,16 +62,18 @@ Use the AMTagView's UIAppearance selectors to customize its appearance:
 [[AMTagView appearance] setInnerTagColor:UIColor]
 ```
 
-Test
-==================
+##Test
+
 To run the test suite, launch `pod install` inside the `Tests` folder, and run the rake task in the root.
 
-Using this library?
-==================
+##Using this library?
+
 Please let me know! I'll be glad to link your project here.
 
-MIT License
-==================
+
+
+#MIT License
+
 	Copyright (c) 2014 Andrea Mazzini. All rights reserved.
 
 	Permission is hereby granted, free of charge, to any person obtaining a

@@ -71,7 +71,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 - (void)drawRect:(CGRect)rect
 {
 	float tagLength = self.tagLength;
-	float height = rect.size.height;
+	float height = floorf(rect.size.height);
 	float width = rect.size.width;
 	float radius = self.radius;
 	
