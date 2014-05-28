@@ -57,11 +57,11 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 {
 	[super layoutSubviews];
 	[self.labelText.layer setCornerRadius:self.radius / 2];
-	[self.labelText setFrame:(CGRect){
-		self.tagLength + self.radius * 3 / 2,
-		self.radius / 2,
-		self.frame.size.width - self.radius * 2 - self.radius / 2,
-		self.frame.size.height - self.radius
+    [self.labelText setFrame:(CGRect){
+		(int)(self.tagLength + self.radius * 3 / 2),
+		(int)(self.radius / 2),
+		(int)(self.frame.size.width - self.radius * 2 - self.radius / 2),
+		(int)(self.frame.size.height - self.radius)
 	}];
 	[self.button setFrame:self.labelText.frame];
 	[self.labelText setTextColor:self.textColor];
