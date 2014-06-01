@@ -76,7 +76,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 	float height = floorf(rect.size.height);
 	float width = rect.size.width;
 	float radius = self.radius;
-	NSLog(@"%f", height);
+
 	UIBezierPath *aPath = [UIBezierPath bezierPath];
 	
 	[aPath moveToPoint:(CGPoint){width, height / 2}];
