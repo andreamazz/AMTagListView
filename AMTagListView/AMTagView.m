@@ -21,6 +21,8 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 - (id)initWithFrame:(CGRect)frame
 {
+    // Rounding up the height to avoid possible visual artifacts
+    frame.size.height = (int)frame.size.height;
     self = [super initWithFrame:frame];
     if (self) {
 		self.opaque = NO;
@@ -74,7 +76,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 	float height = floorf(rect.size.height);
 	float width = rect.size.width;
 	float radius = self.radius;
-	
+	NSLog(@"%f", height);
 	UIBezierPath *aPath = [UIBezierPath bezierPath];
 	
 	[aPath moveToPoint:(CGPoint){width, height / 2}];
@@ -92,7 +94,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 	[aPath addLineToPoint:(CGPoint){0.0, height / 2}];
 	
 	[aPath closePath];
-	
+
 	[aPath addArcWithCenter:(CGPoint){tagLength / 2 + self.holeRadius, height / 2} radius:self.holeRadius startAngle:DEGREES_TO_RADIANS(0) endAngle:DEGREES_TO_RADIANS(180) clockwise:YES];
 	[aPath addArcWithCenter:(CGPoint){tagLength / 2 + self.holeRadius, height / 2} radius:self.holeRadius startAngle:DEGREES_TO_RADIANS(180) endAngle:DEGREES_TO_RADIANS(0) clockwise:YES];
 	
