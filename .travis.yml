@@ -4,7 +4,7 @@ before_install:
   - gem install cocoapods --no-ri --no-rdoc
   - gem install xcpretty --no-ri --no-rdoc
   - cd Tests
-  - pod install
+  - pod update
   - cd ..
 script: rake test
 
