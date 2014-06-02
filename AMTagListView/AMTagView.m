@@ -47,7 +47,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 - (void)actionButton:(id)sender
 {
-	[[NSNotificationCenter defaultCenter] postNotification:[[NSNotification alloc] initWithName:AMTagViewNotification object:self userInfo:nil]];
+	[[NSNotificationCenter defaultCenter] postNotification:[[NSNotification alloc] initWithName:AMTagViewNotification object:self userInfo:@{@"superview": self.superview}]];
 }
 
 - (void)setupWithText:(NSString*)text

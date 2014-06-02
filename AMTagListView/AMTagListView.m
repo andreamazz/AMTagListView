@@ -48,8 +48,10 @@
         [self rearrangeTags];
     }];
 	self.tagNotification = [center addObserverForName:AMTagViewNotification object:nil queue:nil usingBlock:^(NSNotification *notification) {
-        if (_tapHandler) {
-            self.tapHandler(notification.object);
+        if (self == notification.userInfo[@"superview"]) {
+            if (_tapHandler) {
+                self.tapHandler(notification.object);
+            }
         }
     }];
 }

@@ -41,8 +41,6 @@
 	[self.tagListView addTag:@"long tag is long"];
 	[self.tagListView addTag:@"hi there"];
 	
-	[self.view addSubview:self.tagListView];
-	
 	__weak AMViewController* weakSelf = self;
 	[self.tagListView setTapHandler:^(AMTagView *view) {
 		weakSelf.selection = view;
