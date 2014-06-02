@@ -22,7 +22,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 - (id)initWithFrame:(CGRect)frame
 {
     // Rounding up the height to avoid possible visual artifacts
-    frame.size.height = (int)frame.size.height;
+//    frame.size.height = (int)frame.size.height;
     self = [super initWithFrame:frame];
     if (self) {
 		self.opaque = NO;
@@ -73,7 +73,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 - (void)drawRect:(CGRect)rect
 {
 	float tagLength = self.tagLength;
-	float height = floorf(rect.size.height);
+	float height = rect.size.height;
 	float width = rect.size.width;
 	float radius = self.radius;
 
@@ -85,30 +85,20 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 	[aPath addLineToPoint:(CGPoint){tagLength + radius, 0.0}];
 	[aPath addArcWithCenter:(CGPoint){tagLength + radius, radius} radius:radius startAngle:DEGREES_TO_RADIANS(270) endAngle:DEGREES_TO_RADIANS(230) clockwise:NO];
 	[aPath addLineToPoint:(CGPoint){0.0, height / 2}];
-	
-	[aPath moveToPoint:(CGPoint){width, height / 2}];
-	[aPath addLineToPoint:CGPointMake(width, height - radius)];
-	[aPath addArcWithCenter:(CGPoint){width - radius, height - radius} radius:radius startAngle:DEGREES_TO_RADIANS(0) endAngle:DEGREES_TO_RADIANS(90) clockwise:YES];
-	[aPath addLineToPoint:(CGPoint){tagLength + radius, height}];
-	[aPath addArcWithCenter:(CGPoint){tagLength + radius, height - radius} radius:radius startAngle:DEGREES_TO_RADIANS(90) endAngle:DEGREES_TO_RADIANS(140) clockwise:YES];
-	[aPath addLineToPoint:(CGPoint){0.0, height / 2}];
-	
-	[aPath closePath];
 
-	[aPath addArcWithCenter:(CGPoint){tagLength / 2 + self.holeRadius, height / 2} radius:self.holeRadius startAngle:DEGREES_TO_RADIANS(0) endAngle:DEGREES_TO_RADIANS(180) clockwise:YES];
+    [aPath moveToPoint:(CGPoint){tagLength / 2, height / 2}];
 	[aPath addArcWithCenter:(CGPoint){tagLength / 2 + self.holeRadius, height / 2} radius:self.holeRadius startAngle:DEGREES_TO_RADIANS(180) endAngle:DEGREES_TO_RADIANS(0) clockwise:YES];
-	
+
+    UIBezierPath *p2 = [UIBezierPath bezierPathWithCGPath:aPath.CGPath];
+    [p2 applyTransform:CGAffineTransformMakeScale(1, -1)];
+    [p2 applyTransform:CGAffineTransformMakeTranslation(0, height)];
+    [aPath appendPath:p2];
+		
     // Set the render colors.
     [self.tagColor setFill];
 	
     [aPath fill];
-	
-	CAShapeLayer *maskWithHole = [CAShapeLayer layer];
-	[maskWithHole setPath:[aPath CGPath]];
-	[maskWithHole setFillRule:kCAFillRuleEvenOdd];
-	
-	self.layer.mask = maskWithHole;
-	
+		
 	radius = radius / 2;
 	float padding = self.innerTagPadding;
 	float left = padding * 2;
