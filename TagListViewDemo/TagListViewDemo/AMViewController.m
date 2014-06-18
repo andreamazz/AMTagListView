@@ -40,9 +40,13 @@
 	[self.tagListView addTag:@"something"];
 	[self.tagListView addTag:@"long tag is long"];
 	[self.tagListView addTag:@"hi there"];
+    
+//    [[self tagListView] addTags:@[@"Hello", @"Hello people", @"Good"] setIndexs:@[@100, @200, @300]];
 	
 	__weak AMViewController* weakSelf = self;
 	[self.tagListView setTapHandler:^(AMTagView *view) {
+//        NSLog(@"%@", [view tagText]);
+//        NSLog(@"%d", view.tag);
 		weakSelf.selection = view;
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete"
 														message:[NSString stringWithFormat:@"Delete %@?", [view tagText]]
