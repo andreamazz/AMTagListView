@@ -141,6 +141,10 @@
 }
 
 - (void)addTags:(NSArray*)array setIndexs:(NSArray *)indexs {
+    [indexs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        _tagIndex = [obj integerValue];
+        [self addTag:[array objectAtIndex:idx]];
+    }];
 }
 
 - (void)addTags:(NSArray*)array
