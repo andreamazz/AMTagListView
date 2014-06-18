@@ -27,6 +27,10 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  */
 - (void)addTag:(NSString*)text;
 
+- (void)addTagIndex:(NSInteger)index;
+
+- (void)addTags:(NSArray*)array setIndexs:(NSArray *)indexs;
+
 /** Add a multiple tags
  *
  * Adds multiple tags to the scroll view.
