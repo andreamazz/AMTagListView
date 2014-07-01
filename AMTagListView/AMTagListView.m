@@ -36,6 +36,14 @@
 	return self;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    // If tags are added in a view controller's viewDidLoad, the tags need to be
+    // rearranged when the screen geometry is fully known.
+    [self rearrangeTags];
+}
+
 - (void)setup
 {
 	// Default margins
