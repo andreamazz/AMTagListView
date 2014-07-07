@@ -14,6 +14,8 @@
 @property (nonatomic, strong) id orientationNotification;
 @property (nonatomic, strong) id tagNotification;
 
+@property (nonatomic) NSInteger tagIndex;
+
 @end
 
 @implementation AMTagListView
@@ -69,6 +71,10 @@
 	_tapHandler = tapHandler;
 }
 
+- (void)addTagIndex:(NSInteger)index {
+    _tagIndex = index;
+}
+
 - (void)addTag:(NSString*)text
 {
 	UIFont* font = [[AMTagView appearance] textFont] ? [[AMTagView appearance] textFont] : kDefaultFont;
@@ -82,6 +88,7 @@
     
 	AMTagView* tagView = [[AMTagView alloc] initWithFrame:(CGRect){0, 0, size.width, size.height}];
 	[tagView setupWithText:text];
+    [tagView setTag:_tagIndex];
 	[self.tags addObject:tagView];
 	
 	[self rearrangeTags];
@@ -99,6 +106,7 @@
 	size.width = MIN(size.width, self.frame.size.width - self.marginX * 2);
     
     tagView.frame = (CGRect){0, 0, size.width, size.height};
+    [tagView setTag:_tagIndex];
 	[self.tags addObject:tagView];
 	
 	[self rearrangeTags];
@@ -138,6 +146,13 @@
 	}];
 	
 	[self setContentSize:(CGSize){self.frame.size.width, maxY + size.height +self.marginY}];
+}
+
+- (void)addTags:(NSArray*)array setIndexs:(NSArray *)indexs {
+    [indexs enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        _tagIndex = [obj integerValue];
+        [self addTag:[array objectAtIndex:idx]];
+    }];
 }
 
 - (void)addTags:(NSArray*)array

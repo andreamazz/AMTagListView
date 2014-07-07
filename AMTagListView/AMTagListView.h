@@ -19,6 +19,14 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  * -----------------------------------------------------------------------------
  */
 
+
+/**
+* Add tag index
+*
+* @param index - Tag index
+*/
+- (void)addTagIndex:(NSInteger)index;
+
 /** Add a new tag
  *
  * Adds a new tag to the scroll view.
@@ -34,6 +42,14 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  * @param array An array of strings
  */
 - (void)addTags:(NSArray*)array;
+
+/**
+ * Add a multiple tags and indexs
+ *
+ * @param array  - array An array of strings
+ * @param indexs - array tags index
+ */
+- (void)addTags:(NSArray*)array setIndexs:(NSArray *)indexs;
 
 /** Add a specific tag to the tag scroll view
  *
