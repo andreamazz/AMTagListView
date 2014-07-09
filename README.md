@@ -31,6 +31,12 @@ AMTagListView *tagListView = [[AMTagListView alloc] initWithFrame:frame];
 [self.tagListView addTags:@[@"my tag", @"some tag"]];
 ```
 
+##Arranging tags
+The tags are rearranged when you use the method calls listed above. You can also avoid the auto-rearrange by using the `andRearrange:` versions of such methods. This is useful when adding a big batch of tags. When you do so you must force the rearrange action manually:
+```
+[self.tagListView rearrangeTags];
+```
+
 ##Appearance
 Use the AMTagView's UIAppearance selectors to customize its appearance:
 ```objc

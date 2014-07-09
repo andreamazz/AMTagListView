@@ -45,6 +45,18 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     return self;
 }
 
+- (void)setTagColor:(UIColor *)tagColor
+{
+    _tagColor = tagColor;
+    [self setNeedsDisplay];
+}
+
+- (void)setInnerTagColor:(UIColor *)innerTagColor
+{
+    _innerTagColor = innerTagColor;
+    [self setNeedsDisplay];
+}
+
 - (void)actionButton:(id)sender
 {
 	[[NSNotificationCenter defaultCenter] postNotification:[[NSNotification alloc] initWithName:AMTagViewNotification object:self userInfo:@{@"superview": self.superview}]];

@@ -18,6 +18,8 @@
 
 @implementation AMTagListView
 
+#pragma mark - Setup
+
 - (id)initWithFrame:(CGRect)frame
 {
 	self = [super initWithFrame:frame];
@@ -34,14 +36,6 @@
 		[self setup];
 	}
 	return self;
-}
-
-- (void)layoutSubviews
-{
-    [super layoutSubviews];
-    // If tags are added in a view controller's viewDidLoad, the tags need to be
-    // rearranged when the screen geometry is fully known.
-    [self rearrangeTags];
 }
 
 - (void)setup
@@ -69,7 +63,14 @@
 	_tapHandler = tapHandler;
 }
 
+#pragma mark - Tag insertion
+
 - (void)addTag:(NSString*)text
+{
+    [self addTag:text andRearrange:YES];
+}
+
+- (void)addTag:(NSString*)text andRearrange:(BOOL)rearrange
 {
 	UIFont* font = [[AMTagView appearance] textFont] ? [[AMTagView appearance] textFont] : kDefaultFont;
 	CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: font}];
@@ -84,10 +85,17 @@
 	[tagView setupWithText:text];
 	[self.tags addObject:tagView];
 	
-	[self rearrangeTags];
+    if (rearrange) {
+        [self rearrangeTags];
+    }
 }
 
 - (void)addTagView:(AMTagView *)tagView
+{
+    [self addTagView:tagView andRearrange:YES];
+}
+
+- (void)addTagView:(AMTagView *)tagView andRearrange:(BOOL)rearrange
 {
     UIFont* font = [[[tagView class] appearance] textFont] ? [[[tagView class] appearance] textFont] : kDefaultFont;
 	CGSize size = [tagView.tagText sizeWithAttributes:@{NSFontAttributeName: font}];
@@ -101,8 +109,42 @@
     tagView.frame = (CGRect){0, 0, size.width, size.height};
 	[self.tags addObject:tagView];
 	
-	[self rearrangeTags];
+    if (rearrange) {
+        [self rearrangeTags];
+    }
 }
+
+- (void)addTags:(NSArray*)array
+{
+    [self addTags:array andRearrange:YES];
+}
+
+- (void)addTags:(NSArray*)array andRearrange:(BOOL)rearrange
+{
+    for (NSString* text in array) {
+        [self addTag:text andRearrange:rearrange];
+    }
+}
+
+#pragma mark - Tag removal
+
+- (void)removeTag:(AMTagView*)view
+{
+    [view removeFromSuperview];
+    [self.tags removeObject:view];
+    [self rearrangeTags];
+}
+
+- (void)removeAllTags
+{
+    for (AMTagView *tag in self.tags) {
+        [tag removeFromSuperview];
+    }
+    [self.tags removeAllObjects];
+    [self rearrangeTags];
+}
+
+#pragma mark - Service
 
 - (void)rearrangeTags
 {
@@ -138,29 +180,6 @@
 	}];
 	
 	[self setContentSize:(CGSize){self.frame.size.width, maxY + size.height +self.marginY}];
-}
-
-- (void)addTags:(NSArray*)array
-{
-	for (NSString* text in array) {
-		[self addTag:text];
-	}
-}
-
-- (void)removeTag:(AMTagView*)view
-{
-	[view removeFromSuperview];
-	[self.tags removeObject:view];
-	[self rearrangeTags];
-}
-
-- (void)removeAllTags
-{
-    for (AMTagView *tag in self.tags) {
-        [tag removeFromSuperview];
-    }
-    [self.tags removeAllObjects];
-    [self rearrangeTags];
 }
 
 - (void)dealloc

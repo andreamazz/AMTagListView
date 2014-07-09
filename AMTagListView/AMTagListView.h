@@ -27,6 +27,16 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  */
 - (void)addTag:(NSString*)text;
 
+/** Add a new tag
+ *
+ * Adds a new tag to the scroll view.
+ * You can choose to avoid rearranging the tags when adding a big batch of tags. Remember to
+ * call the rearrangeTags method if you do so.
+ *
+ * @param text The text that the tag will display
+ */
+- (void)addTag:(NSString*)text andRearrange:(BOOL)rearrange;
+
 /** Add a multiple tags
  *
  * Adds multiple tags to the scroll view.
@@ -35,12 +45,31 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  */
 - (void)addTags:(NSArray*)array;
 
-/** Add a specific tag to the tag scroll view
+/** Add a multiple tags
+ *
+ * Adds multiple tags to the scroll view.
+ * You can choose to avoid rearranging the tags when adding a big batch of tags. Remember to
+ * call the rearrangeTags method if you do so.
+ *
+ * @param array An array of strings
+ */
+- (void)addTags:(NSArray*)array andRearrange:(BOOL)rearrange;
+
+/** Add a specific tag to the tag list
  *
  * @param tagView An AMTagView instance
  *
  */
 - (void)addTagView:(AMTagView *)tagView;
+
+/** Add a specific tag to the tag list
+ *
+ * You can choose to avoid rearranging the tags when adding a big batch of tags. Remember to
+ * call the rearrangeTags method if you do so.
+ *
+ * @param tagView An AMTagView instance
+ */
+- (void)addTagView:(AMTagView *)tagView andRearrange:(BOOL)rearrange;
 
 /** Remove a tag
  *
@@ -63,6 +92,12 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  * @param tapHandler The handler block
  */
 - (void)setTapHandler:(AMTagListViewTapHandler)tapHandler;
+
+/** Rearrange the tags
+ *
+ * Manually rearrange all the tags in the view
+ */
+- (void)rearrangeTags;
 
 /**-----------------------------------------------------------------------------
  * @name AMScrollingNavbarViewController Properties
