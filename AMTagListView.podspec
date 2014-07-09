@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
   s.name         = "AMTagListView"
-  s.version      = "0.3.2"
+  s.version      = "0.4"
   s.summary      = "UIScrollView subclass that allows to add a list of highly customizable tags."
   s.homepage     = "https://github.com/andreamazz/AMTagListView"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { "Andrea Mazzini" => "andrea.mazzini@gmail.com" }
-  s.source       = { :git => "https://github.com/andreamazz/AMTagListView.git", :tag => '0.3.2' }
+  s.source       = { :git => "https://github.com/andreamazz/AMTagListView.git", :tag => '0.4' }
   s.platform     = :ios, '5.0'
   s.source_files = 'AMTagListView', '*.{h,m}'
   s.requires_arc = true
