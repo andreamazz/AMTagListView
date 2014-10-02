@@ -19,6 +19,21 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 @implementation AMTagView
 
+#pragma mark - NSObject
+
++ (void)initialize
+{
+    [[AMTagView appearance] setRadius:kDefaultRadius];
+    [[AMTagView appearance] setTagLength:kDefaultTagLength];
+    [[AMTagView appearance] setHoleRadius:kDefaultHoleRadius];
+    [[AMTagView appearance] setInnerTagPadding:kDefaultInnerPadding];
+    [[AMTagView appearance] setTextPadding:kDefaultTextPadding];
+    [[AMTagView appearance] setTextFont:kDefaultFont];
+    [[AMTagView appearance] setTextColor:kDefaultTextColor];
+    [[AMTagView appearance] setTagColor:kDefaultTagColor];
+    [[AMTagView appearance] setInnerTagColor:kDefaultInnerTagColor];
+}
+
 - (id)initWithFrame:(CGRect)frame
 {
     // Rounding up the height to avoid possible visual artifacts
@@ -29,15 +44,15 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 		self.backgroundColor = [UIColor clearColor];
 		self.labelText = [[UILabel alloc] init];
 		self.button = [[UIButton alloc] init];
-		_radius = kDefaultRadius;
-		_tagLength = kDefaultTagLength;
-		_holeRadius = kDefaultHoleRadius;
-		_innerTagPadding = kDefaultInnerPadding;
-		_textPadding = kDefaultTextPadding;
-		_textFont = kDefaultFont;
-		_textColor = kDefaultTextColor;
-		_tagColor = kDefaultTagColor;
-		_innerTagColor = kDefaultInnerTagColor;
+		_radius = [[AMTagView appearance] radius];
+		_tagLength = [[AMTagView appearance] tagLength];
+		_holeRadius = [[AMTagView appearance] holeRadius];
+		_innerTagPadding = [[AMTagView appearance] innerTagPadding];
+		_textPadding = [[AMTagView appearance] textPadding];
+		_textFont = [[AMTagView appearance] textFont];
+		_textColor = [[AMTagView appearance] textColor];
+		_tagColor = [[AMTagView appearance] tagColor];
+		_innerTagColor = [[AMTagView appearance] innerTagColor];
 		[self addSubview:self.labelText];
 		[self addSubview:self.button];
 		[self.button addTarget:self action:@selector(actionButton:) forControlEvents:UIControlEventTouchUpInside];
