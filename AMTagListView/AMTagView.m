@@ -34,6 +34,15 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     [[AMTagView appearance] setInnerTagColor:kDefaultInnerTagColor];
 }
 
+#pragma mark - UIResponder
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
+}
+
+#pragma mark - UIView
+
 - (id)initWithFrame:(CGRect)frame
 {
     // Rounding up the height to avoid possible visual artifacts
@@ -43,6 +52,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 		self.opaque = NO;
 		self.backgroundColor = [UIColor clearColor];
 		self.labelText = [[UILabel alloc] init];
+        self.labelText.textAlignment = NSTextAlignmentCenter;
 		self.button = [[UIButton alloc] init];
 		_radius = [[AMTagView appearance] radius];
 		_tagLength = [[AMTagView appearance] tagLength];
@@ -60,6 +70,99 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     return self;
 }
 
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self.labelText.layer setCornerRadius:self.radius / 2];
+    [self.labelText setFrame:(CGRect){
+        (int)(self.tagLength + self.radius / 2),
+        (int)(self.radius / 2),
+        (int)(self.frame.size.width - self.radius),
+        (int)(self.frame.size.height - self.radius)
+    }];
+    [self.button setFrame:self.labelText.frame];
+    [self.labelText setTextColor:self.textColor];
+    [self.labelText setFont:self.textFont];
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    if (self.tagLength > 0) {
+        [self drawWithTagForRect:rect];
+    } else {
+        [self drawWithoutTagForRect:rect];
+    }
+}
+
+#pragma mark - Private Interface
+
+- (void)actionButton:(id)sender
+{
+    [[NSNotificationCenter defaultCenter] postNotification:[[NSNotification alloc] initWithName:AMTagViewNotification object:self userInfo:@{@"superview": self.superview}]];
+}
+
+- (void)drawWithTagForRect:(CGRect)rect
+{
+    float tagLength = self.tagLength;
+    float height = rect.size.height;
+    float width = rect.size.width;
+    float radius = self.radius;
+
+    UIBezierPath *aPath = [UIBezierPath bezierPath];
+
+    [aPath moveToPoint:(CGPoint){width, height / 2}];
+    [aPath addLineToPoint:CGPointMake(width, radius)];
+    [aPath addArcWithCenter:(CGPoint){width - radius, radius} radius:radius startAngle:DEGREES_TO_RADIANS(0) endAngle:DEGREES_TO_RADIANS(270) clockwise:NO];
+    [aPath addLineToPoint:(CGPoint){tagLength + radius, 0.0}];
+    [aPath addArcWithCenter:(CGPoint){tagLength + radius, radius} radius:radius startAngle:DEGREES_TO_RADIANS(270) endAngle:DEGREES_TO_RADIANS(230) clockwise:NO];
+    [aPath addLineToPoint:(CGPoint){0.0, height / 2}];
+
+    [aPath moveToPoint:(CGPoint){tagLength / 2, height / 2}];
+    [aPath addArcWithCenter:(CGPoint){tagLength / 2 + self.holeRadius, height / 2} radius:self.holeRadius startAngle:DEGREES_TO_RADIANS(180) endAngle:DEGREES_TO_RADIANS(0) clockwise:YES];
+
+    UIBezierPath *p2 = [UIBezierPath bezierPathWithCGPath:aPath.CGPath];
+    [p2 applyTransform:CGAffineTransformMakeScale(1, -1)];
+    [p2 applyTransform:CGAffineTransformMakeTranslation(0, height)];
+    [aPath appendPath:p2];
+
+    // Set the render colors.
+    [self.tagColor setFill];
+
+    [aPath fill];
+
+    radius = radius / 2;
+    float padding = self.innerTagPadding;
+    float left = padding * 2;
+    UIBezierPath *background = [UIBezierPath bezierPath];
+    [background moveToPoint:(CGPoint){tagLength + left + radius, padding}];
+    [background addLineToPoint:(CGPoint){width - padding, padding}];
+    [background addArcWithCenter:(CGPoint){width - padding - radius, padding + radius} radius:radius startAngle:DEGREES_TO_RADIANS(270) endAngle:DEGREES_TO_RADIANS(0) clockwise:YES];
+    [background addLineToPoint:(CGPoint){width - padding, height - padding}];
+    [background addArcWithCenter:(CGPoint){width - padding - radius, height - padding - radius} radius:radius startAngle:DEGREES_TO_RADIANS(0) endAngle:DEGREES_TO_RADIANS(90) clockwise:YES];
+    [background addLineToPoint:(CGPoint){tagLength + left + radius, height - padding}];
+    [background addArcWithCenter:(CGPoint){tagLength + left + radius, height - padding - radius} radius:radius startAngle:DEGREES_TO_RADIANS(90) endAngle:DEGREES_TO_RADIANS(180) clockwise:YES];
+    [background addLineToPoint:(CGPoint){tagLength + left, padding + radius}];
+    [background addArcWithCenter:(CGPoint){tagLength + left + radius, padding + radius} radius:radius startAngle:DEGREES_TO_RADIANS(180) endAngle:DEGREES_TO_RADIANS(270) clockwise:YES];
+    [background closePath];
+
+    [self.innerTagColor setFill];
+    [background fill];
+}
+
+- (void)drawWithoutTagForRect:(CGRect)rect
+{
+    UIBezierPath* backgroundPath = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:self.radius];
+    [self.tagColor setFill];
+    [backgroundPath fill];
+
+    CGRect inset = CGRectInset(rect, self.innerTagPadding, self.innerTagPadding);
+    UIBezierPath* insidePath = [UIBezierPath bezierPathWithRoundedRect:inset cornerRadius:self.radius / 2];
+    [self.innerTagColor setFill];
+    [insidePath fill];
+}
+
+#pragma mark - Public Interface
+
 - (void)setTagColor:(UIColor *)tagColor
 {
     _tagColor = tagColor;
@@ -72,77 +175,22 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     [self setNeedsDisplay];
 }
 
-- (void)actionButton:(id)sender
-{
-	[[NSNotificationCenter defaultCenter] postNotification:[[NSNotification alloc] initWithName:AMTagViewNotification object:self userInfo:@{@"superview": self.superview}]];
-}
-
 - (void)setupWithText:(NSString*)text
 {
-	[self.labelText setText:text];
-}
+    UIFont* font = self.textFont;
+    CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: font}];
 
-- (void)layoutSubviews
-{
-	[super layoutSubviews];
-	[self.labelText.layer setCornerRadius:self.radius / 2];
-    [self.labelText setFrame:(CGRect){
-		(int)(self.tagLength + self.radius * 3 / 2),
-		(int)(self.radius / 2),
-		(int)(self.frame.size.width - self.radius * 2 - self.radius / 2),
-		(int)(self.frame.size.height - self.radius)
-	}];
-	[self.button setFrame:self.labelText.frame];
-	[self.labelText setTextColor:self.textColor];
-	[self.labelText setFont:self.textFont];
-}
+    float padding = self.textPadding;
+    float tagLength = self.tagLength;
 
-- (void)drawRect:(CGRect)rect
-{
-	float tagLength = self.tagLength;
-	float height = rect.size.height;
-	float width = rect.size.width;
-	float radius = self.radius;
+    size.width = (int)size.width + padding * 2 + tagLength;
+    size.height = (int)size.height + padding;
 
-	UIBezierPath *aPath = [UIBezierPath bezierPath];
-	
-	[aPath moveToPoint:(CGPoint){width, height / 2}];
-	[aPath addLineToPoint:CGPointMake(width, radius)];
-	[aPath addArcWithCenter:(CGPoint){width - radius, radius} radius:radius startAngle:DEGREES_TO_RADIANS(0) endAngle:DEGREES_TO_RADIANS(270) clockwise:NO];
-	[aPath addLineToPoint:(CGPoint){tagLength + radius, 0.0}];
-	[aPath addArcWithCenter:(CGPoint){tagLength + radius, radius} radius:radius startAngle:DEGREES_TO_RADIANS(270) endAngle:DEGREES_TO_RADIANS(230) clockwise:NO];
-	[aPath addLineToPoint:(CGPoint){0.0, height / 2}];
+    CGRect frame = self.frame;
+    frame.size = size;
+    self.frame = frame;
 
-    [aPath moveToPoint:(CGPoint){tagLength / 2, height / 2}];
-	[aPath addArcWithCenter:(CGPoint){tagLength / 2 + self.holeRadius, height / 2} radius:self.holeRadius startAngle:DEGREES_TO_RADIANS(180) endAngle:DEGREES_TO_RADIANS(0) clockwise:YES];
-
-    UIBezierPath *p2 = [UIBezierPath bezierPathWithCGPath:aPath.CGPath];
-    [p2 applyTransform:CGAffineTransformMakeScale(1, -1)];
-    [p2 applyTransform:CGAffineTransformMakeTranslation(0, height)];
-    [aPath appendPath:p2];
-		
-    // Set the render colors.
-    [self.tagColor setFill];
-	
-    [aPath fill];
-		
-	radius = radius / 2;
-	float padding = self.innerTagPadding;
-	float left = padding * 2;
-	UIBezierPath *background = [UIBezierPath bezierPath];
-	[background moveToPoint:(CGPoint){tagLength + left + radius, padding}];
-	[background addLineToPoint:(CGPoint){width - padding, padding}];
-	[background addArcWithCenter:(CGPoint){width - padding - radius, padding + radius} radius:radius startAngle:DEGREES_TO_RADIANS(270) endAngle:DEGREES_TO_RADIANS(0) clockwise:YES];
-	[background addLineToPoint:(CGPoint){width - padding, height - padding}];
-	[background addArcWithCenter:(CGPoint){width - padding - radius, height - padding - radius} radius:radius startAngle:DEGREES_TO_RADIANS(0) endAngle:DEGREES_TO_RADIANS(90) clockwise:YES];
-	[background addLineToPoint:(CGPoint){tagLength + left + radius, height - padding}];
-	[background addArcWithCenter:(CGPoint){tagLength + left + radius, height - padding - radius} radius:radius startAngle:DEGREES_TO_RADIANS(90) endAngle:DEGREES_TO_RADIANS(180) clockwise:YES];
-	[background addLineToPoint:(CGPoint){tagLength + left, padding + radius}];
-	[background addArcWithCenter:(CGPoint){tagLength + left + radius, padding + radius} radius:radius startAngle:DEGREES_TO_RADIANS(180) endAngle:DEGREES_TO_RADIANS(270) clockwise:YES];
-	[background closePath];
-	
-	[self.innerTagColor setFill];
-    [background fill];
+    [self.labelText setText:text];
 }
 
 - (NSString*)tagText
