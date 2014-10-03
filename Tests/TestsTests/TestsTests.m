@@ -12,7 +12,7 @@
 
 #import <AMTagListView.h>
 
-SpecBegin(Thing)
+SpecBegin(AMTagView)
 
 describe(@"AMTagListView", ^{
     
