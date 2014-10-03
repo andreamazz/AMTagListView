@@ -14,7 +14,7 @@ UIScrollView subclass that allows to add a list of highly customizable tags. You
 * Add ```pod 'AMTagListView'``` to your Podfile
 * Run ```pod install```
 * Run ```open App.xcworkspace```
-* Import ```AMTagListView.h``` in your AppDelegate
+* Import ```AMTagListView.h``` in your controller
 * Create a new AMTagListView with Storyboards or via code.
 
 ##Usage
