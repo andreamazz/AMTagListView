@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Fancy Pixel. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import "AMTagView.h"
 
 @class AMTagView;
