@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lBg-GK-jHX">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="SwiftDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1qV-7h-mYl">
+                                <rect key="frame" x="16" y="72" width="568" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Rta-9a-zWd"/>
+                                </constraints>
+                                <color key="textColor" red="0.1215686275" green="0.55294117649999996" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4ts-he-Olc" customClass="AMTagListView">
+                                <rect key="frame" x="16" y="110" width="568" height="470"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1qV-7h-mYl" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="4Ho-bi-FSL"/>
+                            <constraint firstItem="4ts-he-Olc" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailingMargin" id="5UP-d5-v18"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="4ts-he-Olc" secondAttribute="bottom" constant="20" id="NX5-w0-fEX"/>
+                            <constraint firstItem="1qV-7h-mYl" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="X1q-ID-4tC"/>
+                            <constraint firstItem="1qV-7h-mYl" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="hMF-8g-TT6"/>
+                            <constraint firstItem="4ts-he-Olc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="kCb-ZB-gPx"/>
+                            <constraint firstItem="4ts-he-Olc" firstAttribute="top" secondItem="1qV-7h-mYl" secondAttribute="bottom" constant="8" id="wYa-25-bAO"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="GhT-Yh-OUc"/>
+                    <connections>
+                        <outlet property="tagListView" destination="4ts-he-Olc" id="iQX-SD-03b"/>
+                        <outlet property="textField" destination="1qV-7h-mYl" id="voj-uY-OSM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1317" y="404"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="q0N-mq-knn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lBg-GK-jHX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="1jc-0Y-L3F">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="GJl-Qc-fqU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nfB-1i-v2d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="645" y="404"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" red="0.12156862745098039" green="0.55294117647058827" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+</document>
