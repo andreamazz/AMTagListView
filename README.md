@@ -1,4 +1,6 @@
-#AMTagListView
+<p align="center">
+  <img width="640" height="240" src="assets/logo.png"/>
+</p>
 
 [![Build Status](https://travis-ci.org/andreamazz/AMTagListView.png)](https://travis-ci.org/andreamazz/AMTagListView)
 [![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMTagListView/badge.png)](http://cocoapods.org/?q=amtaglistview)
@@ -7,7 +9,7 @@ UIScrollView subclass that allows to add a list of highly customizable tags. You
 
 ##Screenshot
 
-![AMTagListView](https://raw.githubusercontent.com/andreamazz/AMTagListView/master/screenshot.gif)
+![AMTagListView](https://raw.githubusercontent.com/andreamazz/AMTagListView/master/assets/screenshot.gif)
 
 ##Setup with Cocoapods
 
