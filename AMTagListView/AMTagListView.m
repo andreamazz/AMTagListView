@@ -84,6 +84,12 @@
     if (rearrange) {
         [self rearrangeTags];
     }
+    
+    if ([self.tagListDelegate respondsToSelector:@selector(tagList:shouldAddTagWithText:resultingContentSize:)]) {
+        if (![self.tagListDelegate tagList:self shouldAddTagWithText:tagView.tagText resultingContentSize:self.contentSize]) {
+            [self removeTag:tagView];
+        }
+    }
 }
 
 - (void)addTagView:(AMTagView *)tagView
@@ -107,6 +113,12 @@
     
     if (rearrange) {
         [self rearrangeTags];
+    }
+    
+    if ([self.tagListDelegate respondsToSelector:@selector(tagList:shouldAddTagWithText:resultingContentSize:)]) {
+        if (![self.tagListDelegate tagList:self shouldAddTagWithText:tagView.tagText resultingContentSize:self.contentSize]) {
+            [self removeTag:tagView];
+        }
     }
 }
 
@@ -176,6 +188,12 @@
     }];
     
     [self setContentSize:(CGSize){self.frame.size.width, maxY + size.height +self.marginY}];
+}
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+    [self rearrangeTags];
 }
 
 - (void)dealloc

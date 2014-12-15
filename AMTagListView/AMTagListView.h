@@ -10,6 +10,13 @@
 #import "AMTagView.h"
 
 @class AMTagView;
+@class AMTagListView;
+
+@protocol AMTagListDelegate <NSObject>
+
+- (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size;
+
+@end
 
 typedef void (^AMTagListViewTapHandler)(AMTagView*);
 
@@ -123,5 +130,10 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  */
 @property (nonatomic, strong, readonly) NSMutableArray* tags;
 
+/** Tag list delegate
+ *
+ * The tag list view's delegate
+ */
+@property (nonatomic, assign) id<AMTagListDelegate> tagListDelegate;
 
 @end

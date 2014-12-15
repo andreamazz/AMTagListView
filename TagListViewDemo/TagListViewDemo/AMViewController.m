@@ -11,7 +11,7 @@
 
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@interface AMViewController () <UITextFieldDelegate, UIAlertViewDelegate>
+@interface AMViewController () <UITextFieldDelegate, UIAlertViewDelegate, AMTagListDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField    *textField;
 @property (weak, nonatomic) IBOutlet AMTagListView	*tagListView;
@@ -40,6 +40,8 @@
 	[self.tagListView addTag:@"something"];
 	[self.tagListView addTag:@"long tag is long"];
 	[self.tagListView addTag:@"hi there"];
+    
+    self.tagListView.tagListDelegate = self;
 	
 	__weak AMViewController* weakSelf = self;
 	[self.tagListView setTapHandler:^(AMTagView *view) {
@@ -51,6 +53,12 @@
 											  otherButtonTitles:@"Sure!", nil];
 		[alert show];
 	}];
+}
+
+- (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size
+{
+    // Don't add a 'bad' tag
+    return [text isEqualToString:@"bad"];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
