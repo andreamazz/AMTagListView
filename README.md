@@ -69,6 +69,12 @@ Use the AMTagView's UIAppearance selectors to customize its appearance:
 [[AMTagView appearance] setInnerTagColor:UIColor]
 ```
 
+##Delegate
+This method asks his delegate if a given tag can be added. The method also shows the resulting content size.
+```objc
+- (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size;
+```
+
 ##Test
 
 To run the test suite, launch `pod install` inside the `Tests` folder, and run the rake task in the root.
