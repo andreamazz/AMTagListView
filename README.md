@@ -77,12 +77,11 @@ This method asks his delegate if a given tag can be added. The method also shows
 
 ##Test
 
-To run the test suite, launch `pod install` inside the `Tests` folder, and run the rake task in the root.
+To run the test suite, install `xcpretty` gem, launch `pod install` inside the `Tests` folder, and run the rake task in the root.
 
 ##Using this library?
 
 Please let me know! I'll be glad to link your project here.
-
 
 
 #MIT License
