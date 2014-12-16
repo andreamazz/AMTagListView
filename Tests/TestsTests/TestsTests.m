@@ -12,6 +12,18 @@
 
 #import <AMTagListView.h>
 
+@interface NegativeDelegate : NSObject <AMTagListDelegate>
+@end
+
+@implementation NegativeDelegate
+
+- (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size
+{
+    return NO;
+}
+
+@end
+
 SpecBegin(AMTagView)
 
 describe(@"AMTagListView", ^{
@@ -90,6 +102,17 @@ describe(@"AMTagListView", ^{
             listView = [[AMTagListView alloc] initWithFrame:CGRectZero];
             [listView addTags:@[@"one", @"two"]];
             [listView removeAllTags];
+            expect(listView.tags.count).to.equal(0);
+        });
+    });
+    
+    describe(@"tagListDelegate", ^{
+        it(@"should not add a tag when the delegate returns NO", ^{
+            AMTagListView *listView;
+            NegativeDelegate *delegate = [[NegativeDelegate alloc] init];
+            listView = [[AMTagListView alloc] initWithFrame:CGRectZero];
+            listView.tagListDelegate = delegate;
+            [listView addTag:@"tag"];
             expect(listView.tags.count).to.equal(0);
         });
     });
