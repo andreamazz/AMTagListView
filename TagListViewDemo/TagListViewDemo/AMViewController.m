@@ -58,7 +58,7 @@
 - (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size
 {
     // Don't add a 'bad' tag
-    return [text isEqualToString:@"bad"];
+    return ![text isEqualToString:@"bad"];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
