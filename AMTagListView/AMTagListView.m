@@ -46,13 +46,14 @@
     self.clipsToBounds = YES;
     _tags = [@[] mutableCopy];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    __weak AMTagListView *weakSelf = self;
     self.orientationNotification = [center addObserverForName:UIDeviceOrientationDidChangeNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-        [self rearrangeTags];
+        [weakSelf rearrangeTags];
     }];
     self.tagNotification = [center addObserverForName:AMTagViewNotification object:nil queue:nil usingBlock:^(NSNotification *notification) {
-        if (self == notification.userInfo[@"superview"]) {
+        if (weakSelf == notification.userInfo[@"superview"]) {
             if (_tapHandler) {
-                self.tapHandler(notification.object);
+                weakSelf.tapHandler(notification.object);
             }
         }
     }];
@@ -162,7 +163,7 @@
     __block float maxY = 0;
     __block float maxX = 0;
     __block CGSize size;
-    [self.tags enumerateObjectsUsingBlock:^(AMTagView* obj, NSUInteger idx, BOOL *stop) {
+    for (AMTagView *obj in self.tags) {
         size = obj.frame.size;
         [self.subviews enumerateObjectsUsingBlock:^(UIView* obj, NSUInteger idx, BOOL *stop) {
             if ([obj isKindOfClass:[AMTagView class]]) {
@@ -185,7 +186,7 @@
         }
         obj.frame = (CGRect){maxX + self.marginX, maxY, size.width, size.height};
         [self addSubview:obj];
-    }];
+    };
     
     [self setContentSize:(CGSize){self.frame.size.width, maxY + size.height +self.marginY}];
 }
