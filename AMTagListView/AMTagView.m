@@ -14,6 +14,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 @property (nonatomic, strong) UILabel	*labelText;
 @property (nonatomic, strong) UIButton	*button;
+@property (nonatomic, strong) UIImageView *imageView;
 
 @end
 
@@ -32,6 +33,8 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     [[AMTagView appearance] setTextColor:kDefaultTextColor];
     [[AMTagView appearance] setTagColor:kDefaultTagColor];
     [[AMTagView appearance] setInnerTagColor:kDefaultInnerTagColor];
+    [[AMTagView appearance] setAccessoryImage:nil];
+    [[AMTagView appearance] setImagePadding:kDefaultImagePadding];
 }
 
 #pragma mark - UIResponder
@@ -51,6 +54,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         self.backgroundColor = [UIColor clearColor];
         self.labelText = [[UILabel alloc] init];
         self.button = [[UIButton alloc] init];
+        self.imageView = [[UIImageView alloc] init];
         self.labelText.textAlignment = NSTextAlignmentCenter;
         _radius = [[AMTagView appearance] radius];
         _tagLength = [[AMTagView appearance] tagLength];
@@ -61,7 +65,9 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         _textColor = [[AMTagView appearance] textColor];
         _tagColor = [[AMTagView appearance] tagColor];
         _innerTagColor = [[AMTagView appearance] innerTagColor];
+        _accessoryImage = [[AMTagView appearance] accessoryImage];
         [self addSubview:self.labelText];
+        [self addSubview:self.imageView];
         [self addSubview:self.button];
         [self.button addTarget:self action:@selector(actionButton:) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -71,11 +77,23 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    
+    CGFloat leftMargin = (int)(self.innerTagPadding + self.tagLength + (self.tagLength ? self.radius / 2 : 0));
+    CGFloat rightMargin = self.innerTagPadding;
+    
+    if (self.accessoryImage) {
+        CGRect imageRect = self.imageView.bounds;
+        rightMargin = (int)ceilf(rightMargin + imageRect.size.width + self.imagePadding);
+        imageRect.origin.x = (int)(self.frame.size.width - rightMargin);
+        imageRect.origin.y = (int)(self.frame.size.height - self.imageView.frame.size.height) / 2;
+        self.imageView.frame = imageRect;
+    }
+    
     [self.labelText.layer setCornerRadius:self.radius / 2];
     [self.labelText setFrame:(CGRect){
-        (int)(self.tagLength + self.innerTagPadding + (self.tagLength ? self.radius / 2 : 0)),
+        leftMargin,
         (int)(self.innerTagPadding),
-        (int)(self.frame.size.width - self.innerTagPadding * 2 - self.tagLength - (self.tagLength ? self.radius / 2 : 0)),
+        (int)(self.frame.size.width - rightMargin - leftMargin),
         (int)(self.frame.size.height - self.innerTagPadding * 2)
     }];
 
@@ -183,6 +201,11 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     float tagLength = self.tagLength;
     
     size.width = (int)size.width + padding * 2 + tagLength;
+    if (self.accessoryImage) {
+        self.imageView.image = self.accessoryImage;
+        [self.imageView sizeToFit];
+        size.width += self.imageView.frame.size.width;
+    }
     size.height = (int)size.height + padding;
     
     CGRect frame = self.frame;
