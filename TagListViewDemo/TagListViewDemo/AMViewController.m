@@ -37,8 +37,9 @@
 	[[AMTagView appearance] setTagColor:UIColorFromRGB(0x1f8dd6)];
 	
 	[self.tagListView addTag:@"my tag"];
-	[self.tagListView addTag:@"something"];
-	[self.tagListView addTag:@"long tag is long"];
+    [self.tagListView addTag:@"something"];
+    [[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"remove_icon"]];
+    [self.tagListView addTag:@"long tag is long"];
 	[self.tagListView addTag:@"hi there"];
     
     self.tagListView.tagListDelegate = self;
