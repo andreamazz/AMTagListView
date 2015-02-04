@@ -66,6 +66,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         _tagColor = [[AMTagView appearance] tagColor];
         _innerTagColor = [[AMTagView appearance] innerTagColor];
         _accessoryImage = [[AMTagView appearance] accessoryImage];
+        _imagePadding = [[AMTagView appearance] imagePadding];
         [self addSubview:self.labelText];
         [self addSubview:self.imageView];
         [self addSubview:self.button];
@@ -201,14 +202,15 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     UIFont* font = self.textFont;
     CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: font}];
     
+    float innerPadding = self.innerTagPadding;
     float padding = self.textPadding;
     float tagLength = self.tagLength;
     
-    size.width = (int)size.width + padding * 2 + tagLength;
+    size.width = (int)size.width + padding * 2 + innerPadding * 2 + tagLength;
     if (self.accessoryImage) {
         self.imageView.image = self.accessoryImage;
         [self.imageView sizeToFit];
-        size.width += self.imageView.frame.size.width;
+        size.width += self.imageView.frame.size.width + self.imagePadding;
     }
     size.height = (int)size.height + padding;
     
