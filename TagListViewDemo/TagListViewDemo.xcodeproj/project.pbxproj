@@ -19,7 +19,6 @@
 		65225F82188DC770006DE0AB /* AMTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65225F81188DC770006DE0AB /* AMTagView.m */; };
 		65225F85188DC7E2006DE0AB /* AMTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65225F84188DC7E2006DE0AB /* AMTagListView.m */; };
 		6598AD731A3AE68F00011234 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6598AD721A3AE68F00011234 /* Launch Screen.xib */; };
-		B2B029091A81B43100078E6E /* remove_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = B2B029081A81B43100078E6E /* remove_icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,7 +42,6 @@
 		65225F83188DC7E2006DE0AB /* AMTagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMTagListView.h; sourceTree = "<group>"; };
 		65225F84188DC7E2006DE0AB /* AMTagListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMTagListView.m; sourceTree = "<group>"; };
 		6598AD721A3AE68F00011234 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
-		B2B029081A81B43100078E6E /* remove_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "remove_icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +97,6 @@
 				65225F5F188DC70E006DE0AB /* AMViewController.h */,
 				65225F60188DC70E006DE0AB /* AMViewController.m */,
 				65225F62188DC70E006DE0AB /* Images.xcassets */,
-				B2B029081A81B43100078E6E /* remove_icon@2x.png */,
 				65225F51188DC70E006DE0AB /* Supporting Files */,
 			);
 			path = TagListViewDemo;
@@ -184,7 +181,6 @@
 				65225F63188DC70E006DE0AB /* Images.xcassets in Resources */,
 				6598AD731A3AE68F00011234 /* Launch Screen.xib in Resources */,
 				65225F55188DC70E006DE0AB /* InfoPlist.strings in Resources */,
-				B2B029091A81B43100078E6E /* remove_icon@2x.png in Resources */,
 				65225F5E188DC70E006DE0AB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -38,7 +38,7 @@
 	
 	[self.tagListView addTag:@"my tag"];
     [self.tagListView addTag:@"something"];
-    [[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"remove_icon"]];
+    [[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"close"]];
     [self.tagListView addTag:@"long tag is long"];
 	[self.tagListView addTag:@"hi there"];
     

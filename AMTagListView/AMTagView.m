@@ -81,6 +81,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     
     CGFloat leftMargin = (int)(self.innerTagPadding + self.tagLength + (self.tagLength ? self.radius / 2 : 0));
     CGFloat rightMargin = self.innerTagPadding;
+    CGRect buttonRect = self.labelText.frame;
     
     if (self.accessoryImage) {
         CGRect imageRect = self.imageView.bounds;
@@ -88,6 +89,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         imageRect.origin.x = (int)(self.frame.size.width - rightMargin);
         imageRect.origin.y = (int)(self.frame.size.height - self.imageView.frame.size.height) / 2;
         self.imageView.frame = imageRect;
+        buttonRect.size.width = buttonRect.size.width + imageRect.size.width + self.imagePadding * 2;
     }
     
     [self.labelText.layer setCornerRadius:self.radius / 2];
@@ -97,8 +99,8 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         (int)(self.frame.size.width - rightMargin - leftMargin),
         (int)(self.frame.size.height - self.innerTagPadding * 2)
     }];
-
-    [self.button setFrame:self.labelText.frame];
+    
+    [self.button setFrame:buttonRect];
     [self.labelText setTextColor:self.textColor];
     [self.labelText setFont:self.textFont];
 }
