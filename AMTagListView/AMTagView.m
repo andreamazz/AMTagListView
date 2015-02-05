@@ -81,7 +81,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     
     CGFloat leftMargin = (int)(self.innerTagPadding + self.tagLength + (self.tagLength ? self.radius / 2 : 0));
     CGFloat rightMargin = self.innerTagPadding;
-    CGRect buttonRect = self.labelText.frame;
+    CGRect buttonRect = self.bounds;
     
     if (self.accessoryImage) {
         CGRect imageRect = self.imageView.bounds;
@@ -208,13 +208,14 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     float padding = self.textPadding;
     float tagLength = self.tagLength;
     
-    size.width = (int)size.width + padding * 2 + innerPadding * 2 + tagLength;
+    size.width = size.width + padding * 2 + innerPadding * 2 + tagLength;
     if (self.accessoryImage) {
         self.imageView.image = self.accessoryImage;
         [self.imageView sizeToFit];
         size.width += self.imageView.frame.size.width + self.imagePadding;
     }
-    size.height = (int)size.height + padding;
+    size.height = (int)ceilf(size.height + padding);
+    size.width = (int)ceilf(size.width);
     
     CGRect frame = self.frame;
     frame.size = size;
@@ -228,4 +229,9 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     return self.labelText.text;
 }
 
+- (void)setAccessoryImage:(UIImage *)accessoryImage
+{
+    _accessoryImage = accessoryImage;
+    self.imageView.image = accessoryImage;
+}
 @end
