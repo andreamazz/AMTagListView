@@ -100,7 +100,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         (int)(self.frame.size.height - self.innerTagPadding * 2)
     }];
     
-    [self.button setFrame:buttonRect];
+    [self.button setFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
     [self.labelText setTextColor:self.textColor];
     [self.labelText setFont:self.textFont];
 }
