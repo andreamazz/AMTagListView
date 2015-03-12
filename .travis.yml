@@ -7,4 +7,3 @@ before_install:
   - pod update
   - cd ..
 script: rake test
-
