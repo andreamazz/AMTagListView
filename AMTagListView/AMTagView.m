@@ -24,17 +24,17 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 + (void)initialize
 {
-    [[AMTagView appearance] setRadius:kDefaultRadius];
-    [[AMTagView appearance] setTagLength:kDefaultTagLength];
-    [[AMTagView appearance] setHoleRadius:kDefaultHoleRadius];
-    [[AMTagView appearance] setInnerTagPadding:kDefaultInnerPadding];
-    [[AMTagView appearance] setTextPadding:kDefaultTextPadding];
-    [[AMTagView appearance] setTextFont:kDefaultFont];
-    [[AMTagView appearance] setTextColor:kDefaultTextColor];
-    [[AMTagView appearance] setTagColor:kDefaultTagColor];
-    [[AMTagView appearance] setInnerTagColor:kDefaultInnerTagColor];
-    [[AMTagView appearance] setAccessoryImage:nil];
-    [[AMTagView appearance] setImagePadding:kDefaultImagePadding];
+    [[self appearance] setRadius:kDefaultRadius];
+    [[self appearance] setTagLength:kDefaultTagLength];
+    [[self appearance] setHoleRadius:kDefaultHoleRadius];
+    [[self appearance] setInnerTagPadding:kDefaultInnerPadding];
+    [[self appearance] setTextPadding:kDefaultTextPadding];
+    [[self appearance] setTextFont:kDefaultFont];
+    [[self appearance] setTextColor:kDefaultTextColor];
+    [[self appearance] setTagColor:kDefaultTagColor];
+    [[self appearance] setInnerTagColor:kDefaultInnerTagColor];
+    [[self appearance] setAccessoryImage:nil];
+    [[self appearance] setImagePadding:kDefaultImagePadding];
 }
 
 #pragma mark - UIResponder
@@ -56,17 +56,17 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         self.button = [[UIButton alloc] init];
         self.imageView = [[UIImageView alloc] init];
         self.labelText.textAlignment = NSTextAlignmentCenter;
-        _radius = [[AMTagView appearance] radius];
-        _tagLength = [[AMTagView appearance] tagLength];
-        _holeRadius = [[AMTagView appearance] holeRadius];
-        _innerTagPadding = [[AMTagView appearance] innerTagPadding];
-        _textPadding = [[AMTagView appearance] textPadding];
-        _textFont = [[AMTagView appearance] textFont];
-        _textColor = [[AMTagView appearance] textColor];
-        _tagColor = [[AMTagView appearance] tagColor];
-        _innerTagColor = [[AMTagView appearance] innerTagColor];
-        _accessoryImage = [[AMTagView appearance] accessoryImage];
-        _imagePadding = [[AMTagView appearance] imagePadding];
+        _radius = [[[self class] appearance] radius];
+        _tagLength = [[[self class] appearance] tagLength];
+        _holeRadius = [[[self class] appearance] holeRadius];
+        _innerTagPadding = [[[self class] appearance] innerTagPadding];
+        _textPadding = [[[self class] appearance] textPadding];
+        _textFont = [[[self class] appearance] textFont];
+        _textColor = [[[self class] appearance] textColor];
+        _tagColor = [[[self class] appearance] tagColor];
+        _innerTagColor = [[[self class] appearance] innerTagColor];
+        _accessoryImage = [[[self class] appearance] accessoryImage];
+        _imagePadding = [[[self class] appearance] imagePadding];
         [self addSubview:self.labelText];
         [self addSubview:self.imageView];
         [self addSubview:self.button];
@@ -211,13 +211,14 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     float padding = self.textPadding;
     float tagLength = self.tagLength;
     
-    size.width = (int)size.width + padding * 2 + innerPadding * 2 + tagLength;
+    size.width = size.width + padding * 2 + innerPadding * 2 + tagLength;
     if (self.accessoryImage) {
         self.imageView.image = self.accessoryImage;
         [self.imageView sizeToFit];
         size.width += self.imageView.frame.size.width + self.imagePadding;
     }
-    size.height = (int)size.height + padding;
+    size.height = (int)ceilf(size.height + padding);
+    size.width = (int)ceilf(size.width);
     
     CGRect frame = self.frame;
     frame.size = size;
@@ -231,4 +232,9 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     return self.labelText.text;
 }
 
+- (void)setAccessoryImage:(UIImage *)accessoryImage
+{
+    _accessoryImage = accessoryImage;
+    self.imageView.image = accessoryImage;
+}
 @end
