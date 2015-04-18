@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		605C2B5A1AE28AA600166825 /* TagListViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 605C2B591AE28AA600166825 /* TagListViewTests.m */; };
+		605C2B611AE29A4700166825 /* AMTagViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 605C2B601AE29A4700166825 /* AMTagViewTests.m */; };
 		65225F4B188DC70E006DE0AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65225F4A188DC70E006DE0AB /* Foundation.framework */; };
 		65225F4D188DC70E006DE0AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65225F4C188DC70E006DE0AB /* CoreGraphics.framework */; };
 		65225F4F188DC70E006DE0AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65225F4E188DC70E006DE0AB /* UIKit.framework */; };
@@ -39,6 +40,7 @@
 		605C2B551AE28AA600166825 /* TagListViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TagListViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		605C2B581AE28AA600166825 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		605C2B591AE28AA600166825 /* TagListViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagListViewTests.m; sourceTree = "<group>"; };
+		605C2B601AE29A4700166825 /* AMTagViewTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMTagViewTests.m; sourceTree = "<group>"; };
 		65225F47188DC70E006DE0AB /* TagListViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TagListViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65225F4A188DC70E006DE0AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65225F4C188DC70E006DE0AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -96,6 +98,7 @@
 		605C2B561AE28AA600166825 /* TagListViewTests */ = {
 			isa = PBXGroup;
 			children = (
+				605C2B601AE29A4700166825 /* AMTagViewTests.m */,
 				605C2B591AE28AA600166825 /* TagListViewTests.m */,
 				605C2B571AE28AA600166825 /* Supporting Files */,
 			);
@@ -316,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				605C2B5A1AE28AA600166825 /* TagListViewTests.m in Sources */,
+				605C2B611AE29A4700166825 /* AMTagViewTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

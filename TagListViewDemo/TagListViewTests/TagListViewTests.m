@@ -149,7 +149,7 @@ describe(@"visuals", ^{
     });
 
     it(@"looks right with an array of tags", ^{
-        subject = [[AMTagListView alloc] initWithFrame:CGRectMake(0, 0, 300, 400)];
+        subject = [[AMTagListView alloc] initWithFrame:CGRectMake(0, 0, 400, 400)];
         [subject addTags:@[@"Hello", @"World", @"OK?"]];
         expect(subject).to.haveValidSnapshot();
     });
