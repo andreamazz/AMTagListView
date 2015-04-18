@@ -8,6 +8,8 @@
 
 SpecBegin(AMTagListView)
 
+__block AMTagListView *subject;
+
 describe(@"delegate callbacks", ^{
     it(@"should tell a delegate its getting a callback", ^{
 
@@ -16,7 +18,7 @@ describe(@"delegate callbacks", ^{
 
 describe(@"notifications", ^{
     it(@"rearranges when UIDeviceOrientationDidChangeNotification is called", ^{
-        AMTagListView *subject = [[AMTagListView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
+        subject = [[AMTagListView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
         id mock = OCMPartialMock(subject);
         OCMExpect([mock rearrangeTags]);
 
@@ -25,7 +27,14 @@ describe(@"notifications", ^{
     });
 
     it(@"calls the tap handler when a AMTagViewNotification is sent", ^{
-        
+        __block BOOL hasCalledHandler = NO;
+        subject = [[AMTagListView alloc] initWithFrame:CGRectMake(0, 0, 300, 300)];
+        [subject setTapHandler:^(AMTagView *tagView) {
+            hasCalledHandler = YES;
+        }];
+
+        [[NSNotificationCenter defaultCenter] postNotificationName:AMTagViewNotification object:nil userInfo:@{ @"superview": subject } ];
+        expect(hasCalledHandler).to.beTruthy();
     });
 
 });
