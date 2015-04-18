@@ -45,7 +45,33 @@ it(@"gets the right tag text when setup with text", ^{
 });
 
 describe(@"can be customised via UIAppearance", ^{
+    after(^{
+        [[AMTagView appearance] setRadius:kDefaultRadius];
+        [[AMTagView appearance] setTagLength:kDefaultTagLength];
+        [[AMTagView appearance] setInnerTagPadding:kDefaultInnerPadding];
+        [[AMTagView appearance] setHoleRadius:kDefaultHoleRadius];
+        [[AMTagView appearance] setTextPadding:kDefaultTextPadding];
+        [[AMTagView appearance] setTextFont:kDefaultFont];
+        [[AMTagView appearance] setTextColor:kDefaultTextColor];
+        [[AMTagView appearance] setTagColor:kDefaultTagColor];
+        [[AMTagView appearance] setInnerTagColor:kDefaultInnerTagColor];
+    });
 
+    it(@"and it looks right", ^{
+        [[AMTagView appearance] setRadius:1];
+        [[AMTagView appearance] setTagLength:20];
+        [[AMTagView appearance] setInnerTagPadding:6];
+        [[AMTagView appearance] setHoleRadius:3];
+        [[AMTagView appearance] setTextPadding:15];
+        [[AMTagView appearance] setTextFont:[UIFont fontWithName:@"MarkerFelt-Wide" size:[UIFont systemFontSize]]];
+        [[AMTagView appearance] setTextColor:[UIColor whiteColor]];
+        [[AMTagView appearance] setTagColor:[UIColor darkGrayColor]];
+        [[AMTagView appearance] setInnerTagColor:[UIColor lightGrayColor]];
+
+        subject = [[AMTagView alloc] initWithFrame:CGRectMake(0, 0, 120, 60)];
+        [subject setupWithText:@"I love cheese"];
+        expect(subject).to.haveValidSnapshot();
+    });
 });
 
 
