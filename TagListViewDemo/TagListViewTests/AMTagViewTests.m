@@ -38,8 +38,10 @@ it(@"send a notification when tapped", ^{
     OCMVerifyAll(observerMock);
 });
 
-it(@"gets the right tag text wehn setup with text", ^{
-
+it(@"gets the right tag text when setup with text", ^{
+    expect(subject.tagText).notTo.equal(@"Hi Mom!");
+    [subject setupWithText:@"Hi Mom!"];
+    expect(subject.tagText).to.equal(@"Hi Mom!");
 });
 
 describe(@"can be customised via UIAppearance", ^{
