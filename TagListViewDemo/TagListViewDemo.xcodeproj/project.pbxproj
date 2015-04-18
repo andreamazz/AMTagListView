@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		605C2B5A1AE28AA600166825 /* TagListViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 605C2B591AE28AA600166825 /* TagListViewTests.m */; };
 		65225F4B188DC70E006DE0AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65225F4A188DC70E006DE0AB /* Foundation.framework */; };
 		65225F4D188DC70E006DE0AB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65225F4C188DC70E006DE0AB /* CoreGraphics.framework */; };
 		65225F4F188DC70E006DE0AB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65225F4E188DC70E006DE0AB /* UIKit.framework */; };
@@ -19,9 +20,25 @@
 		65225F82188DC770006DE0AB /* AMTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65225F81188DC770006DE0AB /* AMTagView.m */; };
 		65225F85188DC7E2006DE0AB /* AMTagListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 65225F84188DC7E2006DE0AB /* AMTagListView.m */; };
 		6598AD731A3AE68F00011234 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6598AD721A3AE68F00011234 /* Launch Screen.xib */; };
+		BA21738A5BF290EDBD31AD8E /* libPods-TagListViewTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F281F9C8A8F47A8F4073978 /* libPods-TagListViewTests.a */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		605C2B5B1AE28AA600166825 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65225F3F188DC70E006DE0AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 65225F46188DC70E006DE0AB;
+			remoteInfo = TagListViewDemo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		1F281F9C8A8F47A8F4073978 /* libPods-TagListViewTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TagListViewTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A4E64FA0DD97D9F8C70E876 /* Pods-TagListViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagListViewTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TagListViewTests/Pods-TagListViewTests.debug.xcconfig"; sourceTree = "<group>"; };
+		605C2B551AE28AA600166825 /* TagListViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TagListViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		605C2B581AE28AA600166825 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		605C2B591AE28AA600166825 /* TagListViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagListViewTests.m; sourceTree = "<group>"; };
 		65225F47188DC70E006DE0AB /* TagListViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TagListViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65225F4A188DC70E006DE0AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65225F4C188DC70E006DE0AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -42,9 +59,18 @@
 		65225F83188DC7E2006DE0AB /* AMTagListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMTagListView.h; sourceTree = "<group>"; };
 		65225F84188DC7E2006DE0AB /* AMTagListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMTagListView.m; sourceTree = "<group>"; };
 		6598AD721A3AE68F00011234 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		6F4B6BE9E7DD67F87C417260 /* Pods-TagListViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagListViewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TagListViewTests/Pods-TagListViewTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		605C2B521AE28AA600166825 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BA21738A5BF290EDBD31AD8E /* libPods-TagListViewTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65225F44188DC70E006DE0AB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -58,12 +84,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AE32E40AA629AC22CF9A8CD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2A4E64FA0DD97D9F8C70E876 /* Pods-TagListViewTests.debug.xcconfig */,
+				6F4B6BE9E7DD67F87C417260 /* Pods-TagListViewTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		605C2B561AE28AA600166825 /* TagListViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				605C2B591AE28AA600166825 /* TagListViewTests.m */,
+				605C2B571AE28AA600166825 /* Supporting Files */,
+			);
+			path = TagListViewTests;
+			sourceTree = "<group>";
+		};
+		605C2B571AE28AA600166825 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				605C2B581AE28AA600166825 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		65225F3E188DC70E006DE0AB = {
 			isa = PBXGroup;
 			children = (
 				65225F50188DC70E006DE0AB /* TagListViewDemo */,
+				605C2B561AE28AA600166825 /* TagListViewTests */,
 				65225F49188DC70E006DE0AB /* Frameworks */,
 				65225F48188DC70E006DE0AB /* Products */,
+				1AE32E40AA629AC22CF9A8CD /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				65225F47188DC70E006DE0AB /* TagListViewDemo.app */,
+				605C2B551AE28AA600166825 /* TagListViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,6 +137,7 @@
 				65225F4C188DC70E006DE0AB /* CoreGraphics.framework */,
 				65225F4E188DC70E006DE0AB /* UIKit.framework */,
 				65225F69188DC70E006DE0AB /* XCTest.framework */,
+				1F281F9C8A8F47A8F4073978 /* libPods-TagListViewTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -128,6 +184,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		605C2B541AE28AA600166825 /* TagListViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 605C2B5F1AE28AA600166825 /* Build configuration list for PBXNativeTarget "TagListViewTests" */;
+			buildPhases = (
+				18B2FA0650DBC2EDB55C7EAD /* Check Pods Manifest.lock */,
+				605C2B511AE28AA600166825 /* Sources */,
+				605C2B521AE28AA600166825 /* Frameworks */,
+				605C2B531AE28AA600166825 /* Resources */,
+				964E3AD7530EB420E04FC858 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				605C2B5C1AE28AA600166825 /* PBXTargetDependency */,
+			);
+			name = TagListViewTests;
+			productName = TagListViewTests;
+			productReference = 605C2B551AE28AA600166825 /* TagListViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		65225F46188DC70E006DE0AB /* TagListViewDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 65225F79188DC70E006DE0AB /* Build configuration list for PBXNativeTarget "TagListViewDemo" */;
@@ -154,6 +230,12 @@
 				CLASSPREFIX = AM;
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Fancy Pixel";
+				TargetAttributes = {
+					605C2B541AE28AA600166825 = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 65225F46188DC70E006DE0AB;
+					};
+				};
 			};
 			buildConfigurationList = 65225F42188DC70E006DE0AB /* Build configuration list for PBXProject "TagListViewDemo" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -169,11 +251,19 @@
 			projectRoot = "";
 			targets = (
 				65225F46188DC70E006DE0AB /* TagListViewDemo */,
+				605C2B541AE28AA600166825 /* TagListViewTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		605C2B531AE28AA600166825 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65225F45188DC70E006DE0AB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -187,7 +277,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		18B2FA0650DBC2EDB55C7EAD /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		964E3AD7530EB420E04FC858 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TagListViewTests/Pods-TagListViewTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		605C2B511AE28AA600166825 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				605C2B5A1AE28AA600166825 /* TagListViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		65225F43188DC70E006DE0AB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -201,6 +332,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		605C2B5C1AE28AA600166825 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 65225F46188DC70E006DE0AB /* TagListViewDemo */;
+			targetProxy = 605C2B5B1AE28AA600166825 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		65225F53188DC70E006DE0AB /* InfoPlist.strings */ = {
@@ -222,6 +361,57 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		605C2B5D1AE28AA600166825 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2A4E64FA0DD97D9F8C70E876 /* Pods-TagListViewTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = TagListViewTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TagListViewDemo.app/TagListViewDemo";
+			};
+			name = Debug;
+		};
+		605C2B5E1AE28AA600166825 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F4B6BE9E7DD67F87C417260 /* Pods-TagListViewTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = TagListViewTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TagListViewDemo.app/TagListViewDemo";
+			};
+			name = Release;
+		};
 		65225F77188DC70E006DE0AB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -321,6 +511,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		605C2B5F1AE28AA600166825 /* Build configuration list for PBXNativeTarget "TagListViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				605C2B5D1AE28AA600166825 /* Debug */,
+				605C2B5E1AE28AA600166825 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		65225F42188DC70E006DE0AB /* Build configuration list for PBXProject "TagListViewDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
