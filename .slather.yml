@@ -1,0 +1,3 @@
+coverage_service: coveralls
+xcodeproj: TagListViewDemo/TagListViewDemo.xcodeproj
+source_directory: TagListViewDemo
