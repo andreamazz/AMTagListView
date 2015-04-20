@@ -6,7 +6,7 @@
 [![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMTagListView/badge.png)](http://cocoapods.org/?q=amtaglistview)
 [![Coverage Status](https://coveralls.io/repos/andreamazz/AMTagListView/badge.svg)](https://coveralls.io/r/andreamazz/AMTagListView)
 
-UIScrollView subclass that allows to add a list of highly customizable tags. You can customize colors, border radius, and the tail of the tag. Tags can be added in bulk or dinamically one by one. The newly inserted tag will automatically arrange itself inside the scrollview.
+UIScrollView subclass that allows to add a list of highly customizable tags. You can customize colors, border radius, and the tail of the tag. Tags can be added in bulk or dynamically one by one. The newly inserted tag will automatically arrange itself inside the scrollview.
 
 ##Screenshot
 
