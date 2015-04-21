@@ -33,7 +33,7 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  *
  * @param text The text that the tag will display
  */
-- (void)addTag:(NSString*)text;
+- (void)addTag:(NSString *)text;
 
 /** Add a new tag
  *
@@ -43,7 +43,7 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  *
  * @param text The text that the tag will display
  */
-- (void)addTag:(NSString*)text andRearrange:(BOOL)rearrange;
+- (void)addTag:(NSString *)text andRearrange:(BOOL)rearrange;
 
 /** Add a multiple tags
  *
@@ -51,7 +51,7 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  *
  * @param array An array of strings
  */
-- (void)addTags:(NSArray*)array;
+- (void)addTags:(NSArray *)array;
 
 /** Add a multiple tags
  *
@@ -61,7 +61,7 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  *
  * @param array An array of strings
  */
-- (void)addTags:(NSArray*)array andRearrange:(BOOL)rearrange;
+- (void)addTags:(NSArray *)array andRearrange:(BOOL)rearrange;
 
 /** Add a specific tag to the tag list
  *
@@ -128,7 +128,7 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  *
  * An array holding the current tag view objects
  */
-@property (nonatomic, strong, readonly) NSMutableArray* tags;
+@property (nonatomic, strong, readonly) NSMutableArray *tags;
 
 /** Tag list delegate
  *

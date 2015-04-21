@@ -35,7 +35,7 @@ extern NSString * const AMTagViewNotification;
 @property (nonatomic, strong) UIImage	*accessoryImage UI_APPEARANCE_SELECTOR;
 @property (nonatomic, assign) float     imagePadding UI_APPEARANCE_SELECTOR;
 
-- (void)setupWithText:(NSString*)text;
-- (NSString*)tagText;
+- (void)setupWithText:(NSString *)text;
+- (NSString *)tagText;
 
 @end
