@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Fancy Pixel. All rights reserved.
 //
 
+@import UIKit;
+
 /** Constant for the tag notification */
 extern NSString * const AMTagViewNotification;
 

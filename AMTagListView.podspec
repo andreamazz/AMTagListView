@@ -7,6 +7,6 @@ Pod::Spec.new do |s|
   s.author       = { "Andrea Mazzini" => "andrea.mazzini@gmail.com" }
   s.source       = { :git => "https://github.com/andreamazz/AMTagListView.git", :tag => s.version }
   s.platform     = :ios, '5.0'
-  s.source_files = 'AMTagListView', '*.{h,m}'
+  s.source_files = 'Source', '*.{h,m}'
   s.requires_arc = true
 end
