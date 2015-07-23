@@ -5,6 +5,7 @@
 [![Build Status](https://travis-ci.org/andreamazz/AMTagListView.png)](https://travis-ci.org/andreamazz/AMTagListView)
 [![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMTagListView/badge.png)](http://cocoapods.org/?q=amtaglistview)
 [![Coverage Status](https://coveralls.io/repos/andreamazz/AMTagListView/badge.svg)](https://coveralls.io/r/andreamazz/AMTagListView)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 UIScrollView subclass that allows to add a list of highly customizable tags. You can customize colors, border radius, and the tail of the tag. Tags can be added in bulk or dynamically one by one. The newly inserted tag will automatically arrange itself inside the scrollview.
 
@@ -38,6 +39,7 @@ The tags are rearranged when you use the method calls listed above. You can also
 ```
 [self.tagListView rearrangeTags];
 ```
+You can also align the tags to the left or right by setting the `tagAlignment` property and calling `rearrangeTags`.
 
 ##Appearance
 Use the AMTagView's UIAppearance selectors to customize its appearance:
