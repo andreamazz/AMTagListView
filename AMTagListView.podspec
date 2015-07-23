@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AMTagListView"
-  s.version      = "0.7"
+  s.version      = "0.7.1"
   s.summary      = "UIScrollView subclass that allows to add a list of highly customizable tags."
   s.homepage     = "https://github.com/andreamazz/AMTagListView"
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
