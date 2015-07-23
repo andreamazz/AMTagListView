@@ -1,0 +1,24 @@
+# Change Log
+All notable changes to this project will be documented in this file.
+`AMTagListView` adheres to [Semantic Versioning](http://semver.org/).
+
+- `0.8.x` Releases - [0.8](#08)
+- `0.7.x` Releases - [0.7](#07) | [0.7.1](#071)
+
+---
+
+## [0.8](https://github.com/andreamazz/AMTagList/releases/tag/0.8)
+
+#### Added  
+- Support to Carthage
+
+## [0.7.1](https://github.com/andreamazz/AMTagList/releases/tag/0.7.1)
+
+#### Updated  
+- Minor refactoring
+
+## [0.7](https://github.com/andreamazz/AMTagList/releases/tag/0.7)
+
+#### Added  
+- Support to right to left alignment via `tagAlignment`  
+
