@@ -45,18 +45,6 @@ it(@"gets the right tag text when setup with text", ^{
 });
 
 describe(@"can be customised via UIAppearance", ^{
-    after(^{
-        [[AMTagView appearance] setRadius:kDefaultRadius];
-        [[AMTagView appearance] setTagLength:kDefaultTagLength];
-        [[AMTagView appearance] setInnerTagPadding:kDefaultInnerPadding];
-        [[AMTagView appearance] setHoleRadius:kDefaultHoleRadius];
-        [[AMTagView appearance] setTextPadding:kDefaultTextPadding];
-        [[AMTagView appearance] setTextFont:kDefaultFont];
-        [[AMTagView appearance] setTextColor:kDefaultTextColor];
-        [[AMTagView appearance] setTagColor:kDefaultTagColor];
-        [[AMTagView appearance] setInnerTagColor:kDefaultInnerTagColor];
-    });
-
     it(@"and it looks right", ^{
         [[AMTagView appearance] setRadius:1];
         [[AMTagView appearance] setTagLength:20];

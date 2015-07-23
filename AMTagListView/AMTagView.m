@@ -8,6 +8,19 @@
 
 #import "AMTagView.h"
 
+#define DEGREES_TO_RADIANS(degrees)  ((3.14159265359 * degrees)/ 180)
+
+#define kDefaultInnerPadding	3
+#define kDefaultHoleRadius		4
+#define kDefaultTagLength		10
+#define kDefaultTextPadding		10
+#define kDefaultRadius			8
+#define kDefaultTextColor		[UIColor whiteColor]
+#define kDefaultFont			[UIFont systemFontOfSize:14]
+#define kDefaultTagColor		[UIColor redColor]
+#define kDefaultInnerTagColor	[UIColor colorWithWhite:1 alpha:0.3]
+#define kDefaultImagePadding	3
+
 NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 @interface AMTagView ()

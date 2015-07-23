@@ -12,13 +12,31 @@
 @class AMTagView;
 @class AMTagListView;
 
+/** @enum AMTagAlignment
+ *
+ * Enum that specifies the alignment of the tags inside the list
+ */
 typedef NS_ENUM(NSInteger, AMTagAlignment) {
+    /** Align from left to right */
     AMTagAlignmentLeft,
+    /** Align from right to left */
     AMTagAlignmentRight
 };
 
+
+/**-----------------------------------------------------------------------------
+ * @name AMTagListDelegate
+ * -----------------------------------------------------------------------------
+ */
 @protocol AMTagListDelegate <NSObject>
 
+/** Should add a new tag with text
+ *
+ * Determines if the list should add a new tag given its text and resulting size
+ *
+ * @param text The text that the tag will display
+ * @param size The size that the tag will occupy
+ */
 - (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size;
 
 @end

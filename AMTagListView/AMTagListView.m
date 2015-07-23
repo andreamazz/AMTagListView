@@ -93,10 +93,10 @@
 }
 
 - (void)addTagView:(AMTagView *)tagView andRearrange:(BOOL)rearrange {
-    UIFont *font = [[[tagView class] appearance] textFont] ? [[[tagView class] appearance] textFont] : kDefaultFont;
+    UIFont *font = [[[tagView class] appearance] textFont];
     CGSize size = [tagView.tagText sizeWithAttributes:@{NSFontAttributeName: font}];
-    float padding = [[[tagView class] appearance] textPadding] ? [[[tagView class] appearance] textPadding] : kDefaultTextPadding;
-    float tagLength = [[[tagView class] appearance] tagLength] ? [[[tagView class] appearance] tagLength] : kDefaultTagLength;
+    float padding = [[[tagView class] appearance] textPadding];
+    float tagLength = [[[tagView class] appearance] tagLength];
 
     size.width = (int)size.width + padding * 2 + tagLength;
     size.height = (int)size.height + padding;
