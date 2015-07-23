@@ -40,6 +40,7 @@
     // Default margins
     _marginX = 4;
     _marginY = 4;
+    _tagAlignment = AMTagAlignmentLeft;
     self.clipsToBounds = YES;
     _tags = [@[] mutableCopy];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -174,6 +175,12 @@
         obj.frame = CGRectMake(maxX + self.marginX, maxY, size.width, size.height);
         [self addSubview:obj];
     };
+
+    if (self.tagAlignment == AMTagAlignmentRight) {
+        for (AMTagView *obj in self.tags) {
+            obj.frame = CGRectMake(self.frame.size.width - obj.frame.origin.x - obj.frame.size.width, obj.frame.origin.y, obj.frame.size.width, obj.frame.size.height);
+        }
+    }
 
     [self setContentSize:CGSizeMake(self.frame.size.width, maxY + size.height + self.marginY)];
 }

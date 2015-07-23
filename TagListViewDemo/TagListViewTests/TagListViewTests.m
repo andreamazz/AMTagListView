@@ -154,6 +154,12 @@ describe(@"visuals", ^{
         expect(subject).to.haveValidSnapshot();
     });
 
+    it(@"looks right with an array of tags aligned to the right", ^{
+        subject = [[AMTagListView alloc] initWithFrame:CGRectMake(0, 0, 400, 400)];
+        subject.tagAlignment = AMTagAlignmentRight;
+        [subject addTags:@[@"Hello", @"World", @"OK?"]];
+        expect(subject).to.haveValidSnapshot();
+    });
 });
 
 SpecEnd

@@ -12,6 +12,11 @@
 @class AMTagView;
 @class AMTagListView;
 
+typedef NS_ENUM(NSInteger, AMTagAlignment) {
+    AMTagAlignmentLeft,
+    AMTagAlignmentRight
+};
+
 @protocol AMTagListDelegate <NSObject>
 
 - (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size;
@@ -135,5 +140,11 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  * The tag list view's delegate
  */
 @property (nonatomic, assign) id<AMTagListDelegate> tagListDelegate;
+
+/** Tag list alignment
+ *
+ * The tag list alignment. The tags can be aligned to the left or the right.
+ */
+@property (nonatomic, assign) AMTagAlignment tagAlignment;
 
 @end
