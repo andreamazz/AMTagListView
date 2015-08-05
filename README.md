@@ -15,23 +15,52 @@ UIScrollView subclass that allows to add a list of highly customizable tags. You
 
 ##Setup with Cocoapods
 
-* Add ```pod 'AMTagListView'``` to your Podfile
-* Run ```pod install```
-* Run ```open App.xcworkspace```
-* Import ```AMTagListView.h``` in your controller
-* Create a new AMTagListView with Storyboards or via code.
+##Swift
+```
+pod 'AMTagListView'```
+```
+When using a bridging header:
+```objc
+#import <AMTagListView.h>
+```
+When using dynamic frameworks:
+```swift
+@import AMTagListView
+```
 
 ##Usage
+You can create a `AMTagListView` in your storyboard, or programmatically:
+
+####Objective-C
 ```objc
 // Init 
 AMTagListView *tagListView = [[AMTagListView alloc] initWithFrame:frame];
 [self.view addSubview:tagListView];
+```
 
+####Swift
+```swift
+let tagListView = AMTagListView(frame: frame)
+view.addSubview(tagListView)
+```
+
+##Adding tags
+####Objective-C
+```objc
 // Add one tag
 [self.tagListView addTag:@"my tag"];
 
 // Add multiple tags
 [self.tagListView addTags:@[@"my tag", @"some tag"]];
+```
+
+####Swift
+```swift
+// Add one tag
+tagListView.addTag("my tag")
+
+// Add multiple tags
+tagListView.addTags:(["my tag", "some tag"])
 ```
 
 ##Arranging tags
@@ -43,6 +72,18 @@ You can also align the tags to the left or right by setting the `tagAlignment` p
 
 ##Appearance
 Use the AMTagView's UIAppearance selectors to customize its appearance:
+####Objective-C
+```objc
+[[AMTagView appearance] setRadius:10];
+```
+
+####Swift
+```swift
+AMTagView.appearance().radius = 10
+```
+
+###Appearance properties
+These are the properties that can be modified:
 ```objc
 // Tag's corner radius
 [[AMTagView appearance] setRadius:float]
@@ -80,12 +121,10 @@ This method asks his delegate if a given tag can be added. The method also shows
 
 ##Test
 
-To run the test suite, install `xcpretty` gem, launch `pod install` inside the `Tests` folder, and run the rake task in the root.
+To run the test suite install `xcpretty` gem, launch `pod install` inside the `Tests` folder, and run the rake task in the root.
 
-##Using this library?
-
-Please let me know! I'll be glad to link your project here.
-
+#Author
+[Andrea Mazzini](https://twitter.com/theandreamazz)
 
 #MIT License
 
@@ -110,4 +149,3 @@ Please let me know! I'll be glad to link your project here.
 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 	
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/andreamazz/amtaglistview/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
