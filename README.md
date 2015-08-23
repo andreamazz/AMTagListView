@@ -60,7 +60,7 @@ view.addSubview(tagListView)
 tagListView.addTag("my tag")
 
 // Add multiple tags
-tagListView.addTags:(["my tag", "some tag"])
+tagListView.addTags(["my tag", "some tag"])
 ```
 
 ##Arranging tags
