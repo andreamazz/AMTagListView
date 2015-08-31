@@ -60,9 +60,14 @@ describe(@"can be customised via UIAppearance", ^{
         [subject setupWithText:@"I love cheese"];
         expect(subject).to.haveValidSnapshot();
     });
+
+    it(@"updates the text color properly", ^{
+        subject = [[AMTagView alloc] initWithFrame:CGRectMake(0, 0, 120, 60)];
+        [subject setupWithText:@"I love cheese"];
+        expect(subject).to.recordSnapshotNamed(@"can_be_customised_via_UIAppearance_updates_the_text_color_properly_before");
+        [subject setTextColor:[UIColor redColor]];
+        expect(subject).to.recordSnapshotNamed(@"can_be_customised_via_UIAppearance_updates_the_text_color_properly_after");
+    });
 });
-
-
-
 
 SpecEnd

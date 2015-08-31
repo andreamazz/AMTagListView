@@ -195,16 +195,6 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 #pragma mark - Public Interface
 
-- (void)setTagColor:(UIColor *)tagColor {
-    _tagColor = tagColor;
-    [self setNeedsDisplay];
-}
-
-- (void)setInnerTagColor:(UIColor *)innerTagColor {
-    _innerTagColor = innerTagColor;
-    [self setNeedsDisplay];
-}
-
 - (void)setupWithText:(NSString*)text {
     UIFont* font = self.textFont;
     CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: font}];
@@ -233,9 +223,26 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     return self.labelText.text;
 }
 
+#pragma mark - Custom setters
+
 - (void)setAccessoryImage:(UIImage *)accessoryImage {
     _accessoryImage = accessoryImage;
     self.imageView.image = accessoryImage;
+}
+
+- (void)setTextColor:(UIColor *)textColor {
+    _textColor = textColor;
+    [self setNeedsLayout];
+}
+
+- (void)setTagColor:(UIColor *)tagColor {
+    _tagColor = tagColor;
+    [self setNeedsDisplay];
+}
+
+- (void)setInnerTagColor:(UIColor *)innerTagColor {
+    _innerTagColor = innerTagColor;
+    [self setNeedsDisplay];
 }
 
 @end
