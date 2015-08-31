@@ -2,10 +2,15 @@
 All notable changes to this project will be documented in this file.
 `AMTagListView` adheres to [Semantic Versioning](http://semver.org/).
 
-- `0.8.x` Releases - [0.8](#08)
+- `0.8.x` Releases - [0.8](#08) | [0.8.1](#081)
 - `0.7.x` Releases - [0.7](#07) | [0.7.1](#071)
 
 ---
+
+## [0.8.1](https://github.com/andreamazz/AMTagList/releases/tag/0.8.1)
+
+#### Fixed  
+- Changes in text color updates the view properly  
 
 ## [0.8](https://github.com/andreamazz/AMTagList/releases/tag/0.8)
 
