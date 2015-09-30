@@ -32,7 +32,7 @@
 	[self.textField setDelegate:self];
     
 	[[AMTagView appearance] setTagLength:10];
-	[[AMTagView appearance] setTextPadding:14];
+	[[AMTagView appearance] setTextPadding:CGPointMake(14, 14)];
 	[[AMTagView appearance] setTextFont:[UIFont fontWithName:@"Futura" size:14]];
 	[[AMTagView appearance] setTagColor:UIColorFromRGB(0x1f8dd6)];
 	

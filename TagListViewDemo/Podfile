@@ -6,10 +6,10 @@ target 'TagListViewDemo' do
 end
 
 target 'TagListViewTests' do
-  pod 'FBSnapshotTestCase'
-  pod 'Expecta+Snapshots'
-  pod 'Specta'
-  pod 'Expecta'
-  pod 'OCMock'
+  pod 'Expecta+Snapshots', '~> 1.3.2'
+  pod 'Specta', '~> 1.0.0'
+  pod 'Expecta', '~> 0.4.2'
+  pod 'OCMock', '~> 3.1.2'
 end
 
+inhibit_all_warnings!

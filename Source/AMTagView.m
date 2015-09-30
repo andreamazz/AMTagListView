@@ -13,7 +13,7 @@
 #define kDefaultInnerPadding	3
 #define kDefaultHoleRadius		4
 #define kDefaultTagLength		10
-#define kDefaultTextPadding		10
+#define kDefaultTextPadding		CGPointMake(10, 10)
 #define kDefaultRadius			8
 #define kDefaultTextColor		[UIColor whiteColor]
 #define kDefaultFont			[UIFont systemFontOfSize:14]
@@ -200,16 +200,15 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: font}];
 
     float innerPadding = self.innerTagPadding;
-    float padding = self.textPadding;
     float tagLength = self.tagLength;
 
-    size.width = size.width + padding * 2 + innerPadding * 2 + tagLength;
+    size.width = size.width + self.textPadding.x * 2 + innerPadding * 2 + tagLength;
     if (self.accessoryImage) {
         self.imageView.image = self.accessoryImage;
         [self.imageView sizeToFit];
         size.width += self.imageView.frame.size.width + self.imagePadding;
     }
-    size.height = (int)ceilf(size.height + padding);
+    size.height = (int)ceilf(size.height + self.textPadding.y);
     size.width = (int)ceilf(size.width);
 
     CGRect frame = self.frame;

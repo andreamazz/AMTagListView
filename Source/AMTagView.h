@@ -43,9 +43,9 @@ extern NSString * const AMTagViewNotification;
 
 /** Text padding
  *
- * The padding of the text inside the tag
+ * The padding (horizontal and vertical) of the text inside the tag
  */
-@property (nonatomic, assign) float		textPadding UI_APPEARANCE_SELECTOR;
+@property (nonatomic, assign) CGPoint	textPadding UI_APPEARANCE_SELECTOR;
 
 /** Text font
  *

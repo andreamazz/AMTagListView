@@ -95,11 +95,11 @@
 - (void)addTagView:(AMTagView *)tagView andRearrange:(BOOL)rearrange {
     UIFont *font = [[[tagView class] appearance] textFont];
     CGSize size = [tagView.tagText sizeWithAttributes:@{NSFontAttributeName: font}];
-    float padding = [[[tagView class] appearance] textPadding];
+    CGPoint padding = [[[tagView class] appearance] textPadding];
     float tagLength = [[[tagView class] appearance] tagLength];
 
-    size.width = (int)size.width + padding * 2 + tagLength;
-    size.height = (int)size.height + padding;
+    size.width = (int)size.width + padding.x * 2 + tagLength;
+    size.height = (int)size.height + padding.y;
     size.width = MIN(size.width, self.frame.size.width - self.marginX * 2);
 
     tagView.frame = (CGRect){{0, 0}, {size.width, size.height}};

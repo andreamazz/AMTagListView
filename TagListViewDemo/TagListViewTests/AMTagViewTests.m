@@ -50,7 +50,7 @@ describe(@"can be customised via UIAppearance", ^{
         [[AMTagView appearance] setTagLength:20];
         [[AMTagView appearance] setInnerTagPadding:6];
         [[AMTagView appearance] setHoleRadius:3];
-        [[AMTagView appearance] setTextPadding:15];
+        [[AMTagView appearance] setTextPadding:CGPointMake(15, 15)];
         [[AMTagView appearance] setTextFont:[UIFont fontWithName:@"MarkerFelt-Wide" size:[UIFont systemFontSize]]];
         [[AMTagView appearance] setTextColor:[UIColor whiteColor]];
         [[AMTagView appearance] setTagColor:[UIColor darkGrayColor]];
