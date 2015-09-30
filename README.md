@@ -97,8 +97,8 @@ These are the properties that can be modified:
 // Radius of the hole punched in the tail
 [[AMTagView appearance] setHoleRadius:float]
 
-// Text padding
-[[AMTagView appearance] setTextPadding:float]
+// Text padding (x for horizontal padding, y for vertical)
+[[AMTagView appearance] setTextPadding:CGPoint]
 
 // Text font
 [[AMTagView appearance] setTextFont:UIFont]
