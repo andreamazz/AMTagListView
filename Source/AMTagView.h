@@ -17,6 +17,10 @@ extern NSString * const AMTagViewNotification;
  */
 @interface AMTagView : UIView
 
+@property (nonatomic, strong) UILabel *labelText;
+@property (nonatomic, strong) UIButton *button;
+@property (nonatomic, strong) UIImageView *imageView;
+
 /** Radius
  *
  * The tag's corner radius
