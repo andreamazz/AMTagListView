@@ -25,10 +25,6 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 @interface AMTagView ()
 
-@property (nonatomic, strong) UILabel *labelText;
-@property (nonatomic, strong) UIButton *button;
-@property (nonatomic, strong) UIImageView *imageView;
-
 @end
 
 @implementation AMTagView
