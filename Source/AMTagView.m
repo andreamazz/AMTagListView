@@ -218,8 +218,12 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     [self.labelText setText:text];
 }
 
-- (NSString*)tagText {
+- (NSString *)tagText {
     return self.labelText.text;
+}
+
+- (void)setTagText:(NSString *)tagText {
+    [self setupWithText:tagText];
 }
 
 #pragma mark - Custom setters

@@ -6,6 +6,8 @@
 #import "AMTagView.h"
 #import "AMTagListView.h"
 
+#define kRECORDING NO
+
 SpecBegin(AMTagView)
 
 __block AMTagView *subject;
@@ -58,7 +60,11 @@ describe(@"can be customised via UIAppearance", ^{
 
         subject = [[AMTagView alloc] initWithFrame:CGRectMake(0, 0, 120, 60)];
         [subject setupWithText:@"I love cheese"];
-        expect(subject).to.haveValidSnapshot();
+        if (kRECORDING) {
+            expect(subject).to.recordSnapshot();
+        } else {
+            expect(subject).to.haveValidSnapshot();
+        }
     });
 
     it(@"can specify vertical and horizontal padding separately", ^{
@@ -66,15 +72,27 @@ describe(@"can be customised via UIAppearance", ^{
         
         subject = [[AMTagView alloc] initWithFrame:CGRectMake(0, 0, 120, 60)];
         [subject setupWithText:@"I love cheese"];
-        expect(subject).to.haveValidSnapshot();
+        if (kRECORDING) {
+            expect(subject).to.recordSnapshot();
+        } else {
+            expect(subject).to.haveValidSnapshot();
+        }
     });
     
     it(@"updates the text color properly", ^{
         subject = [[AMTagView alloc] initWithFrame:CGRectMake(0, 0, 120, 60)];
         [subject setupWithText:@"I love cheese"];
-        expect(subject).to.haveValidSnapshotNamed(@"can_be_customised_via_UIAppearance_updates_the_text_color_properly_before");
+        if (kRECORDING) {
+            expect(subject).to.recordSnapshotNamed(@"can_be_customised_via_UIAppearance_updates_the_text_color_properly_before");
+        } else {
+            expect(subject).to.haveValidSnapshotNamed(@"can_be_customised_via_UIAppearance_updates_the_text_color_properly_before");
+        }
         [subject setTextColor:[UIColor redColor]];
-        expect(subject).to.haveValidSnapshotNamed(@"can_be_customised_via_UIAppearance_updates_the_text_color_properly_after");
+        if (kRECORDING) {
+            expect(subject).to.recordSnapshotNamed(@"can_be_customised_via_UIAppearance_updates_the_text_color_properly_after");
+        } else {
+            expect(subject).to.haveValidSnapshotNamed(@"can_be_customised_via_UIAppearance_updates_the_text_color_properly_after");
+        }
     });
 });
 

@@ -83,6 +83,11 @@ extern NSString * const AMTagViewNotification;
  */
 @property (nonatomic, assign) float     imagePadding UI_APPEARANCE_SELECTOR;
 
+/**
+ * Text displayed
+ */
+@property (nonatomic, weak) NSString *tagText;
+
 /** Setup a new tag
  *
  * Sets up the tag with a given string
@@ -90,13 +95,5 @@ extern NSString * const AMTagViewNotification;
  * @param text The text to display
  */
 - (void)setupWithText:(NSString *)text;
-
-/** Text displayed
- *
- * Returns the current text
- *
- * @return The current text
- */
-- (NSString *)tagText;
 
 @end

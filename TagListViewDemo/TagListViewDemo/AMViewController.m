@@ -15,7 +15,6 @@
 
 @property (weak, nonatomic) IBOutlet UITextField    *textField;
 @property (weak, nonatomic) IBOutlet AMTagListView	*tagListView;
-@property (nonatomic, strong) AMTagView             *selection;
 
 @end
 
@@ -43,17 +42,27 @@
 	[self.tagListView addTag:@"hi there"];
     
     self.tagListView.tagListDelegate = self;
-	
-	__weak AMViewController* weakSelf = self;
-	[self.tagListView setTapHandler:^(AMTagView *view) {
-		weakSelf.selection = view;
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete"
-														message:[NSString stringWithFormat:@"Delete %@?", [view tagText]]
-													   delegate:weakSelf
-											  cancelButtonTitle:@"Nope"
-											  otherButtonTitles:@"Sure!", nil];
-		[alert show];
+
+    [self.tagListView setTapHandler:^(AMTagView *view) {
+        view.tag++;
+        NSString *text = [[view.tagText componentsSeparatedByString:@" +"] firstObject];
+        [view setTagText:[NSString stringWithFormat:@"%@ +%ld", text, view.tag]];
 	}];
+
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Remove"
+                                                                              style:UIBarButtonItemStylePlain
+                                                                             target:self 
+                                                                             action:@selector(removeLast)];
+}
+
+- (void)removeLast {
+    AMTagView *tag = self.tagListView.tags.lastObject;
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete"
+                                                    message:[NSString stringWithFormat:@"Delete %@?", [tag tagText]]
+                                                   delegate:self
+                                          cancelButtonTitle:@"Nope"
+                                          otherButtonTitles:@"Sure!", nil];
+    [alert show];
 }
 
 - (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size
@@ -65,7 +74,8 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
 	if (buttonIndex > 0) {
-		[self.tagListView removeTag:self.selection];
+        AMTagView *tag = self.tagListView.tags.lastObject;
+		[self.tagListView removeTag:tag];
 	}
 }
 

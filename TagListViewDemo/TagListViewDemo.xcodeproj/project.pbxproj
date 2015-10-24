@@ -199,6 +199,7 @@
 				605C2B521AE28AA600166825 /* Frameworks */,
 				605C2B531AE28AA600166825 /* Resources */,
 				964E3AD7530EB420E04FC858 /* Copy Pods Resources */,
+				A1923041984AF237BB61097F /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,6 +314,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TagListViewTests/Pods-TagListViewTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A1923041984AF237BB61097F /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TagListViewTests/Pods-TagListViewTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D304869059ED4AFFB675965A /* Warn for TODO and FIXME comments */ = {

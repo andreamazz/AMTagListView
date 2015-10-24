@@ -6,6 +6,8 @@
 
 #import "AMTagListView.h"
 
+#define kRECORDING NO
+
 @interface NegativeDelegate : NSObject <AMTagListDelegate>
 @end
 
@@ -17,8 +19,6 @@
 }
 
 @end
-
-
 
 SpecBegin(AMTagListView)
 
@@ -139,26 +139,42 @@ describe(@"notifications", ^{
 describe(@"visuals", ^{
     it(@"looks right by default", ^{
         subject = [[AMTagListView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-        expect(subject).to.haveValidSnapshot();
+        if (kRECORDING) {
+            expect(subject).to.recordSnapshot();
+        } else {
+            expect(subject).to.haveValidSnapshot();
+        }
     });
 
     it(@"looks right with a tag", ^{
         subject = [[AMTagListView alloc] initWithFrame:CGRectMake(0, 0, 400, 400)];
         [subject addTag:@"Hello World"];
-        expect(subject).to.haveValidSnapshot();
+        if (kRECORDING) {
+            expect(subject).to.recordSnapshot();
+        } else {
+            expect(subject).to.haveValidSnapshot();
+        }
     });
 
     it(@"looks right with an array of tags", ^{
         subject = [[AMTagListView alloc] initWithFrame:CGRectMake(0, 0, 400, 400)];
         [subject addTags:@[@"Hello", @"World", @"OK?"]];
-        expect(subject).to.haveValidSnapshot();
+        if (kRECORDING) {
+            expect(subject).to.recordSnapshot();
+        } else {
+            expect(subject).to.haveValidSnapshot();
+        }
     });
 
     it(@"looks right with an array of tags aligned to the right", ^{
         subject = [[AMTagListView alloc] initWithFrame:CGRectMake(0, 0, 400, 400)];
         subject.tagAlignment = AMTagAlignmentRight;
         [subject addTags:@[@"Hello", @"World", @"OK?"]];
-        expect(subject).to.haveValidSnapshot();
+        if (kRECORDING) {
+            expect(subject).to.recordSnapshot();
+        } else {
+            expect(subject).to.haveValidSnapshot();
+        }
     });
 });
 

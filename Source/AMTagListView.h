@@ -151,7 +151,7 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  *
  * An array holding the current tag view objects
  */
-@property (nonatomic, strong, readonly) NSMutableArray *tags;
+@property (nonatomic, strong, readonly) NSMutableArray<AMTagView *> *tags;
 
 /** Tag list delegate
  *

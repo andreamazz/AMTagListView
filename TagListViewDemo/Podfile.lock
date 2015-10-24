@@ -1,23 +1,23 @@
 PODS:
   - Expecta (1.0.3)
-  - Expecta+Snapshots (1.3.4):
+  - Expecta+Snapshots (2.0.0):
     - Expecta (~> 1.0)
-    - FBSnapshotTestCase (~> 1.8)
-  - FBSnapshotTestCase (1.8.1)
+    - FBSnapshotTestCase/Core (~> 2.0.3)
+  - FBSnapshotTestCase/Core (2.0.5)
   - OCMock (3.1.5)
   - Specta (1.0.4)
 
 DEPENDENCIES:
   - Expecta
-  - Expecta+Snapshots (~> 1.3.2)
+  - Expecta+Snapshots
   - OCMock (~> 3.1.2)
   - Specta
 
 SPEC CHECKSUMS:
   Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
-  Expecta+Snapshots: ca15bfb57e7a0f78f86c7699c2c54ffacfa4ad2a
-  FBSnapshotTestCase: 3dc3899168747a0319c5278f5b3445c13a6532dd
+  Expecta+Snapshots: 29b38dd695bc72a0ed2bea833937d78df41943ba
+  FBSnapshotTestCase: 6917deb01d0556dd544536f9eb34e0cf26f904d5
   OCMock: 4c2925291f80407c3738dd1db14d21d0cc278864
   Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
 
-COCOAPODS: 0.38.2
+COCOAPODS: 0.39.0
