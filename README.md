@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="640" height="240" src="assets/logo.png"/>
+  <img width="420" height="240" src="assets/logo.png"/>
 </p>
 
 [![Build Status](https://travis-ci.org/andreamazz/AMTagListView.png)](https://travis-ci.org/andreamazz/AMTagListView)
@@ -8,6 +8,12 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 UIScrollView subclass that allows to add a list of highly customizable tags. You can customize colors, border radius, and the tail of the tag. Tags can be added in bulk or dynamically one by one. The newly inserted tag will automatically arrange itself inside the scrollview.
+
+<p align="center">
+  <a href='https://appetize.io/app/ax3k4v3wn05pa8z1ue6pvjnh38' alt='Live demo'>
+    <img width="50" height="60" src="assets/demo.png"/>
+  </a>
+</p>
 
 ##Screenshot
 
@@ -124,11 +130,16 @@ This method asks his delegate if a given tag can be added. The method also shows
 To run the test suite install `xcpretty` gem, launch `pod install` inside the `Tests` folder, and run the rake task in the root.
 
 #Author
-[Andrea Mazzini](https://twitter.com/theandreamazz)
+[Andrea Mazzini](https://twitter.com/theandreamazz). I'm available for freelance work, feel free to contact me. 
+
+Want to support the development of [these free libraries](https://cocoapods.org/owners/734)? Buy me a coffee ☕️ via [Paypal](https://www.paypal.me/andreamazzini).  
+
+#Contributors
+Thanks to [Orta Therox](https://github.com/orta) and [everyone](https://github.com/andreamazz/AMTagListView/graphs/contributors) kind enough to submit a pull request. 
 
 #MIT License
 
-	Copyright (c) 2014 Andrea Mazzini. All rights reserved.
+	Copyright (c) 2015 Andrea Mazzini. All rights reserved.
 
 	Permission is hereby granted, free of charge, to any person obtaining a
 	copy of this software and associated documentation files (the "Software"),
