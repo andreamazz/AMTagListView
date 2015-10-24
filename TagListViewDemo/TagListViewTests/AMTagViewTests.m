@@ -46,6 +46,23 @@ it(@"gets the right tag text when setup with text", ^{
     expect(subject.tagText).to.equal(@"Hi Mom!");
 });
 
+describe(@"changing the text", ^{
+    it(@"can change the inner text", ^{
+        expect(subject.tagText).notTo.equal(@"Hello!");
+        [subject setupWithText:@"Cha cha chaaange"];
+        expect(subject.tagText).to.equal(@"Cha cha chaaange");
+    });
+    it(@"looks ok", ^{
+        expect(subject.tagText).notTo.equal(@"Hello!");
+        [subject setupWithText:@"Cha cha chaaange"];
+        if (kRECORDING) {
+            expect(subject).to.recordSnapshot();
+        } else {
+            expect(subject).to.haveValidSnapshot();
+        }
+    });
+});
+
 describe(@"can be customised via UIAppearance", ^{
     it(@"and it looks right", ^{
         [[AMTagView appearance] setRadius:1];
