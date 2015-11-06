@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "65225F46188DC70E006DE0AB"
-               BuildableName = "TagListViewDemo.app"
+               BuildableName = "TagList.app"
                BlueprintName = "TagListViewDemo"
                ReferencedContainer = "container:TagListViewDemo.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65225F46188DC70E006DE0AB"
-            BuildableName = "TagListViewDemo.app"
+            BuildableName = "TagList.app"
             BlueprintName = "TagListViewDemo"
             ReferencedContainer = "container:TagListViewDemo.xcodeproj">
          </BuildableReference>
@@ -80,7 +80,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65225F46188DC70E006DE0AB"
-            BuildableName = "TagListViewDemo.app"
+            BuildableName = "TagList.app"
             BlueprintName = "TagListViewDemo"
             ReferencedContainer = "container:TagListViewDemo.xcodeproj">
          </BuildableReference>
@@ -99,7 +99,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "65225F46188DC70E006DE0AB"
-            BuildableName = "TagListViewDemo.app"
+            BuildableName = "TagList.app"
             BlueprintName = "TagListViewDemo"
             ReferencedContainer = "container:TagListViewDemo.xcodeproj">
          </BuildableReference>

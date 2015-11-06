@@ -45,7 +45,7 @@
 		650BD3C01B60EE4C00D5550E /* AMTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMTagView.h; path = ../Source/AMTagView.h; sourceTree = "<group>"; };
 		650BD3C11B60EE4C00D5550E /* AMTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AMTagView.m; path = ../Source/AMTagView.m; sourceTree = "<group>"; };
 		650BD3C41B60EE5200D5550E /* AMTagListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AMTagListView.h; path = ../Source/AMTagListView.h; sourceTree = "<group>"; };
-		65225F47188DC70E006DE0AB /* TagListViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TagListViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		65225F47188DC70E006DE0AB /* TagList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TagList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		65225F4A188DC70E006DE0AB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		65225F4C188DC70E006DE0AB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		65225F4E188DC70E006DE0AB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -130,7 +130,7 @@
 		65225F48188DC70E006DE0AB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				65225F47188DC70E006DE0AB /* TagListViewDemo.app */,
+				65225F47188DC70E006DE0AB /* TagList.app */,
 				605C2B551AE28AA600166825 /* TagListViewTests.xctest */,
 			);
 			name = Products;
@@ -151,14 +151,12 @@
 		65225F50188DC70E006DE0AB /* TagListViewDemo */ = {
 			isa = PBXGroup;
 			children = (
+				6535AF6D1BED52B0004FBE48 /* Resources */,
 				65225F7F188DC751006DE0AB /* AMTagListView */,
 				65225F59188DC70E006DE0AB /* AMAppDelegate.h */,
 				65225F5A188DC70E006DE0AB /* AMAppDelegate.m */,
-				65225F5C188DC70E006DE0AB /* Main.storyboard */,
-				6598AD721A3AE68F00011234 /* Launch Screen.xib */,
 				65225F5F188DC70E006DE0AB /* AMViewController.h */,
 				65225F60188DC70E006DE0AB /* AMViewController.m */,
-				65225F62188DC70E006DE0AB /* Images.xcassets */,
 				65225F51188DC70E006DE0AB /* Supporting Files */,
 			);
 			path = TagListViewDemo;
@@ -187,6 +185,16 @@
 			path = ../../AMTagListView;
 			sourceTree = "<group>";
 		};
+		6535AF6D1BED52B0004FBE48 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				65225F5C188DC70E006DE0AB /* Main.storyboard */,
+				65225F62188DC70E006DE0AB /* Images.xcassets */,
+				6598AD721A3AE68F00011234 /* Launch Screen.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -199,7 +207,6 @@
 				605C2B521AE28AA600166825 /* Frameworks */,
 				605C2B531AE28AA600166825 /* Resources */,
 				964E3AD7530EB420E04FC858 /* Copy Pods Resources */,
-				A1923041984AF237BB61097F /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -226,7 +233,7 @@
 			);
 			name = TagListViewDemo;
 			productName = TagListViewDemo;
-			productReference = 65225F47188DC70E006DE0AB /* TagListViewDemo.app */;
+			productReference = 65225F47188DC70E006DE0AB /* TagList.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -314,21 +321,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TagListViewTests/Pods-TagListViewTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A1923041984AF237BB61097F /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TagListViewTests/Pods-TagListViewTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		D304869059ED4AFFB675965A /* Warn for TODO and FIXME comments */ = {
@@ -423,7 +415,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "pixel.fancy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TagListViewDemo.app/TagListViewDemo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TagList.app/TagList";
 			};
 			name = Debug;
 		};
@@ -448,7 +440,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = "pixel.fancy.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TagListViewDemo.app/TagListViewDemo";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TagList.app/TagList";
 			};
 			name = Release;
 		};
@@ -562,7 +554,7 @@
 				GCC_PREFIX_HEADER = "TagListViewDemo/TagListViewDemo-Prefix.pch";
 				INFOPLIST_FILE = "TagListViewDemo/TagListViewDemo-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "it.fancypixel.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TagList;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -576,7 +568,7 @@
 				GCC_PREFIX_HEADER = "TagListViewDemo/TagListViewDemo-Prefix.pch";
 				INFOPLIST_FILE = "TagListViewDemo/TagListViewDemo-Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = "it.fancypixel.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TagList;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

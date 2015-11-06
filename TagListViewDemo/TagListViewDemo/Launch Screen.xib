@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C78c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -12,33 +11,28 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="aqO-Ik-I0g">
-                    <rect key="frame" x="100" y="100" width="280" height="280"/>
+                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Qw-cU-LPj">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="64"/>
+                    <animations/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="aqO-Ik-I0g" secondAttribute="height" multiplier="1:1" id="5Nx-3o-3BH"/>
+                        <constraint firstAttribute="height" constant="64" id="VVg-Ic-k9G"/>
                     </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AMTagListView" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a3Q-6W-Zut">
-                    <rect key="frame" x="170" y="390" width="139.5" height="26"/>
-                    <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                    <color key="barTintColor" red="0.12156862745098039" green="0.55294117647058827" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <items>
+                        <navigationItem id="aax-r6-WQD"/>
+                    </items>
+                </navigationBar>
             </subviews>
-            <color key="backgroundColor" red="0.12156862745098039" green="0.55294117647058827" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="aqO-Ik-I0g" secondAttribute="trailing" constant="100" id="Jsk-bi-FHJ"/>
-                <constraint firstAttribute="centerX" secondItem="a3Q-6W-Zut" secondAttribute="centerX" id="YrN-Wq-QR9"/>
-                <constraint firstItem="a3Q-6W-Zut" firstAttribute="top" secondItem="aqO-Ik-I0g" secondAttribute="bottom" constant="10" id="hgd-Fv-EOg"/>
-                <constraint firstItem="aqO-Ik-I0g" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="100" id="kyb-Fc-wgT"/>
-                <constraint firstAttribute="centerY" secondItem="aqO-Ik-I0g" secondAttribute="centerY" id="qmI-V0-P6u"/>
+                <constraint firstItem="4Qw-cU-LPj" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KCO-pW-oUN"/>
+                <constraint firstAttribute="trailing" secondItem="4Qw-cU-LPj" secondAttribute="trailing" id="pfZ-FY-7Ya"/>
+                <constraint firstItem="4Qw-cU-LPj" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="rTZ-dU-LLw"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="404" y="445"/>
         </view>
     </objects>
-    <resources>
-        <image name="logo" width="180" height="180"/>
-    </resources>
 </document>
