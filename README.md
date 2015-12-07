@@ -23,7 +23,7 @@ UIScrollView subclass that allows to add a list of highly customizable tags. You
 
 ##Swift
 ```
-pod 'AMTagListView'```
+pod 'AMTagListView'
 ```
 When using a bridging header:
 ```objc
