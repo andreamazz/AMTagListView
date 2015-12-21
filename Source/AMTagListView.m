@@ -78,6 +78,7 @@
 - (void)addTag:(NSString *)text andRearrange:(BOOL)rearrange withClientData:(id)clientData {
     AMTagView* tagView = [[AMTagView alloc] initWithFrame:CGRectZero];
     [tagView setupWithText:text];
+    tagView.clientData = clientData;
 
     CGRect frame = tagView.frame;
     frame.size.width = MIN(frame.size.width, self.frame.size.width - self.marginX * 2);
