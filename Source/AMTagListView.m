@@ -67,7 +67,15 @@
     [self addTag:text andRearrange:YES];
 }
 
+- (void)addTag:(NSString *)text withClientData:(id)clientData {
+    [self addTag:text andRearrange:YES withClientData:clientData];
+}
+
 - (void)addTag:(NSString *)text andRearrange:(BOOL)rearrange {
+    [self addTag:text andRearrange:rearrange withClientData:nil];
+}
+
+- (void)addTag:(NSString *)text andRearrange:(BOOL)rearrange withClientData:(id)clientData {
     AMTagView* tagView = [[AMTagView alloc] initWithFrame:CGRectZero];
     [tagView setupWithText:text];
 
