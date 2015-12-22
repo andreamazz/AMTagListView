@@ -88,6 +88,12 @@ Use the AMTagView's UIAppearance selectors to customize its appearance:
 AMTagView.appearance().radius = 10
 ```
 
+###Add a payload to a tag
+You can add a payload to a single tag by using `addTag:withUserInfo:`:
+```objc
+[self.tagListView addTag:@"hello" withUserInfo:@{ @"data": somePayload }];
+```
+
 ###Appearance properties
 These are the properties that can be modified:
 ```objc

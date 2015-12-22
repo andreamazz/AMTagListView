@@ -1,0 +1,10 @@
+PODS:
+  - AMTagListView (0.4.2)
+
+DEPENDENCIES:
+  - AMTagListView
+
+SPEC CHECKSUMS:
+  AMTagListView: b8753b41bc81c5fb4a1f225fd7e8f5dc3f24649e
+
+COCOAPODS: 0.34.4
