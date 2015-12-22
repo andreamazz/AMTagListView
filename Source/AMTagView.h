@@ -91,7 +91,7 @@ extern NSString * const AMTagViewNotification;
 /**
  * Optional client-specific data to store with/identify each tag
  */
-@property (nonatomic, strong) id clientData;
+@property (nonatomic, strong) NSDictionary *userInfo;
 
 
 /** Setup a new tag

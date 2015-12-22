@@ -67,18 +67,18 @@
     [self addTag:text andRearrange:YES];
 }
 
-- (void)addTag:(NSString *)text withClientData:(id)clientData {
-    [self addTag:text andRearrange:YES withClientData:clientData];
+- (void)addTag:(NSString *)text withUserInfo:(NSDictionary *)userInfo {
+    [self addTag:text andRearrange:YES withUserInfo:userInfo];
 }
 
 - (void)addTag:(NSString *)text andRearrange:(BOOL)rearrange {
-    [self addTag:text andRearrange:rearrange withClientData:nil];
+    [self addTag:text andRearrange:rearrange withUserInfo:nil];
 }
 
-- (void)addTag:(NSString *)text andRearrange:(BOOL)rearrange withClientData:(id)clientData {
+- (void)addTag:(NSString *)text andRearrange:(BOOL)rearrange withUserInfo:(NSDictionary *)userInfo {
     AMTagView* tagView = [[AMTagView alloc] initWithFrame:CGRectZero];
     [tagView setupWithText:text];
-    tagView.clientData = clientData;
+    tagView.userInfo = userInfo;
 
     CGRect frame = tagView.frame;
     frame.size.width = MIN(frame.size.width, self.frame.size.width - self.marginX * 2);

@@ -63,9 +63,9 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  * Adds a new tag to the scroll view.
  *
  * @param text The text that the tag will display
- * @param clientData A "black box" object the client wishes to store with this tag
+ * @param userInfo Data the client wishes to store with this tag
  */
- - (void)addTag:(NSString *)text withClientData:(id)clientData;
+ - (void)addTag:(NSString *)text withUserInfo:(NSDictionary *)userInfo;
 
 /** Add a new tag
  *
