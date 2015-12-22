@@ -61,6 +61,15 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
 /** Add a new tag
  *
  * Adds a new tag to the scroll view.
+ *
+ * @param text The text that the tag will display
+ * @param userInfo Data the client wishes to store with this tag
+ */
+ - (void)addTag:(NSString *)text withUserInfo:(NSDictionary *)userInfo;
+
+/** Add a new tag
+ *
+ * Adds a new tag to the scroll view.
  * You can choose to avoid rearranging the tags when adding a big batch of tags. Remember to
  * call the rearrangeTags method if you do so.
  *

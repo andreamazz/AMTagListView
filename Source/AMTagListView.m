@@ -67,9 +67,18 @@
     [self addTag:text andRearrange:YES];
 }
 
+- (void)addTag:(NSString *)text withUserInfo:(NSDictionary *)userInfo {
+    [self addTag:text andRearrange:YES withUserInfo:userInfo];
+}
+
 - (void)addTag:(NSString *)text andRearrange:(BOOL)rearrange {
+    [self addTag:text andRearrange:rearrange withUserInfo:nil];
+}
+
+- (void)addTag:(NSString *)text andRearrange:(BOOL)rearrange withUserInfo:(NSDictionary *)userInfo {
     AMTagView* tagView = [[AMTagView alloc] initWithFrame:CGRectZero];
     [tagView setupWithText:text];
+    tagView.userInfo = userInfo;
 
     CGRect frame = tagView.frame;
     frame.size.width = MIN(frame.size.width, self.frame.size.width - self.marginX * 2);

@@ -88,6 +88,12 @@ extern NSString * const AMTagViewNotification;
  */
 @property (nonatomic, weak) NSString *tagText;
 
+/**
+ * Optional client-specific data to store with/identify each tag
+ */
+@property (nonatomic, strong) NSDictionary *userInfo;
+
+
 /** Setup a new tag
  *
  * Sets up the tag with a given string
