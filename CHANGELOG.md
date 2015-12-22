@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 `AMTagListView` adheres to [Semantic Versioning](http://semver.org/).
 
+- `1.1.x` Releases - [1.1.0](#110) 
 - `1.0.x` Releases - [1.0.0](#100) 
 - `0.9.x` Releases - [0.9.0](#090) 
 - `0.8.x` Releases - [0.8](#08) | [0.8.1](#081)
@@ -9,7 +10,15 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [0.9.0](https://github.com/andreamazz/AMTagListView/releases/tag/0.9.0)
+## [1.1.0](https://github.com/andreamazz/AMTagListView/releases/tag/1.1.0)
+
+#### Added  
+
+- `addTag:withUserInfo:` to add a payload to tags. Thanks to [nsolter](https://github.com/nsolter)  
+
+## [1.0.0](https://github.com/andreamazz/AMTagListView/releases/tag/1.0.0)
+
+Stable release
 
 #### Changed  
 
