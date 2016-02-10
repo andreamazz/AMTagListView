@@ -27,7 +27,8 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 @property (nonatomic, strong) UILabel *labelText;
 @property (nonatomic, strong) UIButton *button;
-@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) NSMutableArray *imageViews;
+@property (nonatomic, strong) UIView *divider;
 
 @end
 
@@ -44,8 +45,8 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     [[self appearance] setTextFont:kDefaultFont];
     [[self appearance] setTextColor:kDefaultTextColor];
     [[self appearance] setTagColor:kDefaultTagColor];
+    [[self appearance] setDividerColor:kDefaultTagColor];
     [[self appearance] setInnerTagColor:kDefaultInnerTagColor];
-    [[self appearance] setAccessoryImage:nil];
     [[self appearance] setImagePadding:kDefaultImagePadding];
 }
 
@@ -64,7 +65,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         self.backgroundColor = [UIColor clearColor];
         self.labelText = [[UILabel alloc] init];
         self.button = [[UIButton alloc] init];
-        self.imageView = [[UIImageView alloc] init];
+        self.imageViews = [[NSMutableArray alloc] init];
         self.labelText.textAlignment = NSTextAlignmentCenter;
         _radius = [[[self class] appearance] radius];
         _tagLength = [[[self class] appearance] tagLength];
@@ -74,13 +75,11 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         _textFont = [[[self class] appearance] textFont];
         _textColor = [[[self class] appearance] textColor];
         _tagColor = [[[self class] appearance] tagColor];
+        _dividerColor = [[[self class] appearance] dividerColor];
         _innerTagColor = [[[self class] appearance] innerTagColor];
-        _accessoryImage = [[[self class] appearance] accessoryImage];
         _imagePadding = [[[self class] appearance] imagePadding];
-        [self addSubview:self.labelText];
-        [self addSubview:self.imageView];
-        [self addSubview:self.button];
         [self.button addTarget:self action:@selector(actionButton:) forControlEvents:UIControlEventTouchUpInside];
+        self.divider = [[UIView alloc] initWithFrame:CGRectZero];
     }
     return self;
 }
@@ -89,16 +88,19 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     [super layoutSubviews];
 
     CGFloat leftMargin = (int)(self.innerTagPadding + self.tagLength + (self.tagLength ? self.radius / 2 : 0));
-    CGFloat rightMargin = self.innerTagPadding;
-
-    if (self.accessoryImage) {
-        CGRect imageRect = self.imageView.bounds;
-        rightMargin = (int)ceilf(rightMargin + imageRect.size.width + self.imagePadding);
-        imageRect.origin.x = (int)(self.frame.size.width - rightMargin);
-        imageRect.origin.y = (int)(self.frame.size.height - self.imageView.frame.size.height) / 2;
-        self.imageView.frame = imageRect;
+    CGFloat rightMargin = self.innerTagPadding + self.textPadding.x;
+    
+    if (self.accessoryImages) {
+        for (UIImageView *imageView in self.imageViews) {
+            CGRect imageRect = imageView.bounds;
+            rightMargin += imageRect.size.width + self.imagePadding;
+            rightMargin = ceilf(rightMargin);
+            imageRect.origin.x = (int)(self.frame.size.width - rightMargin);
+            imageRect.origin.y = (int)(self.frame.size.height - imageView.frame.size.height) / 2;
+            imageView.frame = imageRect;
+        }
     }
-
+    
     [self.labelText.layer setCornerRadius:self.radius / 2];
     [self.labelText setFrame:CGRectMake(
         leftMargin,
@@ -106,10 +108,17 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         (int)(self.frame.size.width - rightMargin - leftMargin),
         (int)(self.frame.size.height - self.innerTagPadding * 2)
     )];
+    
+    CGRect labelFrame = self.labelText.frame;
+    
+    [self.divider setBackgroundColor:self.dividerColor];
+    [self.divider setFrame:CGRectMake(self.labelText.frame.origin.x + self.labelText.frame.size.width , self.labelText.frame.origin.y, 0.5, self.labelText.frame.size.height)];
 
     CGRect buttonRect = self.labelText.frame;
-    if (self.accessoryImage) {
-        buttonRect.size.width = buttonRect.size.width + self.imageView.bounds.size.width + self.imagePadding * 2;
+    if (self.accessoryImages) {
+        for (UIImageView *imageView in self.imageViews) {
+            buttonRect.size.width += imageView.bounds.size.width + self.imagePadding * 2;
+        }
     }
 
     [self.button setFrame:buttonRect];
@@ -196,6 +205,18 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 #pragma mark - Public Interface
 
 - (void)setupWithText:(NSString*)text {
+    
+    [self addSubview:self.labelText];
+    for (UIImage *image in self.accessoryImages) {
+        UIImageView *imageView = [[UIImageView alloc] init];
+        [self.imageViews addObject:imageView];
+        [self addSubview:imageView];
+    }
+    [self addSubview:self.button];
+    if ([self.accessoryImages count] > 0) {
+        [self addSubview:self.divider];
+    }
+
     UIFont* font = self.textFont;
     CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: font}];
 
@@ -203,18 +224,21 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     float tagLength = self.tagLength;
 
     size.width = size.width + self.textPadding.x * 2 + innerPadding * 2 + tagLength;
-    if (self.accessoryImage) {
-        self.imageView.image = self.accessoryImage;
-        [self.imageView sizeToFit];
-        size.width += self.imageView.frame.size.width + self.imagePadding;
-    }
     size.height = (int)ceilf(size.height + self.textPadding.y);
+    if (self.accessoryImages) {
+        for (int i = 0; i < self.accessoryImages.count; i++) {
+            ((UIImageView *)self.imageViews[i]).image = self.accessoryImages[i];
+            ((UIImageView *)self.imageViews[i]).tintColor = [UIColor whiteColor];
+            [((UIImageView *)self.imageViews[i]) sizeToFit];
+            size.width += ((UIImageView *)self.imageViews[i]).frame.size.width + self.imagePadding;
+        }
+    }
     size.width = (int)ceilf(size.width);
 
     CGRect frame = self.frame;
     frame.size = size;
     self.frame = frame;
-
+    
     [self.labelText setText:text];
 }
 
@@ -228,11 +252,6 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 #pragma mark - Custom setters
 
-- (void)setAccessoryImage:(UIImage *)accessoryImage {
-    _accessoryImage = accessoryImage;
-    self.imageView.image = accessoryImage;
-}
-
 - (void)setTextColor:(UIColor *)textColor {
     _textColor = textColor;
     [self setNeedsLayout];
@@ -240,6 +259,11 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 - (void)setTagColor:(UIColor *)tagColor {
     _tagColor = tagColor;
+    [self setNeedsDisplay];
+}
+
+- (void)setDividerColor:(UIColor *)dividerColor {
+    _dividerColor = dividerColor;
     [self setNeedsDisplay];
 }
 

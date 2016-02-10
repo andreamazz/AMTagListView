@@ -71,17 +71,24 @@ extern NSString * const AMTagViewNotification;
  */
 @property (nonatomic, strong) UIColor	*innerTagColor UI_APPEARANCE_SELECTOR;
 
-/** Accessory image
+/** Accessory images
  *
- * A UIImage with an accessory image displayed inside the tag
+ * An array of UIImages to be displayed inside the tag
  */
-@property (nonatomic, strong) UIImage	*accessoryImage UI_APPEARANCE_SELECTOR;
+@property (nonatomic, strong) NSArray	*accessoryImages;
 
 /** Accessory image padding
  *
- * The padding of the accessory image within the tag
+ * The padding of the accessory images within the tag
  */
 @property (nonatomic, assign) float     imagePadding UI_APPEARANCE_SELECTOR;
+
+/** Accessory image divider color
+ *
+ * The color to divide the text from the images
+ */
+@property (nonatomic, strong) UIColor    *dividerColor UI_APPEARANCE_SELECTOR;
+
 
 /**
  * Text displayed
