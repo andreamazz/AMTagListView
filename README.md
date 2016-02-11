@@ -3,7 +3,7 @@
 </p>
 
 [![Build Status](https://travis-ci.org/andreamazz/AMTagListView.png)](https://travis-ci.org/andreamazz/AMTagListView)
-[![Cocoapods](https://cocoapod-badges.herokuapp.com/v/AMTagListView/badge.png)](http://cocoapods.org/?q=amtaglistview)
+[![CocoaPods](https://cocoapod-badges.herokuapp.com/v/AMTagListView/badge.png)](http://cocoapods.org/?q=amtaglistview)
 [![Coverage Status](https://coveralls.io/repos/andreamazz/AMTagListView/badge.svg)](https://coveralls.io/r/andreamazz/AMTagListView)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
@@ -19,7 +19,7 @@ UIScrollView subclass that allows to add a list of highly customizable tags. You
 
 ![AMTagListView](https://raw.githubusercontent.com/andreamazz/AMTagListView/master/assets/screenshot.gif)
 
-##Setup with Cocoapods
+##Setup with CocoaPods
 
 ##Swift
 ```
