@@ -39,6 +39,15 @@ typedef NS_ENUM(NSInteger, AMTagAlignment) {
  */
 - (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size;
 
+/** Should add a new tags with text
+ *
+ * Determines if the list should add a batch of new tags given the resulting content size
+ *
+ * @param tags The text that the tags will display
+ * @param size The size that the tags will occupy
+ */
+- (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagsWithText:(NSArray *)tags resultingContentSize:(CGSize)size;
+
 @end
 
 typedef void (^AMTagListViewTapHandler)(AMTagView*);
@@ -55,8 +64,9 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  * Adds a new tag to the scroll view.
  *
  * @param text The text that the tag will display
+ * @returns AMTagView
  */
-- (void)addTag:(NSString *)text;
+- (AMTagView *)addTag:(NSString *)text;
 
 /** Add a new tag
  *
@@ -64,8 +74,9 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  *
  * @param text The text that the tag will display
  * @param userInfo Data the client wishes to store with this tag
+ * @returns AMTagView
  */
- - (void)addTag:(NSString *)text withUserInfo:(NSDictionary *)userInfo;
+ - (AMTagView *)addTag:(NSString *)text withUserInfo:(NSDictionary *)userInfo;
 
 /** Add a new tag
  *
@@ -74,8 +85,9 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  * call the rearrangeTags method if you do so.
  *
  * @param text The text that the tag will display
+ * @returns AMTagView
  */
-- (void)addTag:(NSString *)text andRearrange:(BOOL)rearrange;
+- (AMTagView *)addTag:(NSString *)text andRearrange:(BOOL)rearrange;
 
 /** Add a multiple tags
  *
@@ -98,9 +110,9 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
 /** Add a specific tag to the tag list
  *
  * @param tagView An AMTagView instance
- *
+ * @returns AMTagView
  */
-- (void)addTagView:(AMTagView *)tagView;
+- (AMTagView *)addTagView:(AMTagView *)tagView;
 
 /** Add a specific tag to the tag list
  *
@@ -108,8 +120,9 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  * call the rearrangeTags method if you do so.
  *
  * @param tagView An AMTagView instance
+ * @returns AMTagView
  */
-- (void)addTagView:(AMTagView *)tagView andRearrange:(BOOL)rearrange;
+- (AMTagView *)addTagView:(AMTagView *)tagView andRearrange:(BOOL)rearrange;
 
 /** Remove a tag
  *

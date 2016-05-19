@@ -63,19 +63,19 @@
 
 #pragma mark - Tag insertion
 
-- (void)addTag:(NSString *)text {
-    [self addTag:text andRearrange:YES];
+- (AMTagView *)addTag:(NSString *)text {
+    return [self addTag:text andRearrange:YES];
 }
 
-- (void)addTag:(NSString *)text withUserInfo:(NSDictionary *)userInfo {
-    [self addTag:text andRearrange:YES withUserInfo:userInfo];
+- (AMTagView *)addTag:(NSString *)text withUserInfo:(NSDictionary *)userInfo {
+    return [self addTag:text andRearrange:YES withUserInfo:userInfo];
 }
 
-- (void)addTag:(NSString *)text andRearrange:(BOOL)rearrange {
-    [self addTag:text andRearrange:rearrange withUserInfo:nil];
+- (AMTagView *)addTag:(NSString *)text andRearrange:(BOOL)rearrange {
+    return [self addTag:text andRearrange:rearrange withUserInfo:nil];
 }
 
-- (void)addTag:(NSString *)text andRearrange:(BOOL)rearrange withUserInfo:(NSDictionary *)userInfo {
+- (AMTagView *)addTag:(NSString *)text andRearrange:(BOOL)rearrange withUserInfo:(NSDictionary *)userInfo {
     AMTagView* tagView = [[AMTagView alloc] initWithFrame:CGRectZero];
     [tagView setupWithText:text];
     tagView.userInfo = userInfo;
@@ -93,15 +93,19 @@
     if ([self.tagListDelegate respondsToSelector:@selector(tagList:shouldAddTagWithText:resultingContentSize:)]) {
         if (![self.tagListDelegate tagList:self shouldAddTagWithText:tagView.tagText resultingContentSize:self.contentSize]) {
             [self removeTag:tagView];
+            return nil;
         }
     }
+
+    return tagView;
 }
 
-- (void)addTagView:(AMTagView *)tagView {
+- (AMTagView *)addTagView:(AMTagView *)tagView {
     [self addTagView:tagView andRearrange:YES];
+    return tagView;
 }
 
-- (void)addTagView:(AMTagView *)tagView andRearrange:(BOOL)rearrange {
+- (AMTagView *)addTagView:(AMTagView *)tagView andRearrange:(BOOL)rearrange {
     UIFont *font = [[[tagView class] appearance] textFont];
     CGSize size = [tagView.tagText sizeWithAttributes:@{NSFontAttributeName: font}];
     CGPoint padding = [[[tagView class] appearance] textPadding];
@@ -121,8 +125,11 @@
     if ([self.tagListDelegate respondsToSelector:@selector(tagList:shouldAddTagWithText:resultingContentSize:)]) {
         if (![self.tagListDelegate tagList:self shouldAddTagWithText:tagView.tagText resultingContentSize:self.contentSize]) {
             [self removeTag:tagView];
+            return nil;
         }
     }
+
+    return tagView;
 }
 
 - (void)addTags:(NSArray *)array {
@@ -130,8 +137,20 @@
 }
 
 - (void)addTags:(NSArray *)array andRearrange:(BOOL)rearrange {
+    NSMutableArray *tags = [@[] mutableCopy];
     for (NSString* text in array) {
-        [self addTag:text andRearrange:rearrange];
+        AMTagView *tag = [self addTag:text andRearrange:rearrange];
+        if (tag) {
+            [tags addObject:tag];
+        }
+    }
+
+    if ([self.tagListDelegate respondsToSelector:@selector(tagList:shouldAddTagWithText:resultingContentSize:)]) {
+        if (![self.tagListDelegate tagList:self shouldAddTagsWithText:array resultingContentSize:self.contentSize]) {
+            for (AMTagView *tag in tags) {
+                [self removeTag:tag];
+            }
+        }
     }
 }
 
