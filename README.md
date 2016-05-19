@@ -6,6 +6,7 @@
 [![CocoaPods](https://cocoapod-badges.herokuapp.com/v/AMTagListView/badge.png)](http://cocoapods.org/?q=amtaglistview)
 [![Coverage Status](https://coveralls.io/repos/andreamazz/AMTagListView/badge.svg)](https://coveralls.io/r/andreamazz/AMTagListView)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=46FNZD4PDVNRU)
 
 UIScrollView subclass that allows to add a list of highly customizable tags. You can customize colors, border radius, and the tail of the tag. Tags can be added in bulk or dynamically one by one. The newly inserted tag will automatically arrange itself inside the scrollview.
 
@@ -129,6 +130,10 @@ These are the properties that can be modified:
 This method asks his delegate if a given tag can be added. The method also shows the resulting content size.
 ```objc
 - (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size;
+```
+This method asks his delegate if a given batch of tags can be added. The method also shows the resulting content size.
+```objc
+- (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagsWithText:(NSArray *)text resultingContentSize:(CGSize)size;
 ```
 
 ##Test
