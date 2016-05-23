@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 `AMTagListView` adheres to [Semantic Versioning](http://semver.org/).
 
+- `1.2.x` Releases - [1.2.0](#120) 
 - `1.1.x` Releases - [1.1.0](#110) 
 - `1.0.x` Releases - [1.0.0](#100) 
 - `0.9.x` Releases - [0.9.0](#090) 
@@ -9,6 +10,12 @@ All notable changes to this project will be documented in this file.
 - `0.7.x` Releases - [0.7](#07) | [0.7.1](#071)
 
 ---
+
+## [1.2.0](https://github.com/andreamazz/AMTagListView/releases/tag/1.2.0)
+
+#### Added  
+
+- `tagList:shouldAddTagsWithText:resultingContentSize:`
 
 ## [1.1.0](https://github.com/andreamazz/AMTagListView/releases/tag/1.1.0)
 
