@@ -47,6 +47,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     [[self appearance] setTagColor:kDefaultTagColor];
     [[self appearance] setDividerColor:kDefaultTagColor];
     [[self appearance] setInnerTagColor:kDefaultInnerTagColor];
+    [[self appearance] setAccessoryImage:nil];
     [[self appearance] setImagePadding:kDefaultImagePadding];
 }
 
@@ -108,8 +109,6 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         (int)(self.frame.size.width - rightMargin - leftMargin),
         (int)(self.frame.size.height - self.innerTagPadding * 2)
     )];
-    
-    CGRect labelFrame = self.labelText.frame;
     
     [self.divider setBackgroundColor:self.dividerColor];
     [self.divider setFrame:CGRectMake(self.labelText.frame.origin.x + self.labelText.frame.size.width , self.labelText.frame.origin.y, 0.5, self.labelText.frame.size.height)];
@@ -207,7 +206,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 - (void)setupWithText:(NSString*)text {
     
     [self addSubview:self.labelText];
-    for (UIImage *image in self.accessoryImages) {
+    for (int i = 0; i < [self.accessoryImages count]; i++) {
         UIImageView *imageView = [[UIImageView alloc] init];
         [self.imageViews addObject:imageView];
         [self addSubview:imageView];
@@ -251,6 +250,11 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 }
 
 #pragma mark - Custom setters
+
+// use the new accessoryImages
+- (void)setAccessoryImage:(UIImage *)accessoryImage {
+    self.accessoryImages = [[NSArray alloc] initWithObjects:accessoryImage, nil];
+}
 
 - (void)setTextColor:(UIColor *)textColor {
     _textColor = textColor;
