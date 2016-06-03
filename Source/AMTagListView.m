@@ -115,7 +115,6 @@
     size.height = (int)size.height + padding.y;
     size.width = MIN(size.width, self.frame.size.width - self.marginX * 2);
 
-    tagView.frame = (CGRect){{0, 0}, {size.width, size.height}};
     [self.tags addObject:tagView];
 
     if (rearrange) {
