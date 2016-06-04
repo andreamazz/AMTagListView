@@ -10,7 +10,6 @@
 
 @protocol AMTag
 
-- (void)setupWithText:(NSString *)text;
 - (void)setUserInfo:(NSDictionary *)userInfo;
 - (NSDictionary *)userInfo;
 - (NSString *)tagText;
