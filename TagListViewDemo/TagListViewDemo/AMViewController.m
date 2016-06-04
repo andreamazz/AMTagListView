@@ -56,7 +56,7 @@
 }
 
 - (void)removeLast {
-    AMTagView *tag = self.tagListView.tags.lastObject;
+    UIView<AMTag> *tag = self.tagListView.tags.lastObject;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete"
                                                     message:[NSString stringWithFormat:@"Delete %@?", [tag tagText]]
                                                    delegate:self
@@ -65,34 +65,27 @@
     [alert show];
 }
 
-- (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size
-{
+- (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size {
     // Don't add a 'bad' tag
     return ![text isEqualToString:@"bad"];
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
 	if (buttonIndex > 0) {
-        AMTagView *tag = self.tagListView.tags.lastObject;
+        UIView<AMTag> *tag = self.tagListView.tags.lastObject;
 		[self.tagListView removeTag:tag];
 	}
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	[self.tagListView addTag:textField.text];
 	[self.textField setText:@""];
 	return YES;
 }
 
-// Close the keyboard when the user taps away froma  textfield
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    for (UIView* view in self.view.subviews) {
-        if ([view isKindOfClass:[UITextField class]])
-			[view resignFirstResponder];
-    }
+// Close the keyboard when the user taps away from a textfield
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.textField resignFirstResponder];
 }
 
 @end

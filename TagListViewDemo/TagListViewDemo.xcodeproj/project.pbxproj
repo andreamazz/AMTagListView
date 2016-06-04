@@ -60,6 +60,7 @@
 		65225F60188DC70E006DE0AB /* AMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AMViewController.m; sourceTree = "<group>"; };
 		65225F62188DC70E006DE0AB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		65225F69188DC70E006DE0AB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		6555025F1D02D32400AD6473 /* AMTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AMTag.h; path = ../Source/AMTag.h; sourceTree = "<group>"; };
 		6598AD721A3AE68F00011234 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
 		6F4B6BE9E7DD67F87C417260 /* Pods-TagListViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TagListViewTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TagListViewTests/Pods-TagListViewTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +181,7 @@
 				650BD3BF1B60EE4C00D5550E /* AMTagListView.m */,
 				650BD3C01B60EE4C00D5550E /* AMTagView.h */,
 				650BD3C11B60EE4C00D5550E /* AMTagView.m */,
+				6555025F1D02D32400AD6473 /* AMTag.h */,
 			);
 			name = AMTagListView;
 			path = ../../AMTagListView;

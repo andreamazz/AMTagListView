@@ -7,6 +7,7 @@
 //
 
 @import UIKit;
+#import "AMTag.h"
 
 /** Constant for the tag notification */
 extern NSString * const AMTagViewNotification;
@@ -15,7 +16,7 @@ extern NSString * const AMTagViewNotification;
  * @name AMTagView
  * -----------------------------------------------------------------------------
  */
-@interface AMTagView : UIView
+@interface AMTagView : UIView<AMTag>
 
 /** Radius
  *

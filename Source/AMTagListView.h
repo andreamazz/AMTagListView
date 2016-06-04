@@ -8,6 +8,7 @@
 
 @import UIKit;
 #import "AMTagView.h"
+#import "AMTag.h"
 
 @class AMTagView;
 @class AMTagListView;
@@ -29,6 +30,8 @@ typedef NS_ENUM(NSInteger, AMTagAlignment) {
  * -----------------------------------------------------------------------------
  */
 @protocol AMTagListDelegate <NSObject>
+
+@optional
 
 /** Should add a new tag with text
  *
@@ -109,20 +112,20 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
 
 /** Add a specific tag to the tag list
  *
- * @param tagView An AMTagView instance
- * @returns AMTagView
+ * @param tagView An UIView instance conforming to `AMTag`
+ * @returns UIView<AMTag>
  */
-- (AMTagView *)addTagView:(AMTagView *)tagView;
+- (UIView<AMTag> *)addTagView:(UIView<AMTag> *)tagView;
 
 /** Add a specific tag to the tag list
  *
  * You can choose to avoid rearranging the tags when adding a big batch of tags. Remember to
  * call the rearrangeTags method if you do so.
  *
- * @param tagView An AMTagView instance
- * @returns AMTagView
+ * @param tagView An UIView instance conforming to `AMTag`
+ * @returns UIView<AMTag>
  */
-- (AMTagView *)addTagView:(AMTagView *)tagView andRearrange:(BOOL)rearrange;
+- (UIView<AMTag> *)addTagView:(UIView<AMTag> *)tagView andRearrange:(BOOL)rearrange;
 
 /** Remove a tag
  *
@@ -130,7 +133,7 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  *
  * @param view A AMTagView instance
  */
-- (void)removeTag:(AMTagView*)view;
+- (void)removeTag:(UIView<AMTag> *)view;
 
 /** Remove all tags
  *
@@ -173,7 +176,7 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  *
  * An array holding the current tag view objects
  */
-@property (nonatomic, strong, readonly) NSMutableArray<AMTagView *> *tags;
+@property (nonatomic, strong, readonly) NSMutableArray<UIView<AMTag> *> *tags;
 
 /** Tag list delegate
  *
