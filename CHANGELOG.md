@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 `AMTagListView` adheres to [Semantic Versioning](http://semver.org/).
 
+- `1.3.x` Releases - [1.3.0](#130) 
 - `1.2.x` Releases - [1.2.0](#120) 
 - `1.1.x` Releases - [1.1.0](#110) 
 - `1.0.x` Releases - [1.0.0](#100) 
@@ -10,6 +11,12 @@ All notable changes to this project will be documented in this file.
 - `0.7.x` Releases - [0.7](#07) | [0.7.1](#071)
 
 ---
+
+## [1.3.0](https://github.com/andreamazz/AMTagListView/releases/tag/1.3.0)
+
+#### Added
+
+- Tags can now be generic `UIView`s conforming to the `AMTag` protocol. See #60
 
 ## [1.2.0](https://github.com/andreamazz/AMTagListView/releases/tag/1.2.0)
 
