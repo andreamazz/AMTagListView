@@ -37,8 +37,9 @@ typedef NS_ENUM(NSInteger, AMTagAlignment) {
  *
  * Determines if the list should add a new tag given its text and resulting size
  *
- * @param text The text that the tag will display
- * @param size The size that the tag will occupy
+ * @param tagListView The tag list view
+ * @param text The tag's text
+ * @param size The resulting content size
  */
 - (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size;
 
@@ -46,10 +47,20 @@ typedef NS_ENUM(NSInteger, AMTagAlignment) {
  *
  * Determines if the list should add a batch of new tags given the resulting content size
  *
- * @param tags The text that the tags will display
- * @param size The size that the tags will occupy
+ * @param tagListView The tag list view
+ * @param text The tag's text
+ * @param size The resulting content size
  */
 - (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagsWithText:(NSArray *)tags resultingContentSize:(CGSize)size;
+
+/** Did remove a tag
+ *
+ * Called when a tag is removed
+ *
+ * @param tagListView The tag list view
+ * @param tag The tag that will be removed
+ */
+- (void)tagList:(AMTagListView *)tagListView didRemoveTag:(UIView<AMTag> *)tag;
 
 @end
 

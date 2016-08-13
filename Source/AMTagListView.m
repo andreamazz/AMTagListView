@@ -160,6 +160,9 @@
 - (void)removeTag:(UIView<AMTag> *)view {
     [view removeFromSuperview];
     [self.tags removeObject:view];
+    if ([self.tagListDelegate respondsToSelector:@selector(tagList:didRemoveTag:)]) {
+        [self.tagListDelegate tagList:self didRemoveTag:view];
+    }
     [self rearrangeTags];
 }
 

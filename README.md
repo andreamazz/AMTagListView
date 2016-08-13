@@ -135,6 +135,11 @@ This method asks his delegate if a given batch of tags can be added. The method 
 ```objc
 - (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagsWithText:(NSArray *)text resultingContentSize:(CGSize)size;
 ```
+This is called when a tag is removed:
+```objc
+- (void)tagList:(AMTagListView *)tagListView didRemoveTag:(UIView<AMTag> *)tag;
+```
+
 
 ##Test
 
