@@ -13,10 +13,18 @@
 
 @implementation NegativeDelegate
 
-- (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size
-{
+- (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size {
     return NO;
 }
+
+@end
+
+@interface DeletionDelegate : NSObject <AMTagListDelegate>
+@end
+
+@implementation DeletionDelegate
+
+- (void)tagList:(AMTagListView *)tagListView didRemoveTag:(UIView<AMTag> *)tag {}
 
 @end
 
@@ -110,6 +118,18 @@ describe(@"tagListDelegate", ^{
         listView.tagListDelegate = delegate;
         [listView addTag:@"tag"];
         expect(listView.tags.count).to.equal(0);
+    });
+
+    it(@"should be called when a tag is removed", ^{
+        AMTagListView *listView;
+        DeletionDelegate *delegate = [[DeletionDelegate alloc] init];
+        listView = [[AMTagListView alloc] initWithFrame:CGRectZero];
+        listView.tagListDelegate = delegate;
+        AMTagView *tag = [listView addTag:@"tag"];
+        id mock = OCMPartialMock(delegate);
+        OCMExpect([mock tagList:listView didRemoveTag:tag]);
+        [listView removeTag:tag];
+        OCMVerifyAll(mock);
     });
 });
 
