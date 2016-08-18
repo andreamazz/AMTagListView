@@ -2,6 +2,7 @@
 All notable changes to this project will be documented in this file.
 `AMTagListView` adheres to [Semantic Versioning](http://semver.org/).
 
+- `1.4.x` Releases - [1.4.0](#140) 
 - `1.3.x` Releases - [1.3.0](#130) 
 - `1.2.x` Releases - [1.2.0](#120) 
 - `1.1.x` Releases - [1.1.0](#110) 
@@ -11,6 +12,12 @@ All notable changes to this project will be documented in this file.
 - `0.7.x` Releases - [0.7](#07) | [0.7.1](#071)
 
 ---
+
+## [1.4.0](https://github.com/andreamazz/AMTagListView/releases/tag/1.4.0)
+
+#### Added
+
+- Delegate method called when a tag is deleted.  
 
 ## [1.3.0](https://github.com/andreamazz/AMTagListView/releases/tag/1.3.0)
 
