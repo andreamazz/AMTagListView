@@ -40,7 +40,7 @@ You can create a `AMTagListView` in your storyboard, or programmatically:
 
 ####Objective-C
 ```objc
-// Init 
+// Init
 AMTagListView *tagListView = [[AMTagListView alloc] initWithFrame:frame];
 [self.view addSubview:tagListView];
 ```
@@ -95,6 +95,12 @@ You can add a payload to a single tag by using `addTag:withUserInfo:`:
 [self.tagListView addTag:@"hello" withUserInfo:@{ @"data": somePayload }];
 ```
 
+###Scroll direction
+You can control the scroll direction with the `scrollDirection` property:
+```objc
+[self.tagListView setScrollDirection:AMScrollDirectionHorizontal];
+```
+
 ###Appearance properties
 These are the properties that can be modified:
 ```objc
@@ -146,12 +152,12 @@ This is called when a tag is removed:
 To run the test suite install `xcpretty` gem, launch `pod install` inside the `Tests` folder, and run the rake task in the root.
 
 #Author
-[Andrea Mazzini](https://twitter.com/theandreamazz). I'm available for freelance work, feel free to contact me. 
+[Andrea Mazzini](https://twitter.com/theandreamazz). I'm available for freelance work, feel free to contact me.
 
 Want to support the development of [these free libraries](https://cocoapods.org/owners/734)? Buy me a coffee ☕️ via [Paypal](https://www.paypal.me/andreamazzini).  
 
 #Contributors
-Thanks to [Orta Therox](https://github.com/orta) and [everyone](https://github.com/andreamazz/AMTagListView/graphs/contributors) kind enough to submit a pull request. 
+Thanks to [Orta Therox](https://github.com/orta) and [everyone](https://github.com/andreamazz/AMTagListView/graphs/contributors) kind enough to submit a pull request.
 
 #MIT License
 
@@ -175,4 +181,3 @@ Thanks to [Orta Therox](https://github.com/orta) and [everyone](https://github.c
 	CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
 	TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 	SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-	
