@@ -41,6 +41,7 @@
     _marginX = 4;
     _marginY = 4;
     _tagAlignment = AMTagAlignmentLeft;
+    _scrollDirection = AMScrollDirectionVertical;
     self.clipsToBounds = YES;
     _tags = [@[] mutableCopy];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
@@ -185,26 +186,33 @@
     __block CGSize size = CGSizeZero;
     for (AMTagView *obj in self.tags) {
         size = obj.frame.size;
-        [self.subviews enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL *stop) {
-            if ([view isKindOfClass:[AMTagView class]]) {
-                maxY = MAX(maxY, view.frame.origin.y);
-            }
-        }];
 
+        if (self.scrollDirection == AMScrollDirectionVertical) {
+            [self.subviews enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL *stop) {
+                if ([view isKindOfClass:[AMTagView class]]) {
+                    maxY = MAX(maxY, view.frame.origin.y);
+                }
+            }];
+        }
+        
         [self.subviews enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL *stop) {
             if ([view isKindOfClass:[AMTagView class]]) {
-                if (view.frame.origin.y == maxY) {
+                if (self.scrollDirection == AMScrollDirectionHorizontal || view.frame.origin.y == maxY) {
                     maxX = MAX(maxX, view.frame.origin.x + view.frame.size.width);
                 }
             }
         }];
 
         // Go to a new line if the tag won't fit
-        if (size.width + maxX > (self.frame.size.width - self.marginX)) {
-            maxY += size.height + self.marginY;
-            maxX = 0;
+        if (self.scrollDirection == AMScrollDirectionVertical) {
+            if (size.width + maxX > (self.frame.size.width - self.marginX)) {
+                maxY += size.height + self.marginY;
+                maxX = 0;
+            }
+            obj.frame = CGRectMake(maxX + self.marginX, maxY, size.width, size.height);
+        } else {
+            obj.frame = CGRectMake(maxX + self.marginX, self.marginY, size.width, size.height);
         }
-        obj.frame = CGRectMake(maxX + self.marginX, maxY, size.width, size.height);
         [self addSubview:obj];
     };
 
@@ -213,8 +221,20 @@
             obj.frame = CGRectMake(self.frame.size.width - obj.frame.origin.x - obj.frame.size.width, obj.frame.origin.y, obj.frame.size.width, obj.frame.size.height);
         }
     }
-
-    [self setContentSize:CGSizeMake(self.frame.size.width, maxY + size.height + self.marginY)];
+    
+    if (self.scrollDirection == AMScrollDirectionHorizontal) {
+        // calculate the real maxX:
+        maxX = 0;
+        for (AMTagView *obj in self.tags) {
+            size = obj.frame.size;
+            maxX = MAX(maxX, obj.frame.origin.x + obj.frame.size.width);
+        }
+        
+        
+        [self setContentSize:CGSizeMake(maxX + self.marginX, self.frame.size.height)];
+    } else {
+        [self setContentSize:CGSizeMake(self.frame.size.width, maxY + size.height + self.marginY)];
+    }
 }
 
 - (void)layoutSubviews {

@@ -24,6 +24,18 @@ typedef NS_ENUM(NSInteger, AMTagAlignment) {
     AMTagAlignmentRight
 };
 
+/** @enum AMScrollDirection
+ *
+ * Enum that specifies the scroll direction of the view
+ */
+typedef NS_ENUM(NSInteger, AMScrollDirection) {
+    /** vertical */
+    AMScrollDirectionVertical,
+    /** horizontal */
+    AMScrollDirectionHorizontal
+};
+
+
 
 /**-----------------------------------------------------------------------------
  * @name AMTagListDelegate
@@ -200,5 +212,11 @@ typedef void (^AMTagListViewTapHandler)(AMTagView*);
  * The tag list alignment. The tags can be aligned to the left or the right.
  */
 @property (nonatomic, assign) AMTagAlignment tagAlignment;
+
+/** Scroll direction
+ *
+ * The direction in which the view scrolls (horizontal or vertical)
+ */
+@property (nonatomic, assign) AMScrollDirection scrollDirection;
 
 @end
