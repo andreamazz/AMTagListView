@@ -16,13 +16,13 @@ UIScrollView subclass that allows to add a list of highly customizable tags. You
   </a>
 </p>
 
-##Screenshot
+## Screenshot
 
 ![AMTagListView](https://raw.githubusercontent.com/andreamazz/AMTagListView/master/assets/screenshot.gif)
 
-##Setup with CocoaPods
+## Setup with CocoaPods
 
-##Swift
+## Swift
 ```
 pod 'AMTagListView'
 ```
@@ -35,24 +35,24 @@ When using dynamic frameworks:
 @import AMTagListView
 ```
 
-##Usage
+## Usage
 You can create a `AMTagListView` in your storyboard, or programmatically:
 
-####Objective-C
+#### Objective-C
 ```objc
 // Init
 AMTagListView *tagListView = [[AMTagListView alloc] initWithFrame:frame];
 [self.view addSubview:tagListView];
 ```
 
-####Swift
+#### Swift
 ```swift
 let tagListView = AMTagListView(frame: frame)
 view.addSubview(tagListView)
 ```
 
-##Adding tags
-####Objective-C
+## Adding tags
+#### Objective-C
 ```objc
 // Add one tag
 [self.tagListView addTag:@"my tag"];
@@ -61,7 +61,7 @@ view.addSubview(tagListView)
 [self.tagListView addTags:@[@"my tag", @"some tag"]];
 ```
 
-####Swift
+#### Swift
 ```swift
 // Add one tag
 tagListView.addTag("my tag")
@@ -70,38 +70,38 @@ tagListView.addTag("my tag")
 tagListView.addTags(["my tag", "some tag"])
 ```
 
-##Arranging tags
+## Arranging tags
 The tags are rearranged when you use the method calls listed above. You can also avoid the auto-rearrange by using the `andRearrange:` versions of such methods. This is useful when adding a big batch of tags. When you do so you must force the rearrange action manually:
 ```
 [self.tagListView rearrangeTags];
 ```
 You can also align the tags to the left or right by setting the `tagAlignment` property and calling `rearrangeTags`.
 
-##Appearance
+## Appearance
 Use the AMTagView's UIAppearance selectors to customize its appearance:
-####Objective-C
+#### Objective-C
 ```objc
 [[AMTagView appearance] setRadius:10];
 ```
 
-####Swift
+#### Swift
 ```swift
 AMTagView.appearance().radius = 10
 ```
 
-###Add a payload to a tag
+### Add a payload to a tag
 You can add a payload to a single tag by using `addTag:withUserInfo:`:
 ```objc
 [self.tagListView addTag:@"hello" withUserInfo:@{ @"data": somePayload }];
 ```
 
-###Scroll direction
+### Scroll direction
 You can control the scroll direction with the `scrollDirection` property:
 ```objc
 [self.tagListView setScrollDirection:AMScrollDirectionHorizontal];
 ```
 
-###Appearance properties
+### Appearance properties
 These are the properties that can be modified:
 ```objc
 // Tag's corner radius
@@ -132,7 +132,7 @@ These are the properties that can be modified:
 [[AMTagView appearance] setInnerTagColor:UIColor]
 ```
 
-##Delegate
+## Delegate
 This method asks his delegate if a given tag can be added. The method also shows the resulting content size.
 ```objc
 - (BOOL)tagList:(AMTagListView *)tagListView shouldAddTagWithText:(NSString *)text resultingContentSize:(CGSize)size;
@@ -147,21 +147,21 @@ This is called when a tag is removed:
 ```
 
 
-##Test
+## Test
 
 To run the test suite install `xcpretty` gem, launch `pod install` inside the `Tests` folder, and run the rake task in the root.
 
-#Author
+# Author
 [Andrea Mazzini](https://twitter.com/theandreamazz). I'm available for freelance work, feel free to contact me.
 
 Want to support the development of [these free libraries](https://cocoapods.org/owners/734)? Buy me a coffee ☕️ via [Paypal](https://www.paypal.me/andreamazzini).  
 
-#Contributors
+# Contributors
 Thanks to [Orta Therox](https://github.com/orta) and [everyone](https://github.com/andreamazz/AMTagListView/graphs/contributors) kind enough to submit a pull request.
 
-#MIT License
+# MIT License
 
-	Copyright (c) 2015 Andrea Mazzini. All rights reserved.
+	Copyright (c) 2017 Andrea Mazzini. All rights reserved.
 
 	Permission is hereby granted, free of charge, to any person obtaining a
 	copy of this software and associated documentation files (the "Software"),
