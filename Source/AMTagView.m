@@ -115,6 +115,21 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     [self.button setFrame:buttonRect];
     [self.labelText setTextColor:self.textColor];
     [self.labelText setFont:self.textFont];
+    
+    CGSize size = [self.labelText.text sizeWithAttributes:@{NSFontAttributeName: self.textFont}];
+    
+    size.width = size.width + self.textPadding.x * 2 + self.innerTagPadding * 2 + self.tagLength;
+    if (self.accessoryImage) {
+        self.imageView.image = self.accessoryImage;
+        [self.imageView sizeToFit];
+        size.width += self.imageView.frame.size.width + self.imagePadding;
+    }
+    size.height = (int)ceilf(size.height + self.textPadding.y);
+    size.width = (int)ceilf(size.width);
+    
+    CGRect frame = self.frame;
+    frame.size = size;
+    self.frame = frame;
 }
 
 - (void)drawRect:(CGRect)rect {
@@ -195,27 +210,9 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 #pragma mark - Public Interface
 
-- (void)setupWithText:(NSString*)text {
-    UIFont* font = self.textFont;
-    CGSize size = [text sizeWithAttributes:@{NSFontAttributeName: font}];
-
-    float innerPadding = self.innerTagPadding;
-    float tagLength = self.tagLength;
-
-    size.width = size.width + self.textPadding.x * 2 + innerPadding * 2 + tagLength;
-    if (self.accessoryImage) {
-        self.imageView.image = self.accessoryImage;
-        [self.imageView sizeToFit];
-        size.width += self.imageView.frame.size.width + self.imagePadding;
-    }
-    size.height = (int)ceilf(size.height + self.textPadding.y);
-    size.width = (int)ceilf(size.width);
-
-    CGRect frame = self.frame;
-    frame.size = size;
-    self.frame = frame;
-
+- (void)setupWithText:(NSString *)text {
     [self.labelText setText:text];
+    [self setNeedsLayout];
 }
 
 - (NSString *)tagText {
@@ -231,6 +228,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 - (void)setAccessoryImage:(UIImage *)accessoryImage {
     _accessoryImage = accessoryImage;
     self.imageView.image = accessoryImage;
+    [self setNeedsLayout];
 }
 
 - (void)setTextColor:(UIColor *)textColor {

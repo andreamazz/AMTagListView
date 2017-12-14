@@ -34,12 +34,14 @@
 	[[AMTagView appearance] setTextPadding:CGPointMake(14, 14)];
 	[[AMTagView appearance] setTextFont:[UIFont fontWithName:@"Futura" size:14]];
 	[[AMTagView appearance] setTagColor:UIColorFromRGB(0x1f8dd6)];
-	
+    [[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"close"]];
+
 	[self.tagListView addTag:@"my tag"];
     [self.tagListView addTag:@"something"];
-    [[AMTagView appearance] setAccessoryImage:[UIImage imageNamed:@"close"]];
     [self.tagListView addTag:@"long tag is long"];
 	[self.tagListView addTag:@"hi there"];
+    AMTagView *tag = [self.tagListView addTag:@"No image accessory"];
+    tag.accessoryImage = nil;
     
     self.tagListView.tagListDelegate = self;
 
@@ -47,7 +49,7 @@
         view.tag++;
         NSString *text = [[view.tagText componentsSeparatedByString:@" +"] firstObject];
         [view setTagText:[NSString stringWithFormat:@"%@ +%ld", text, view.tag]];
-	}];
+    }];
 
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Remove"
                                                                               style:UIBarButtonItemStylePlain
