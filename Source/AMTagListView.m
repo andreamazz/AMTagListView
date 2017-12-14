@@ -80,24 +80,24 @@
     AMTagView* tagView = [[AMTagView alloc] initWithFrame:CGRectZero];
     [tagView setupWithText:text];
     tagView.userInfo = userInfo;
-
+    
     CGRect frame = tagView.frame;
     frame.size.width = MIN(frame.size.width, self.frame.size.width - self.marginX * 2);
     tagView.frame = frame;
-
+    
     [self.tags addObject:tagView];
-
+    
     if (rearrange) {
         [self rearrangeTags];
     }
-
+    
     if ([self.tagListDelegate respondsToSelector:@selector(tagList:shouldAddTagWithText:resultingContentSize:)]) {
         if (![self.tagListDelegate tagList:self shouldAddTagWithText:tagView.tagText resultingContentSize:self.contentSize]) {
             [self removeTag:tagView];
             return nil;
         }
     }
-
+    
     return tagView;
 }
 
@@ -119,18 +119,18 @@
     }
     
     [self.tags addObject:tagView];
-
+    
     if (rearrange) {
         [self rearrangeTags];
     }
-
+    
     if ([self.tagListDelegate respondsToSelector:@selector(tagList:shouldAddTagWithText:resultingContentSize:)]) {
         if (![self.tagListDelegate tagList:self shouldAddTagWithText:tagView.tagText resultingContentSize:self.contentSize]) {
             [self removeTag:tagView];
             return nil;
         }
     }
-
+    
     return tagView;
 }
 
@@ -146,7 +146,7 @@
             [tags addObject:tag];
         }
     }
-
+    
     if ([self.tagListDelegate respondsToSelector:@selector(tagList:shouldAddTagWithText:resultingContentSize:)]) {
         if (![self.tagListDelegate tagList:self shouldAddTagsWithText:array resultingContentSize:self.contentSize]) {
             for (AMTagView *tag in tags) {
@@ -186,7 +186,7 @@
     __block CGSize size = CGSizeZero;
     for (AMTagView *obj in self.tags) {
         size = obj.frame.size;
-
+        
         if (self.scrollDirection == AMScrollDirectionVertical) {
             [self.subviews enumerateObjectsUsingBlock:^(UIView* view, NSUInteger idx, BOOL *stop) {
                 if ([view isKindOfClass:[AMTagView class]]) {
@@ -202,7 +202,7 @@
                 }
             }
         }];
-
+        
         // Go to a new line if the tag won't fit
         if (self.scrollDirection == AMScrollDirectionVertical) {
             if (size.width + maxX > (self.frame.size.width - self.marginX)) {
@@ -215,7 +215,7 @@
         }
         [self addSubview:obj];
     };
-
+    
     if (self.tagAlignment == AMTagAlignmentRight) {
         for (AMTagView *obj in self.tags) {
             obj.frame = CGRectMake(self.frame.size.width - obj.frame.origin.x - obj.frame.size.width, obj.frame.origin.y, obj.frame.size.width, obj.frame.size.height);
