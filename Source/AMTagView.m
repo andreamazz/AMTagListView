@@ -87,10 +87,10 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    
+
     CGFloat leftMargin = (int)(self.innerTagPadding + self.tagLength + (self.tagLength ? self.radius / 2 : 0));
     CGFloat rightMargin = self.innerTagPadding;
-    
+
     if (self.accessoryImage) {
         CGRect imageRect = self.imageView.bounds;
         rightMargin = (int)ceilf(rightMargin + imageRect.size.width + self.imagePadding);
@@ -98,20 +98,20 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         imageRect.origin.y = (int)(self.frame.size.height - self.imageView.frame.size.height) / 2;
         self.imageView.frame = imageRect;
     }
-    
+
     [self.labelText.layer setCornerRadius:self.radius / 2];
     [self.labelText setFrame:CGRectMake(
-                                        leftMargin,
-                                        (int)(self.innerTagPadding),
-                                        (int)(self.frame.size.width - rightMargin - leftMargin),
-                                        (int)(self.frame.size.height - self.innerTagPadding * 2)
-                                        )];
-    
+        leftMargin,
+        (int)(self.innerTagPadding),
+        (int)(self.frame.size.width - rightMargin - leftMargin),
+        (int)(self.frame.size.height - self.innerTagPadding * 2)
+    )];
+
     CGRect buttonRect = self.labelText.frame;
     if (self.accessoryImage) {
         buttonRect.size.width = buttonRect.size.width + self.imageView.bounds.size.width + self.imagePadding * 2;
     }
-    
+
     [self.button setFrame:buttonRect];
     [self.labelText setTextColor:self.textColor];
     [self.labelText setFont:self.textFont];
@@ -152,31 +152,31 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     float height = rect.size.height;
     float width = rect.size.width;
     float radius = self.radius;
-    
+
     if (padding > 0) {
         UIBezierPath *aPath = [UIBezierPath bezierPath];
-        
+
         [aPath moveToPoint:(CGPoint){width, height / 2}];
         [aPath addLineToPoint:CGPointMake(width, radius)];
         [aPath addArcWithCenter:(CGPoint){width - radius, radius} radius:radius startAngle:DEGREES_TO_RADIANS(0) endAngle:DEGREES_TO_RADIANS(270) clockwise:NO];
         [aPath addLineToPoint:(CGPoint){tagLength + radius, 0.0}];
         [aPath addArcWithCenter:(CGPoint){tagLength + radius, radius} radius:radius startAngle:DEGREES_TO_RADIANS(270) endAngle:DEGREES_TO_RADIANS(230) clockwise:NO];
         [aPath addLineToPoint:(CGPoint){0.0, height / 2}];
-        
+
         [aPath moveToPoint:(CGPoint){tagLength / 2, height / 2}];
         [aPath addArcWithCenter:(CGPoint){tagLength / 2 + self.holeRadius, height / 2} radius:self.holeRadius startAngle:DEGREES_TO_RADIANS(180) endAngle:DEGREES_TO_RADIANS(0) clockwise:YES];
-        
+
         UIBezierPath *p2 = [UIBezierPath bezierPathWithCGPath:aPath.CGPath];
         [p2 applyTransform:CGAffineTransformMakeScale(1, -1)];
         [p2 applyTransform:CGAffineTransformMakeTranslation(0, height)];
         [aPath appendPath:p2];
-        
+
         // Set the render colors.
         [self.tagColor setFill];
-        
+
         [aPath fill];
     }
-    
+
     radius -= padding;
     float left = padding * 2;
     UIBezierPath *background = [UIBezierPath bezierPath];
@@ -190,7 +190,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
     [background addLineToPoint:(CGPoint){tagLength + left, padding + radius}];
     [background addArcWithCenter:(CGPoint){tagLength + left + radius, padding + radius} radius:radius startAngle:DEGREES_TO_RADIANS(180) endAngle:DEGREES_TO_RADIANS(270) clockwise:YES];
     [background closePath];
-    
+
     [self.innerTagColor setFill];
     [background fill];
 }
@@ -201,7 +201,7 @@ NSString * const AMTagViewNotification = @"AMTagViewNotification";
         [self.tagColor setFill];
         [backgroundPath fill];
     }
-    
+
     CGRect inset = CGRectInset(rect, self.innerTagPadding, self.innerTagPadding);
     UIBezierPath* insidePath = [UIBezierPath bezierPathWithRoundedRect:inset cornerRadius:self.radius - self.innerTagPadding];
     [self.innerTagColor setFill];
